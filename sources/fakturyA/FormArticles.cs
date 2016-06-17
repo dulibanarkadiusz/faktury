@@ -18,7 +18,7 @@ namespace fakturyA
         public bool EditAddArticle = false;
         public bool EditMode { get; set; } // ustaw true kiedy zezwalasz na edytowanie artykułów
         public static List<Article> articlesList { get; set; } // weź to popraw STATYCZNE bo zabiję.
-
+       // System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("de-DE");
         public FormArticles()
         {
             InitializeComponent();

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Globalization;
 
 namespace fakturyA
 {
@@ -34,7 +35,8 @@ namespace fakturyA
             Name = row[4];
             PriceNetto =Convert.ToDecimal(row[1]);
             VATvalue = Convert.ToDecimal(row[3]);
-            PriceBrutto = PriceNetto + Convert.ToDecimal(VATvalue)/100;
+            
+            PriceBrutto = System.Decimal.Round(PriceNetto +PriceNetto* (VATvalue / 100),2);
             UnitMeasure = row[2];
 
         }
@@ -51,6 +53,6 @@ namespace fakturyA
         {
             return String.Format("Delete from artykul where kod='{0}'", Code);
         }
-
+        
     }
 }
