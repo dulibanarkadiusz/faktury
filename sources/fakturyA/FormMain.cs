@@ -35,7 +35,6 @@ namespace fakturyA
             {
                 MainProgram.ArticlesWindow.Show();
             }
-            MainProgram.ArticlesWindow.EditMode = true;
         }
 
         private void buttonInvoicesList_Click(object sender, EventArgs e)

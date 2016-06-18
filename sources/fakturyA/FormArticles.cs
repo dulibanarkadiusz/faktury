@@ -18,11 +18,13 @@ namespace fakturyA
         public bool EditAddArticle = false;
         public bool EditMode { get; set; } // ustaw true kiedy zezwalasz na edytowanie artykułów
         public static List<Article> articlesList { get; set; } // weź to popraw STATYCZNE bo zabiję.
-       // System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("de-DE");
+        // System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("de-DE");
         public FormArticles()
         {
             InitializeComponent();
-            comboBox_max.SelectedIndex = 4; 
+            comboBox_max.SelectedIndex = 4;   
+            //
+            EditMode = true;
         }
 
         protected override void OnFormClosing(FormClosingEventArgs e)
@@ -84,10 +86,11 @@ namespace fakturyA
 
             }
         }
+
         public void AddRowsToDataGridView(Article editArticle)
         {
-           dataGridView1.Rows.Add();
-           DataGridViewRow row = (DataGridViewRow)dataGridView1.Rows[dataGridView1.Rows.Count-1];
+            dataGridView1.Rows.Add();
+            DataGridViewRow row = (DataGridViewRow)dataGridView1.Rows[dataGridView1.Rows.Count - 1];
             row.Cells["Kod"].Value = editArticle.Code;
             row.Cells["Nazwa"].Value = editArticle.Name;
             row.Cells["JednostkaM"].Value = editArticle.UnitMeasure;
@@ -95,7 +98,7 @@ namespace fakturyA
             row.Cells["CenaB"].Value = editArticle.PriceBrutto;
             row.Cells["Vat"].Value = editArticle.VATvalue;
         }
-        
+
         private void FormArticles_Load(object sender, EventArgs e)
         {
             if(dataGridView1.RowCount==0)
@@ -115,48 +118,44 @@ namespace fakturyA
             FormArticlesEditor addArticle = new FormArticlesEditor();
             addArticle.Text = "Dodaj artykuł";
             addArticle.ShowDialog();
-            
+
         }
         private void RemoveArticle_click(object sender, EventArgs e)
         {
-            
+
             //int x=dataGridView1(dataGridView1.SelectedRows[0].Index);
-           // string x=dataGridView1.Rows[selectedCellCount];
+            // string x=dataGridView1.Rows[selectedCellCount];
             int rowIndeks = dataGridView1.SelectedRows[0].Index;
             MessageBox.Show(dataGridView1.SelectedRows[0].Index.ToString());
             Article artic = articlesList[rowIndeks];
             DatabaseMySQL.ExecuteQuery(artic.GenerateQueryDropArticles());
             dataGridView1.Rows.RemoveAt(dataGridView1.SelectedRows[0].Index);
-           
+
 
         }
         private void dataGridView1_MouseClick(object sender, MouseEventArgs e)
         {
             int mouseOnRow = dataGridView1.HitTest(e.X, e.Y).RowIndex;
-            if (mouseOnRow >= 0 &&EditMode)
+            if (mouseOnRow >= 0 && EditMode)
             {
                 ContextMenu a = new ContextMenu();
                 a.MenuItems.Add(new MenuItem(string.Format("Edytuj", dataGridView1.Rows[mouseOnRow].Cells["Kod"].Value), new EventHandler(this.editArticle_click)));
-                a.MenuItems.Add(new MenuItem(string.Format("Usuń",dataGridView1.Rows[mouseOnRow].Cells["Kod"].Value), new EventHandler(this.RemoveArticle_click)));
+                a.MenuItems.Add(new MenuItem(string.Format("Usuń", dataGridView1.Rows[mouseOnRow].Cells["Kod"].Value), new EventHandler(this.RemoveArticle_click)));
                 a.Show(dataGridView1, new Point(e.X, e.Y));
             }
         }
        
         public void ShowWindowToAddNewArticle()
         {
-            
             FormArticles a = new FormArticles();
-            EditMode = false;
             a.Show();
             a.AddArticle.Show();
-            a.AddArticle_butt.Hide();
             if(czy_zamknac)
             {
                 a.Close();
             }
            // MessageBox.Show(articlesList[indeks].Name);
             MainProgram.AddedArticle = articlesList[indeks];
-
           //  return articlesList[indeks];
         }
        
@@ -178,7 +177,7 @@ namespace fakturyA
                        foreach (Article a in articlesList)
                        {
                            s++;
-                           if (row.Cells["Kod"].Value == a.Code)
+                           if (row.Cells["Kod"].Value.ToString() == (string)a.Code)
                            {
                                indeks = s -1;
                                break;
@@ -186,7 +185,7 @@ namespace fakturyA
                        }
                     }
                    MessageBox.Show(Convert.ToString(indeks));
-            FormArticleAmount addingArticle = new FormArticleAmount(indeks);
+            AddArticleToInvoice addingArticle = new AddArticleToInvoice(indeks);
            
                    addingArticle.Show();
 
@@ -195,14 +194,14 @@ namespace fakturyA
         }
         public void ReplaceEditRowArticleInDataGrid(Article editArticle)
         {
-            int posiotion=0;
+            int posiotion = 0;
             foreach (Article a in FormArticles.articlesList)
             {
                 if (a.Code == editArticle.Code)
                 {
-                    break; 
+                    break;
                 }
-                    posiotion++;
+                posiotion++;
             }
             DataGridViewRow row = (DataGridViewRow)dataGridView1.Rows[posiotion];
             row.Cells["Kod"].Value = editArticle.Code;
@@ -212,9 +211,5 @@ namespace fakturyA
             row.Cells["CenaB"].Value = editArticle.PriceBrutto;
             row.Cells["Vat"].Value = editArticle.VATvalue;
         }
-
-        
-        
-       
     }
 }

@@ -43,7 +43,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.comboBox_max = new System.Windows.Forms.ComboBox();
             this.AddArticle = new System.Windows.Forms.Button();
-            this.AddArticle_butt = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -69,7 +68,6 @@
             this.tableLayoutPanel1.Controls.Add(this.label3, 5, 1);
             this.tableLayoutPanel1.Controls.Add(this.comboBox_max, 6, 1);
             this.tableLayoutPanel1.Controls.Add(this.AddArticle, 8, 1);
-            this.tableLayoutPanel1.Controls.Add(this.AddArticle_butt, 7, 1);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(1, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 3;
@@ -78,6 +76,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 450F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1041, 510);
             this.tableLayoutPanel1.TabIndex = 4;
+           // this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
             // 
             // dataGridView1
             // 
@@ -145,7 +144,7 @@
             // Vat
             // 
             this.Vat.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Vat.HeaderText = "Vat";
+            this.Vat.HeaderText = "Vat %";
             this.Vat.Name = "Vat";
             this.Vat.ReadOnly = true;
             // 
@@ -224,17 +223,6 @@
             this.AddArticle.UseVisualStyleBackColor = true;
             this.AddArticle.Click += new System.EventHandler(this.AddArticle_Click);
             // 
-            // AddArticle_butt
-            // 
-            this.AddArticle_butt.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.AddArticle_butt.Location = new System.Drawing.Point(731, 33);
-            this.AddArticle_butt.Name = "AddArticle_butt";
-            this.AddArticle_butt.Size = new System.Drawing.Size(98, 23);
-            this.AddArticle_butt.TabIndex = 8;
-            this.AddArticle_butt.Text = "Dodaj artykul";
-            this.AddArticle_butt.UseVisualStyleBackColor = true;
-            this.AddArticle_butt.Click += new System.EventHandler(this.button1_Click);
-            // 
             // FormArticles
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -256,6 +244,12 @@
 
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Kod;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Nazwa;
+        private System.Windows.Forms.DataGridViewTextBoxColumn JednostkaM;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CenaN;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CenaB;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Vat;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox Code_tb;
         private System.Windows.Forms.Label label2;
@@ -263,13 +257,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox comboBox_max;
         private System.Windows.Forms.Button AddArticle;
-        private System.Windows.Forms.Button AddArticle_butt;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Kod;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Nazwa;
-        private System.Windows.Forms.DataGridViewTextBoxColumn JednostkaM;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CenaN;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CenaB;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Vat;
 
 
 

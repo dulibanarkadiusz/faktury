@@ -196,10 +196,10 @@ namespace fakturyA
         {
             // Pobiera informacje o danym artykule.
             // Stworzone tylko testowo. 
-            string[] data = new string[3];
+            string[] data = new string[51];
             try
             {
-                string queryText = string.Format("SELECT nazwa, cena_netto, stawka_VAT from artykul WHERE kod='{0}'", productCode);
+                string queryText = string.Format("SELECT * from artykul WHERE kod='{0}'", productCode);
                 MySqlCommand query = new MySqlCommand(queryText, MainProgram.Connection);
                 MySqlDataReader dataReader = query.ExecuteReader();
 
@@ -218,34 +218,44 @@ namespace fakturyA
             return data;
         }
 
+        public static void LoadPositionsOnInvoice(Invoice invoice)
+        {
+            MainProgram.Connection = DatabaseMySQL.Connect(MainProgram.DatabaseName);
+            try
+            {
+                DatabaseMySQL.OpenConnection(MainProgram.Connection);
+                List<string[]> positionList = new List<string[]>();
+                string qText = string.Format("SELECT * FROM pozycja_faktury WHERE nr_faktury='{0}';", invoice.Number);
+                MySqlCommand command = new MySqlCommand(qText, MainProgram.Connection);
+                MySqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    string[] cols = new string[3]; //fieldCount ile mamy kolumn z bazy
+                    cols[0] = reader[1].ToString();
+                    cols[1] = reader[3].ToString();
+                    cols[2] = reader[4].ToString();
 
-        //public static string[] GetInvoiceData(string invoiceNumber)
-        //{
-        //    // NIE WIEM CZY POTRZEBNE [?]
-        //    string[] data = null;
+                    positionList.Add(cols);
+                }
+                reader.Close();
 
-        //    try
-        //    {
-        //        string queryText = string.Format("SELECT * from faktura WHERE numer='{0}'", invoiceNumber);
-        //        MySqlCommand query = new MySqlCommand(queryText, MainProgram.Connection);
-        //        MySqlDataReader dataReader = query.ExecuteReader();
+                foreach (string[] pos in positionList)
+                {
+                    Article art = new Article(DatabaseMySQL.GetArticleData(pos[0]));
+                    MainProgram.InvoiceEditor.AddArticleToInvoice(new ArticleOnInvoice(art, Convert.ToDecimal(pos[2]), Convert.ToDecimal(pos[1])));
+                }
 
-                
-        //        dataReader.Read();
-        //        data = new string[dataReader.FieldCount];
-        //        for (int i = 0; i < dataReader.FieldCount; i++)
-        //        {
-        //            data[i] = dataReader[i].ToString();
-        //        }
-        //        dataReader.Close();
-        //    }
-        //    catch (Exception e)
-        //    {
-        //        MessageBox.Show(e.Message);
-        //    }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
+            finally
+            {
+                DatabaseMySQL.CloseConnection(MainProgram.Connection);
+            }
+        }
 
-        //    return data;
-        //}
 
         public static void LoadArticleList()
         {
@@ -279,6 +289,8 @@ namespace fakturyA
                 DatabaseMySQL.CloseConnection(MainProgram.Connection);
             }
         }
+
+
         public static int ExecuteQuery(string query)
         {
             // POZWALA ZREALIZOWAĆ DOWOLNE ZAPYTANIE WYSŁANE JAKO TEKST. 

@@ -13,12 +13,27 @@ namespace fakturyA
     public partial class FormInvoiceEditor : Form
     {
         private List<string> productCodesOnInvoice = new List<string>();
-        private List<string> deletedProductCodes = new List<string>();
+        private List<string> deleteProductsQueries = new List<string>();
+        private List<string> queryList = new List<string>();
         private Invoice editInvoice;
+        public Invoice EditInvoice
+        {
+            get
+            {
+                return editInvoice;
+            }
+            set
+            {
+                editInvoice = value;
+            }
+        }
 
         private void AddNewInvoice_Load(object sender, EventArgs e)
         {
             dateTimePickerDateInvoice.MaxDate = DateTime.Now;
+            dateTimePickerDateInvoice.MinDate = DateTime.Now.AddDays(-14);
+            dateTimePickerDatePayment.MaxDate = DateTime.Now.AddDays(30);
+            dateTimePickerDatePayment.MinDate = DateTime.Now.AddDays(-14);
         }
 
         public FormInvoiceEditor() // konstruktor bezargumentowy, pozwala uruchomić edytor do utworzenia nowej faktury
@@ -31,7 +46,22 @@ namespace fakturyA
         public FormInvoiceEditor(Invoice invoice) // konstruktor pozwalający uruchomić edytor w trybie edycji już istniejącej faktury
         {
             InitializeComponent();
-            editInvoice = invoice;
+            EditInvoice = invoice;
+            MainProgram.InvoiceEditor = this;
+
+
+            if (EditInvoice.InvoiceTotalNetto < 0.01m)
+            {
+                DatabaseMySQL.LoadPositionsOnInvoice(invoice);
+            }
+            else
+            {
+                foreach (ArticleOnInvoice articleOnInvoice in invoice.ArticlesOnInvoiceList)
+                {
+                    WriteArticleOnInvoice_ToDataGridView(articleOnInvoice);
+                }
+            }
+               
 
             // odczytaj dane z istniejącej krotki (zapisanej w liście faktur) i wypisz do edytora
             textBoxInvoiceNumber.Text = invoice.Number;
@@ -40,11 +70,16 @@ namespace fakturyA
             dateTimePickerDateSale.Text = invoice.SellingDate.ToString();
             dateTimePickerDatePayment.Text = invoice.PaymentDate.ToString();
             textBoxAmountPaid.Text = invoice.AmountPaid.ToString();
-            labelInvoiceValue.Text = invoice.InvoiceValue.ToString() + " zł";
+            
+            WriteTotalInvoiceValue();
             GetAndLoadCustomerDetails();
         }
 
-        
+        public void WriteTotalInvoiceValue()
+        {
+            labelInvoiceTotalNetto.Text = EditInvoice.InvoiceTotalNetto.ToString() + " zł";
+            labelInvoiceValue.Text = EditInvoice.InvoiceValue.ToString() + " zł";
+        }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -67,92 +102,18 @@ namespace fakturyA
 
         private void buttonAddArticleToInvoice_Click(object sender, EventArgs e)
         {
-            /// ======== TO DO -> potrzebny obiekt artykułu! ===============
-            /// ============================================================
-            /// ============================================================
-           
             FormArticles addingArticleToInvoice_Window = new FormArticles();
             addingArticleToInvoice_Window.ShowWindowToAddNewArticle();
-
-            //Article addedArticleData = addingArticleToInvoice_Window.ShowWindowToAddNewArticle();
-
-           // if (addedArticleData == null) // no data receive
-           //     return;
-
-           // string productCode = addedArticleData.Code;
-           // string productAmount = Convert.ToString(addedArticleData.Amount);
-           // string productDiscount = Convert.ToString(addedArticleData.Discount);
-           // string productName = addedArticleData.Name;
-           //string  productDisc=Convert.ToString( addedArticleData.Discount);
-           //string productAmo =Convert.ToString( addedArticleData.Amount);
-           //string  productPriceNetto =Convert.ToString( addedArticleData.PriceNetto);
-           //string productVAT = Convert.ToString(addedArticleData.VATvalue);
-
-
-           // if (!productCodesOnInvoice.Contains(productCode))
-           // {
-           //     MainProgram.Connection = DatabaseMySQL.Connect(MainProgram.DatabaseName);
-           //     try
-           //     {
-           //         DatabaseMySQL.OpenConnection(MainProgram.Connection);
-           //         //string[] productData = DatabaseMySQL.GetArticleData(productCode);
-                    
-           //         dataGridView1.Rows.Add(productCode, productName, productPriceNetto, productVAT, "*", productDisc, productAmo, "szt.", "=", "=");
-           //         productCodesOnInvoice.Add(productCode);
-           //     }
-           //     catch (Exception exc)
-           //     {
-           //         MessageBox.Show(exc.Message);
-           //     }
-           //     finally
-           //     {
-           //         DatabaseMySQL.CloseConnection(MainProgram.Connection);
-           //     }
-           // }
-           // else
-           // {
-           //     MessageBox.Show("Ten produkt występuje już na fakturze i nie można go dodać ponownie.\nWybierz element na liście, a następnie dokonaj stosownych poprawek.");
-           // }
-
         }
 
 
-        public void addArticleToInvoice(Article article)
+        public void AddArticleToInvoice(ArticleOnInvoice article)
         {
-            MessageBox.Show("aha, no chociaż wywołało addArticle");
-            Article addedArticleData = MainProgram.AddedArticle;
-            if (addedArticleData == null) // no data receive
-                return;
-
-            string productCode = addedArticleData.Code;
-            string productAmount = Convert.ToString(addedArticleData.Amount);
-            string productDiscount = Convert.ToString(addedArticleData.Discount);
-            string productName = addedArticleData.Name;
-            string productDisc = Convert.ToString(addedArticleData.Discount);
-            string productAmo = Convert.ToString(addedArticleData.Amount);
-            string productPriceNetto = Convert.ToString(addedArticleData.PriceNetto);
-            string productVAT = Convert.ToString(addedArticleData.VATvalue);
-
-
-            if (!productCodesOnInvoice.Contains(productCode))
+            if (!productCodesOnInvoice.Contains(article.Article.Code))
             {
-                MainProgram.Connection = DatabaseMySQL.Connect(MainProgram.DatabaseName);
-                try
-                {
-                    DatabaseMySQL.OpenConnection(MainProgram.Connection);
-                    //string[] productData = DatabaseMySQL.GetArticleData(productCode);
-
-                    dataGridView1.Rows.Add(productCode, productName, productPriceNetto, productVAT, "*", productDisc, productAmo, "szt.", "=", "=");
-                    productCodesOnInvoice.Add(productCode);
-                }
-                catch (Exception exc)
-                {
-                    MessageBox.Show(exc.Message);
-                }
-                finally
-                {
-                    DatabaseMySQL.CloseConnection(MainProgram.Connection);
-                }
+                editInvoice.AddArticlePositionToInvoice(article);
+                WriteArticleOnInvoice_ToDataGridView(article);
+                productCodesOnInvoice.Add(article.Article.Code);
             }
             else
             {
@@ -160,20 +121,30 @@ namespace fakturyA
             }
         }
 
-        private void buttonSaveInvoice_Click(object sender, EventArgs e)
+        public void WriteArticleOnInvoice_ToDataGridView(ArticleOnInvoice article)
+        {
+            dataGridView1.Rows.Add(article.Article.Code, article.Article.Name, article.Article.PriceNetto + MainProgram.CurrencySymbol, article.Article.VATvalue, article.Article.PriceBrutto + MainProgram.CurrencySymbol, article.Discount + " %", article.Amount, article.Article.UnitMeasure, article.ValueNetto + MainProgram.CurrencySymbol, article.ValueBrutto + MainProgram.CurrencySymbol);
+        }
+
+        private void ButtonSaveInvoice_Click(object sender, EventArgs e)
         {
             // Zapis lub uaktualnienie akturalnie otwartej faktury
             if (ValidateForm() == false)
                 return;
 
 
-            string query; 
+            string query; bool isNewInvoice = false;
             if (editInvoice.Number == null)
             {
                 // zapis nowej faktury 
+                isNewInvoice = true;
                 editInvoice.Number = DatabaseMySQL.CreateNumberForNewInvoice();
                 textBoxInvoiceNumber.Text = editInvoice.Number; // wypisz wygenerowany dla faktury numer 
                 query = editInvoice.GenerateInsertQuery();
+                foreach (ArticleOnInvoice invoiceArticle in EditInvoice.ArticlesOnInvoiceList)
+                {
+                    queryList.Add(invoiceArticle.GetInsertQuery());
+                }
             }
             else
             {
@@ -183,22 +154,43 @@ namespace fakturyA
 
             int? returnValue = null;
             returnValue = DatabaseMySQL.ExecuteQuery(query);
-           
+            foreach (string mysqlQuery in queryList)
+            {
+                DatabaseMySQL.ExecuteQuery(mysqlQuery);
+            }
+
+
 
             if (returnValue > 0)
+            {
+                if (isNewInvoice)
+                    MainProgram.InvoiceObjectsList.Add(editInvoice);
+                MainProgram.InvoiceWindow.UpdateInvoicesList();
                 MessageBox.Show("Operacja wykonana pomyślnie (" + returnValue + ")");
+                queryList.Clear();
+            }
             else
+            {
                 MessageBox.Show("Wystąpił błąd.");
+            }
 
         }
 
 
         private void buttonChooseCustomer_Click(object sender, EventArgs e)
         {
-            FormCustomers SelectCustomerID = new FormCustomers();
-            editInvoice.CustomerID = SelectCustomerID.ChooseConsumerWindow();
+            if (editInvoice.Number == null)
+            {
+                FormCustomers SelectCustomerID = new FormCustomers();
+                editInvoice.CustomerID = SelectCustomerID.ChooseConsumerWindow();
 
-            GetAndLoadCustomerDetails();
+                GetAndLoadCustomerDetails();
+                editInvoice.CusotmerName = labelCustomerName.Text;
+            }
+            else
+            {
+                MessageBox.Show("Nie można zmienić kontrahenta dla już zapisanej faktury.");
+            }
         }
 
 
@@ -211,7 +203,7 @@ namespace fakturyA
                     return;
 
                 productCodesOnInvoice.Remove(dataGridView1.Rows[dataGridView1.SelectedRows[0].Index].Cells[0].Value.ToString());
-                deletedProductCodes.Add(dataGridView1.Rows[dataGridView1.SelectedRows[0].Index].Cells[0].Value.ToString());
+                queryList.Add(EditInvoice.FindAndGetArticleOnInvoice(dataGridView1.Rows[dataGridView1.SelectedRows[0].Index].Cells[0].Value.ToString()).GetDeleteQuery());
                 dataGridView1.Rows.RemoveAt(dataGridView1.SelectedRows[0].Index);
             }
             else
@@ -237,7 +229,6 @@ namespace fakturyA
 
         private void dateTimePickerDatePayment_ValueChanged(object sender, EventArgs e)
         {
-            // to do 
             DateTime sellDate = Convert.ToDateTime(dateTimePickerDateSale.Value);
             DateTime paymentDate = Convert.ToDateTime(dateTimePickerDatePayment.Value);
 
@@ -275,8 +266,9 @@ namespace fakturyA
 
         private void textBoxAmountPaid_TextChanged(object sender, EventArgs e)
         {
-            //editInvoice.AmountPaid = textBoxAmountPaid.Text;    inaccessible
+            editInvoice.AmountPaid = Convert.ToDecimal(textBoxAmountPaid.Text); 
         }
+
 
 
         private bool ValidateForm()
@@ -293,7 +285,7 @@ namespace fakturyA
 
             if (dataGridView1.Rows.Count == 0)
             {
-                errorProvider1.SetError(dataGridView1, "Należy wybrać minimum 1 artykuł na fakturze.");
+                errorProvider1.SetError(dataGridView1, "Dodaj minimum 1 artykuł do faktury.");
                 return false;
             }
             else
@@ -304,14 +296,17 @@ namespace fakturyA
             return true;
         }
 
+
         private void contextMenuStrip1_Opening(object sender, CancelEventArgs e)
         {
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void buttonEditArticleOnInvoice_Click(object sender, EventArgs e)
         {
-
+            AddArticleToInvoice w = new AddArticleToInvoice(1);
+            w.ShowDialog();
         }
+
     }
 }

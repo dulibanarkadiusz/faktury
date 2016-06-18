@@ -34,6 +34,10 @@
             this.textBoxFindNumber = new System.Windows.Forms.TextBox();
             this.textBoxFindCustomerName = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.label3 = new System.Windows.Forms.Label();
+            this.comboBoxMaximumResults = new System.Windows.Forms.ComboBox();
+            this.textBoxFindNIP = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.index = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NrFaktury = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.KlientName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -43,10 +47,6 @@
             this.DoZaplaty = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DataWystawienia = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TerminPlatnosci = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label3 = new System.Windows.Forms.Label();
-            this.comboBoxMaximumResults = new System.Windows.Forms.ComboBox();
-            this.textBoxFindNIP = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -80,7 +80,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1060, 546);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(909, 546);
             this.tableLayoutPanel1.TabIndex = 5;
             this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
             // 
@@ -88,7 +88,7 @@
             // 
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(133, 31);
+            this.label1.Location = new System.Drawing.Point(101, 31);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(76, 13);
             this.label1.TabIndex = 7;
@@ -98,11 +98,11 @@
             // 
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(321, 31);
+            this.label2.Location = new System.Drawing.Point(317, 31);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(100, 13);
+            this.label2.Size = new System.Drawing.Size(40, 13);
             this.label2.TabIndex = 8;
-            this.label2.Text = "Nazwa kontrahenta";
+            this.label2.Text = "Nazwa";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // textBoxFindNumber
@@ -110,9 +110,9 @@
             this.textBoxFindNumber.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxFindNumber.Location = new System.Drawing.Point(215, 28);
+            this.textBoxFindNumber.Location = new System.Drawing.Point(183, 28);
             this.textBoxFindNumber.Name = "textBoxFindNumber";
-            this.textBoxFindNumber.Size = new System.Drawing.Size(100, 20);
+            this.textBoxFindNumber.Size = new System.Drawing.Size(84, 20);
             this.textBoxFindNumber.TabIndex = 9;
             this.textBoxFindNumber.TextChanged += new System.EventHandler(this.FindInInvoices);
             // 
@@ -121,9 +121,9 @@
             this.textBoxFindCustomerName.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxFindCustomerName.Location = new System.Drawing.Point(427, 28);
+            this.textBoxFindCustomerName.Location = new System.Drawing.Point(363, 28);
             this.textBoxFindCustomerName.Name = "textBoxFindCustomerName";
-            this.textBoxFindCustomerName.Size = new System.Drawing.Size(100, 20);
+            this.textBoxFindCustomerName.Size = new System.Drawing.Size(84, 20);
             this.textBoxFindCustomerName.TabIndex = 10;
             this.textBoxFindCustomerName.TextChanged += new System.EventHandler(this.FindInInvoices);
             // 
@@ -152,9 +152,58 @@
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(1054, 490);
+            this.dataGridView1.Size = new System.Drawing.Size(903, 490);
             this.dataGridView1.TabIndex = 11;
+            this.dataGridView1.SortCompare += new System.Windows.Forms.DataGridViewSortCompareEventHandler(this.customSortCompare);
             this.dataGridView1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dataGridView1_MouseClick);
+            // 
+            // label3
+            // 
+            this.label3.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(730, 31);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(77, 13);
+            this.label3.TabIndex = 12;
+            this.label3.Text = "Max. wyników:";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // comboBoxMaximumResults
+            // 
+            this.comboBoxMaximumResults.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxMaximumResults.Items.AddRange(new object[] {
+            "10",
+            "25",
+            "50",
+            "100",
+            "250",
+            "500",
+            "Wszystko"});
+            this.comboBoxMaximumResults.Location = new System.Drawing.Point(813, 28);
+            this.comboBoxMaximumResults.Name = "comboBoxMaximumResults";
+            this.comboBoxMaximumResults.Size = new System.Drawing.Size(93, 21);
+            this.comboBoxMaximumResults.TabIndex = 13;
+            // 
+            // textBoxFindNIP
+            // 
+            this.textBoxFindNIP.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxFindNIP.Location = new System.Drawing.Point(543, 28);
+            this.textBoxFindNIP.Name = "textBoxFindNIP";
+            this.textBoxFindNIP.Size = new System.Drawing.Size(84, 20);
+            this.textBoxFindNIP.TabIndex = 14;
+            // 
+            // label4
+            // 
+            this.label4.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(509, 31);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(28, 13);
+            this.label4.TabIndex = 15;
+            this.label4.Text = "NIP:";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // index
             // 
@@ -216,60 +265,11 @@
             this.TerminPlatnosci.ReadOnly = true;
             this.TerminPlatnosci.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             // 
-            // label3
-            // 
-            this.label3.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(874, 31);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(77, 13);
-            this.label3.TabIndex = 12;
-            this.label3.Text = "Max. wyników:";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // comboBoxMaximumResults
-            // 
-            this.comboBoxMaximumResults.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxMaximumResults.Items.AddRange(new object[] {
-            "10",
-            "25",
-            "50",
-            "100",
-            "250",
-            "500",
-            "Wszystko"});
-            this.comboBoxMaximumResults.Location = new System.Drawing.Point(957, 28);
-            this.comboBoxMaximumResults.Name = "comboBoxMaximumResults";
-            this.comboBoxMaximumResults.Size = new System.Drawing.Size(100, 21);
-            this.comboBoxMaximumResults.TabIndex = 13;
-            // 
-            // textBoxFindNIP
-            // 
-            this.textBoxFindNIP.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxFindNIP.Location = new System.Drawing.Point(639, 28);
-            this.textBoxFindNIP.Name = "textBoxFindNIP";
-            this.textBoxFindNIP.Size = new System.Drawing.Size(100, 20);
-            this.textBoxFindNIP.TabIndex = 14;
-            this.textBoxFindNIP.TextChanged += new System.EventHandler(this.FindInInvoices);
-            // 
-            // label4
-            // 
-            this.label4.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(545, 31);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(88, 13);
-            this.label4.TabIndex = 15;
-            this.label4.Text = "NIP kontrahenta:";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
             // FormInvoicesList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1060, 546);
+            this.ClientSize = new System.Drawing.Size(909, 546);
             this.Controls.Add(this.tableLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "FormInvoicesList";

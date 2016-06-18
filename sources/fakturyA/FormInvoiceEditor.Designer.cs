@@ -74,13 +74,13 @@
             this.buttonAddArticleToInvoice = new System.Windows.Forms.Button();
             this.buttonRemoveArticleFromInvoice = new System.Windows.Forms.Button();
             this.tableLayoutPanel9 = new System.Windows.Forms.TableLayoutPanel();
-            this.label13 = new System.Windows.Forms.Label();
+            this.labelInvoiceTotalNetto = new System.Windows.Forms.Label();
             this.labelInvoiceValue = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.textBoxAmountPaid = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.buttonEditArticleOnInvoice = new System.Windows.Forms.Button();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.tableLayoutPanel5.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
@@ -538,13 +538,13 @@
             // 
             // buttonSaveInvoice
             // 
-            this.buttonSaveInvoice.Location = new System.Drawing.Point(593, 630);
+            this.buttonSaveInvoice.Location = new System.Drawing.Point(593, 584);
             this.buttonSaveInvoice.Name = "buttonSaveInvoice";
             this.buttonSaveInvoice.Size = new System.Drawing.Size(93, 33);
             this.buttonSaveInvoice.TabIndex = 2;
             this.buttonSaveInvoice.Text = "Zapisz";
             this.buttonSaveInvoice.UseVisualStyleBackColor = true;
-            this.buttonSaveInvoice.Click += new System.EventHandler(this.buttonSaveInvoice_Click);
+            this.buttonSaveInvoice.Click += new System.EventHandler(this.ButtonSaveInvoice_Click);
             // 
             // groupBox2
             // 
@@ -585,13 +585,13 @@
             this.tableLayoutPanel9.ColumnCount = 2;
             this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 54.25532F));
             this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 45.74468F));
-            this.tableLayoutPanel9.Controls.Add(this.label13, 1, 1);
+            this.tableLayoutPanel9.Controls.Add(this.labelInvoiceTotalNetto, 1, 1);
             this.tableLayoutPanel9.Controls.Add(this.labelInvoiceValue, 1, 0);
             this.tableLayoutPanel9.Controls.Add(this.label9, 0, 0);
             this.tableLayoutPanel9.Controls.Add(this.label11, 0, 2);
             this.tableLayoutPanel9.Controls.Add(this.textBoxAmountPaid, 1, 2);
             this.tableLayoutPanel9.Controls.Add(this.label12, 0, 1);
-            this.tableLayoutPanel9.Location = new System.Drawing.Point(329, 532);
+            this.tableLayoutPanel9.Location = new System.Drawing.Point(329, 506);
             this.tableLayoutPanel9.Name = "tableLayoutPanel9";
             this.tableLayoutPanel9.RowCount = 3;
             this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
@@ -601,17 +601,17 @@
             this.tableLayoutPanel9.Size = new System.Drawing.Size(357, 72);
             this.tableLayoutPanel9.TabIndex = 7;
             // 
-            // label13
+            // labelInvoiceTotalNetto
             // 
-            this.label13.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label13.Location = new System.Drawing.Point(196, 27);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(43, 15);
-            this.label13.TabIndex = 5;
-            this.label13.Text = "0,00 zł";
-            this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.labelInvoiceTotalNetto.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.labelInvoiceTotalNetto.AutoSize = true;
+            this.labelInvoiceTotalNetto.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labelInvoiceTotalNetto.Location = new System.Drawing.Point(196, 27);
+            this.labelInvoiceTotalNetto.Name = "labelInvoiceTotalNetto";
+            this.labelInvoiceTotalNetto.Size = new System.Drawing.Size(43, 15);
+            this.labelInvoiceTotalNetto.TabIndex = 5;
+            this.labelInvoiceTotalNetto.Text = "0,00 zł";
+            this.labelInvoiceTotalNetto.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // labelInvoiceValue
             // 
@@ -667,16 +667,16 @@
             this.label12.Text = "Wartość netto:";
             this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // button1
+            // buttonEditArticleOnInvoice
             // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.button1.Location = new System.Drawing.Point(205, 506);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(90, 30);
-            this.button1.TabIndex = 8;
-            this.button1.Text = "Edytuj artykuł";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.buttonEditArticleOnInvoice.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.buttonEditArticleOnInvoice.Location = new System.Drawing.Point(205, 506);
+            this.buttonEditArticleOnInvoice.Name = "buttonEditArticleOnInvoice";
+            this.buttonEditArticleOnInvoice.Size = new System.Drawing.Size(90, 30);
+            this.buttonEditArticleOnInvoice.TabIndex = 8;
+            this.buttonEditArticleOnInvoice.Text = "Edytuj artykuł";
+            this.buttonEditArticleOnInvoice.UseVisualStyleBackColor = true;
+            this.buttonEditArticleOnInvoice.Click += new System.EventHandler(this.buttonEditArticleOnInvoice_Click);
             // 
             // contextMenuStrip1
             // 
@@ -688,8 +688,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(698, 685);
-            this.Controls.Add(this.button1);
+            this.ClientSize = new System.Drawing.Size(698, 626);
+            this.Controls.Add(this.buttonEditArticleOnInvoice);
             this.Controls.Add(this.tableLayoutPanel9);
             this.Controls.Add(this.buttonRemoveArticleFromInvoice);
             this.Controls.Add(this.buttonAddArticleToInvoice);
@@ -780,11 +780,11 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel9;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label labelInvoiceValue;
-        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label labelInvoiceTotalNetto;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox textBoxAmountPaid;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button buttonEditArticleOnInvoice;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
 
 
