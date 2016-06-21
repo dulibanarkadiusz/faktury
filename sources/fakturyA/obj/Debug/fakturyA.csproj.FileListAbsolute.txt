@@ -1,0 +1,128 @@
+c:\users\arek\documents\visual studio 2013\Projects\fakturyA\fakturyA\bin\Debug\fakturyA.exe.config
+c:\users\arek\documents\visual studio 2013\Projects\fakturyA\fakturyA\bin\Debug\fakturyA.exe
+c:\users\arek\documents\visual studio 2013\Projects\fakturyA\fakturyA\bin\Debug\fakturyA.pdb
+c:\users\arek\documents\visual studio 2013\Projects\fakturyA\fakturyA\obj\Debug\fakturyA.csprojResolveAssemblyReference.cache
+c:\users\arek\documents\visual studio 2013\Projects\fakturyA\fakturyA\obj\Debug\fakturyA.Properties.Resources.resources
+c:\users\arek\documents\visual studio 2013\Projects\fakturyA\fakturyA\obj\Debug\fakturyA.csproj.GenerateResource.Cache
+c:\users\arek\documents\visual studio 2013\Projects\fakturyA\fakturyA\obj\Debug\fakturyA.exe
+c:\users\arek\documents\visual studio 2013\Projects\fakturyA\fakturyA\obj\Debug\fakturyA.pdb
+C:\Users\Arek\Documents\Visual Studio 2013\Projects\fakturyA\fakturyA\bin\Debug\MySql.Data.Entity.dll
+C:\Users\Arek\Documents\Visual Studio 2013\Projects\fakturyA\fakturyA\obj\Debug\fakturyA.FormMain.resources
+C:\Users\Arek\Documents\Visual Studio 2013\Projects\fakturyA\fakturyA\obj\Debug\fakturyA.FormArticles.resources
+C:\Users\Arek\Documents\Visual Studio 2013\Projects\fakturyA\fakturyA\obj\Debug\fakturyA.FormInvoice.resources
+G:\progr\fakturyA\fakturyA\bin\Debug\fakturyA.exe.config
+G:\progr\fakturyA\fakturyA\obj\Debug\fakturyA.exe
+G:\progr\fakturyA\fakturyA\obj\Debug\fakturyA.pdb
+D:\fakturyA\fakturyA\bin\Debug\fakturyA.exe.config
+D:\fakturyA\fakturyA\obj\Debug\fakturyA.exe
+D:\fakturyA\fakturyA\obj\Debug\fakturyA.pdb
+D:\fakturyA\fakturyA\bin\Debug\fakturyA.exe
+D:\fakturyA\fakturyA\bin\Debug\fakturyA.pdb
+D:\fakturyA\fakturyA\obj\Debug\fakturyA.csprojResolveAssemblyReference.cache
+D:\fakturyA\fakturyA\obj\Debug\fakturyA.FormMain.resources
+D:\fakturyA\fakturyA\obj\Debug\fakturyA.FormArticles.resources
+D:\fakturyA\fakturyA\obj\Debug\fakturyA.Properties.Resources.resources
+D:\fakturyA\fakturyA\obj\Debug\fakturyA.csproj.GenerateResource.Cache
+D:\fakturyA\fakturyA\obj\Debug\fakturyA.FormCustomers.resources
+D:\fakturyA\fakturyA\obj\Debug\fakturyA.FormInvoiceEditor.resources
+D:\fakturyA\fakturyA\obj\Debug\fakturyA.FormInvoicesList.resources
+C:\Users\Zumirka\Desktop\fakturka2\fakturyA\fakturyA\bin\Debug\fakturyA.exe.config
+C:\Users\Zumirka\Desktop\fakturka2\fakturyA\fakturyA\obj\Debug\fakturyA.exe
+C:\Users\Zumirka\Desktop\fakturka2\fakturyA\fakturyA\obj\Debug\fakturyA.pdb
+C:\Users\Zumirka\Desktop\fakturka2\fakturyA\fakturyA\obj\Debug\fakturyA.csprojResolveAssemblyReference.cache
+C:\Users\Zumirka\Desktop\fakturka2\fakturyA\fakturyA\obj\Debug\fakturyA.FormInvoiceEditor.resources
+C:\Users\Zumirka\Desktop\fakturka2\fakturyA\fakturyA\obj\Debug\fakturyA.FormCustomers.resources
+C:\Users\Zumirka\Desktop\fakturka2\fakturyA\fakturyA\obj\Debug\fakturyA.FormInvoicesList.resources
+C:\Users\Zumirka\Desktop\fakturka2\fakturyA\fakturyA\obj\Debug\fakturyA.FormMain.resources
+C:\Users\Zumirka\Desktop\fakturka2\fakturyA\fakturyA\obj\Debug\fakturyA.FormArticles.resources
+C:\Users\Zumirka\Desktop\fakturka2\fakturyA\fakturyA\obj\Debug\fakturyA.Properties.Resources.resources
+C:\Users\Zumirka\Desktop\fakturka2\fakturyA\fakturyA\obj\Debug\fakturyA.csproj.GenerateResource.Cache
+C:\Users\Zumirka\Desktop\fakturka2\fakturyA\fakturyA\bin\Debug\fakturyA.exe
+C:\Users\Zumirka\Desktop\fakturka2\fakturyA\fakturyA\bin\Debug\fakturyA.pdb
+C:\Users\Zumirka\Desktop\fakturka2\fakturyA\fakturyA\obj\Debug\fakturyA.AddArticleToInvoice.resources
+C:\Users\Zumirka\Desktop\fakturka2\fakturyA\fakturyA\obj\Debug\fakturyA.AddEditArticle.resources
+C:\Users\Arek\Downloads\fakturka2\fakturka2\fakturyA\fakturyA\bin\Debug\fakturyA.exe.config
+C:\Users\Arek\Downloads\fakturka2\fakturka2\fakturyA\fakturyA\obj\Debug\fakturyA.exe
+C:\Users\Arek\Downloads\fakturka2\fakturka2\fakturyA\fakturyA\obj\Debug\fakturyA.pdb
+C:\Users\Arek\Downloads\fakturka2\fakturka2\fakturyA\fakturyA\obj\Debug\fakturyA.csprojResolveAssemblyReference.cache
+C:\Users\Arek\Downloads\fakturka2\fakturka2\fakturyA\fakturyA\obj\Debug\fakturyA.AddArticleToInvoice.resources
+C:\Users\Arek\Downloads\fakturka2\fakturka2\fakturyA\fakturyA\obj\Debug\fakturyA.AddEditArticle.resources
+C:\Users\Arek\Downloads\fakturka2\fakturka2\fakturyA\fakturyA\obj\Debug\fakturyA.FormInvoiceEditor.resources
+C:\Users\Arek\Downloads\fakturka2\fakturka2\fakturyA\fakturyA\obj\Debug\fakturyA.FormCustomers.resources
+C:\Users\Arek\Downloads\fakturka2\fakturka2\fakturyA\fakturyA\obj\Debug\fakturyA.FormInvoicesList.resources
+C:\Users\Arek\Downloads\fakturka2\fakturka2\fakturyA\fakturyA\obj\Debug\fakturyA.FormMain.resources
+C:\Users\Arek\Downloads\fakturka2\fakturka2\fakturyA\fakturyA\obj\Debug\fakturyA.FormArticles.resources
+C:\Users\Arek\Downloads\fakturka2\fakturka2\fakturyA\fakturyA\obj\Debug\fakturyA.Properties.Resources.resources
+C:\Users\Arek\Downloads\fakturka2\fakturka2\fakturyA\fakturyA\obj\Debug\fakturyA.csproj.GenerateResource.Cache
+C:\Users\Arek\Downloads\fakturka2\fakturka2\fakturyA\fakturyA\bin\Debug\fakturyA.exe
+C:\Users\Arek\Downloads\fakturka2\fakturka2\fakturyA\fakturyA\bin\Debug\fakturyA.pdb
+D:\fakturka2\fakturyA\fakturyA\bin\Debug\fakturyA.exe.config
+D:\fakturka2\fakturyA\fakturyA\bin\Debug\fakturyA.exe
+D:\fakturka2\fakturyA\fakturyA\bin\Debug\fakturyA.pdb
+D:\fakturka2\fakturyA\fakturyA\bin\Debug\itextsharp.dll
+D:\fakturka2\fakturyA\fakturyA\bin\Debug\itextsharp.pdfa.dll
+D:\fakturka2\fakturyA\fakturyA\bin\Debug\itextsharp.xml
+D:\fakturka2\fakturyA\fakturyA\obj\Debug\fakturyA.AddArticleToInvoice.resources
+D:\fakturka2\fakturyA\fakturyA\obj\Debug\fakturyA.FormArticlesEditor.resources
+D:\fakturka2\fakturyA\fakturyA\obj\Debug\fakturyA.FormInvoiceEditor.resources
+D:\fakturka2\fakturyA\fakturyA\obj\Debug\fakturyA.FormCustomers.resources
+D:\fakturka2\fakturyA\fakturyA\obj\Debug\fakturyA.FormInvoicesList.resources
+D:\fakturka2\fakturyA\fakturyA\obj\Debug\fakturyA.FormLogin.resources
+D:\fakturka2\fakturyA\fakturyA\obj\Debug\fakturyA.FormMain.resources
+D:\fakturka2\fakturyA\fakturyA\obj\Debug\fakturyA.FormArticles.resources
+D:\fakturka2\fakturyA\fakturyA\obj\Debug\fakturyA.FormUserList.resources
+D:\fakturka2\fakturyA\fakturyA\obj\Debug\fakturyA.Properties.Resources.resources
+D:\fakturka2\fakturyA\fakturyA\obj\Debug\fakturyA.UserControl_PermissionView.resources
+D:\fakturka2\fakturyA\fakturyA\obj\Debug\fakturyA.UserControl_PermissionsEditor.resources
+D:\fakturka2\fakturyA\fakturyA\obj\Debug\fakturyA.csproj.GenerateResource.Cache
+D:\fakturka2\fakturyA\fakturyA\obj\Debug\fakturyA.exe
+D:\fakturka2\fakturyA\fakturyA\obj\Debug\fakturyA.pdb
+D:\fakturka2\fakturyA\fakturyA\obj\Debug\fakturyA.FormPermissionEditor.resources
+D:\fakturka2\fakturyA\fakturyA\obj\Debug\fakturyA.csprojResolveAssemblyReference.cache
+F:\fakturka2\fakturka2\fakturyA\fakturyA\bin\Debug\fakturyA.exe.config
+F:\fakturka2\fakturka2\fakturyA\fakturyA\obj\Debug\fakturyA.exe
+F:\fakturka2\fakturka2\fakturyA\fakturyA\obj\Debug\fakturyA.pdb
+C:\Users\User\Desktop\fakturka2\fakturyA\fakturyA\bin\Debug\fakturyA.exe.config
+C:\Users\User\Desktop\fakturka2\fakturyA\fakturyA\obj\Debug\fakturyA.exe
+C:\Users\User\Desktop\fakturka2\fakturyA\fakturyA\obj\Debug\fakturyA.pdb
+C:\Users\User\Desktop\fakturka2\fakturyA\fakturyA\bin\Debug\fakturyA.exe
+C:\Users\User\Desktop\fakturka2\fakturyA\fakturyA\bin\Debug\fakturyA.pdb
+C:\Users\User\Desktop\fakturka2\fakturyA\fakturyA\bin\Debug\itextsharp.xml
+C:\Users\User\Desktop\fakturka2\fakturyA\fakturyA\obj\Debug\fakturyA.csprojResolveAssemblyReference.cache
+C:\Users\User\Desktop\fakturka2\fakturyA\fakturyA\obj\Debug\fakturyA.AddArticleToInvoice.resources
+C:\Users\User\Desktop\fakturka2\fakturyA\fakturyA\obj\Debug\fakturyA.FormArticlesEditor.resources
+C:\Users\User\Desktop\fakturka2\fakturyA\fakturyA\obj\Debug\fakturyA.FormInvoiceEditor.resources
+C:\Users\User\Desktop\fakturka2\fakturyA\fakturyA\obj\Debug\fakturyA.FormCustomers.resources
+C:\Users\User\Desktop\fakturka2\fakturyA\fakturyA\obj\Debug\fakturyA.FormInvoicesList.resources
+C:\Users\User\Desktop\fakturka2\fakturyA\fakturyA\obj\Debug\fakturyA.FormLogin.resources
+C:\Users\User\Desktop\fakturka2\fakturyA\fakturyA\obj\Debug\fakturyA.FormMain.resources
+C:\Users\User\Desktop\fakturka2\fakturyA\fakturyA\obj\Debug\fakturyA.FormArticles.resources
+C:\Users\User\Desktop\fakturka2\fakturyA\fakturyA\obj\Debug\fakturyA.FormPermissionEditor.resources
+C:\Users\User\Desktop\fakturka2\fakturyA\fakturyA\obj\Debug\fakturyA.FormUserList.resources
+C:\Users\User\Desktop\fakturka2\fakturyA\fakturyA\obj\Debug\fakturyA.Properties.Resources.resources
+C:\Users\User\Desktop\fakturka2\fakturyA\fakturyA\obj\Debug\fakturyA.UserControl_PermissionView.resources
+C:\Users\User\Desktop\fakturka2\fakturyA\fakturyA\obj\Debug\fakturyA.UserControl_PermissionsEditor.resources
+C:\Users\User\Desktop\fakturka2\fakturyA\fakturyA\obj\Debug\fakturyA.csproj.GenerateResource.Cache
+C:\Users\User\Desktop\fakturka2\fakturyA\fakturyA\obj\Debug\fakturyA.FormNewCustomers.resources
+C:\Users\Arek\Desktop\fak3\fakturka2\fakturyA\fakturyA\bin\Debug\fakturyA.exe.config
+C:\Users\Arek\Desktop\fak3\fakturka2\fakturyA\fakturyA\obj\Debug\fakturyA.exe
+C:\Users\Arek\Desktop\fak3\fakturka2\fakturyA\fakturyA\obj\Debug\fakturyA.pdb
+C:\Users\Arek\Desktop\fak3\fakturka2\fakturyA\fakturyA\bin\Debug\fakturyA.exe
+C:\Users\Arek\Desktop\fak3\fakturka2\fakturyA\fakturyA\bin\Debug\fakturyA.pdb
+C:\Users\Arek\Desktop\fak3\fakturka2\fakturyA\fakturyA\bin\Debug\itextsharp.xml
+C:\Users\Arek\Desktop\fak3\fakturka2\fakturyA\fakturyA\obj\Debug\fakturyA.csprojResolveAssemblyReference.cache
+C:\Users\Arek\Desktop\fak3\fakturka2\fakturyA\fakturyA\obj\Debug\fakturyA.FormArticlesEditor.resources
+C:\Users\Arek\Desktop\fak3\fakturka2\fakturyA\fakturyA\obj\Debug\fakturyA.FormInvoiceEditor.resources
+C:\Users\Arek\Desktop\fak3\fakturka2\fakturyA\fakturyA\obj\Debug\fakturyA.FormCustomers.resources
+C:\Users\Arek\Desktop\fak3\fakturka2\fakturyA\fakturyA\obj\Debug\fakturyA.FormInvoicesList.resources
+C:\Users\Arek\Desktop\fak3\fakturka2\fakturyA\fakturyA\obj\Debug\fakturyA.FormLogin.resources
+C:\Users\Arek\Desktop\fak3\fakturka2\fakturyA\fakturyA\obj\Debug\fakturyA.FormMain.resources
+C:\Users\Arek\Desktop\fak3\fakturka2\fakturyA\fakturyA\obj\Debug\fakturyA.FormArticles.resources
+C:\Users\Arek\Desktop\fak3\fakturka2\fakturyA\fakturyA\obj\Debug\fakturyA.FormNewCustomers.resources
+C:\Users\Arek\Desktop\fak3\fakturka2\fakturyA\fakturyA\obj\Debug\fakturyA.FormPermissionEditor.resources
+C:\Users\Arek\Desktop\fak3\fakturka2\fakturyA\fakturyA\obj\Debug\fakturyA.FormUserList.resources
+C:\Users\Arek\Desktop\fak3\fakturka2\fakturyA\fakturyA\obj\Debug\fakturyA.Properties.Resources.resources
+C:\Users\Arek\Desktop\fak3\fakturka2\fakturyA\fakturyA\obj\Debug\fakturyA.UserControl_PermissionView.resources
+C:\Users\Arek\Desktop\fak3\fakturka2\fakturyA\fakturyA\obj\Debug\fakturyA.UserControl_PermissionsEditor.resources
+C:\Users\Arek\Desktop\fak3\fakturka2\fakturyA\fakturyA\obj\Debug\fakturyA.csproj.GenerateResource.Cache
+C:\Users\Arek\Desktop\fak3\fakturka2\fakturyA\fakturyA\obj\Debug\fakturyA.FormArticleAmount.resources

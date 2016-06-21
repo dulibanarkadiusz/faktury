@@ -1,0 +1,13 @@
+D:\fakturyA\faktury\sources\fakturyA\bin\Release\fakturyA.exe
+D:\fakturyA\faktury\sources\fakturyA\bin\Release\fakturyA.pdb
+D:\fakturyA\faktury\sources\fakturyA\obj\Release\fakturyA.FormArticleAmount.resources
+D:\fakturyA\faktury\sources\fakturyA\obj\Release\fakturyA.FormArticlesEditor.resources
+D:\fakturyA\faktury\sources\fakturyA\obj\Release\fakturyA.FormInvoiceEditor.resources
+D:\fakturyA\faktury\sources\fakturyA\obj\Release\fakturyA.FormCustomers.resources
+D:\fakturyA\faktury\sources\fakturyA\obj\Release\fakturyA.FormInvoicesList.resources
+D:\fakturyA\faktury\sources\fakturyA\obj\Release\fakturyA.FormMain.resources
+D:\fakturyA\faktury\sources\fakturyA\obj\Release\fakturyA.FormArticles.resources
+D:\fakturyA\faktury\sources\fakturyA\obj\Release\fakturyA.Properties.Resources.resources
+D:\fakturyA\faktury\sources\fakturyA\obj\Release\fakturyA.csproj.GenerateResource.Cache
+D:\fakturyA\faktury\sources\fakturyA\obj\Release\fakturyA.exe
+D:\fakturyA\faktury\sources\fakturyA\obj\Release\fakturyA.pdb
