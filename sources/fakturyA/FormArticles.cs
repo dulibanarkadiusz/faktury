@@ -13,8 +13,8 @@ namespace fakturyA
     public partial class FormArticles : Form
     {
 
-        private int indeks=1;
-        private bool czy_zamknac=false;
+        private int indeks = 1;
+        private bool czy_zamknac = false;
         public bool EditAddArticle = false;
         public bool EditMode { get; set; } // ustaw true kiedy zezwalasz na edytowanie artykułów
         public static List<Article> articlesList { get; set; } // weź to popraw STATYCZNE bo zabiję.
@@ -22,9 +22,7 @@ namespace fakturyA
         public FormArticles()
         {
             InitializeComponent();
-            comboBox_max.SelectedIndex = 4;   
-            //
-            EditMode = true;
+            comboBox_max.SelectedIndex = 4;
         }
 
         protected override void OnFormClosing(FormClosingEventArgs e)
@@ -35,7 +33,7 @@ namespace fakturyA
             {
                 e.Cancel = true;
                 this.Hide();
-                
+
             }
         }
         private void GetAllrticles()
@@ -86,7 +84,6 @@ namespace fakturyA
 
             }
         }
-
         public void AddRowsToDataGridView(Article editArticle)
         {
             dataGridView1.Rows.Add();
@@ -101,8 +98,8 @@ namespace fakturyA
 
         private void FormArticles_Load(object sender, EventArgs e)
         {
-            if(dataGridView1.RowCount==0)
-            GetAllrticles();
+            if (dataGridView1.RowCount == 0)
+                GetAllrticles();
 
             AddArticle.Hide();
         }
@@ -144,53 +141,57 @@ namespace fakturyA
                 a.Show(dataGridView1, new Point(e.X, e.Y));
             }
         }
-       
+
         public void ShowWindowToAddNewArticle()
         {
+
             FormArticles a = new FormArticles();
+            EditMode = false;
             a.Show();
             a.AddArticle.Show();
-            if(czy_zamknac)
+            a.AddArticle_butt.Hide();
+            if (czy_zamknac)
             {
                 a.Close();
             }
-           // MessageBox.Show(articlesList[indeks].Name);
+            // MessageBox.Show(articlesList[indeks].Name);
             MainProgram.AddedArticle = articlesList[indeks];
-          //  return articlesList[indeks];
+
+            //  return articlesList[indeks];
         }
-       
+
         private void AddArticle_Click(object sender, EventArgs e)
         {
-                   
-                   
 
-                   int selectedCellCount = dataGridView1.GetCellCount(DataGridViewElementStates.Selected);
-                   if (selectedCellCount > 0)
-                   {
 
-                       for (int i = 0; i < selectedCellCount; i++)
-                       {
-                           indeks = dataGridView1.SelectedCells[i].RowIndex;
-                       }
-                       DataGridViewRow row = (DataGridViewRow)dataGridView1.Rows[indeks];
-                       int s = 0;
-                       foreach (Article a in articlesList)
-                       {
-                           s++;
-                           if (row.Cells["Kod"].Value.ToString() == (string)a.Code)
-                           {
-                               indeks = s -1;
-                               break;
-                           }
-                       }
+
+            int selectedCellCount = dataGridView1.GetCellCount(DataGridViewElementStates.Selected);
+            if (selectedCellCount > 0)
+            {
+
+                for (int i = 0; i < selectedCellCount; i++)
+                {
+                    indeks = dataGridView1.SelectedCells[i].RowIndex;
+                }
+                DataGridViewRow row = (DataGridViewRow)dataGridView1.Rows[indeks];
+                int s = 0;
+                foreach (Article a in articlesList)
+                {
+                    s++;
+                    if (row.Cells["Kod"].Value == a.Code)
+                    {
+                        indeks = s - 1;
+                        break;
                     }
-                   MessageBox.Show(Convert.ToString(indeks));
-            AddArticleToInvoice addingArticle = new AddArticleToInvoice(indeks);
-           
-                   addingArticle.Show();
+                }
+            }
+            MessageBox.Show(Convert.ToString(indeks));
+            FormArticleAmount addingArticle = new FormArticleAmount(indeks);
+
+            addingArticle.Show();
 
 
-                   czy_zamknac = true;
+            czy_zamknac = true;
         }
         public void ReplaceEditRowArticleInDataGrid(Article editArticle)
         {
@@ -211,5 +212,9 @@ namespace fakturyA
             row.Cells["CenaB"].Value = editArticle.PriceBrutto;
             row.Cells["Vat"].Value = editArticle.VATvalue;
         }
+
+
+
+
     }
 }

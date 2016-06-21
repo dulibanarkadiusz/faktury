@@ -35,6 +35,9 @@
             this.eksportujToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.programToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ustawieniaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.uprawnieniaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pokażMojeUprawnieniaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pokażUżytkownikówToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dataSet1 = new System.Data.DataSet();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.button5 = new System.Windows.Forms.Button();
@@ -51,7 +54,8 @@
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.plikToolStripMenuItem,
-            this.programToolStripMenuItem});
+            this.programToolStripMenuItem,
+            this.uprawnieniaToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1117, 24);
@@ -100,6 +104,29 @@
             this.ustawieniaToolStripMenuItem.Name = "ustawieniaToolStripMenuItem";
             this.ustawieniaToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
             this.ustawieniaToolStripMenuItem.Text = "Ustawienia";
+            // 
+            // uprawnieniaToolStripMenuItem
+            // 
+            this.uprawnieniaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.pokażMojeUprawnieniaToolStripMenuItem,
+            this.pokażUżytkownikówToolStripMenuItem});
+            this.uprawnieniaToolStripMenuItem.Name = "uprawnieniaToolStripMenuItem";
+            this.uprawnieniaToolStripMenuItem.Size = new System.Drawing.Size(80, 20);
+            this.uprawnieniaToolStripMenuItem.Text = "Pracownicy";
+            // 
+            // pokażMojeUprawnieniaToolStripMenuItem
+            // 
+            this.pokażMojeUprawnieniaToolStripMenuItem.Name = "pokażMojeUprawnieniaToolStripMenuItem";
+            this.pokażMojeUprawnieniaToolStripMenuItem.Size = new System.Drawing.Size(203, 22);
+            this.pokażMojeUprawnieniaToolStripMenuItem.Text = "Pokaż moje uprawnienia";
+            this.pokażMojeUprawnieniaToolStripMenuItem.Click += new System.EventHandler(this.pokażMojeUprawnieniaToolStripMenuItem_Click);
+            // 
+            // pokażUżytkownikówToolStripMenuItem
+            // 
+            this.pokażUżytkownikówToolStripMenuItem.Name = "pokażUżytkownikówToolStripMenuItem";
+            this.pokażUżytkownikówToolStripMenuItem.Size = new System.Drawing.Size(203, 22);
+            this.pokażUżytkownikówToolStripMenuItem.Text = "Pokaż użytkowników";
+            this.pokażUżytkownikówToolStripMenuItem.Click += new System.EventHandler(this.pokażUżytkownikówToolStripMenuItem_Click);
             // 
             // dataSet1
             // 
@@ -165,6 +192,7 @@
             this.button3.TabIndex = 6;
             this.button3.Text = "Kontrahenci";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button2
             // 
@@ -224,6 +252,9 @@
         private System.Windows.Forms.ToolStripMenuItem importujToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem eksportujToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ustawieniaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem uprawnieniaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem pokażMojeUprawnieniaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem pokażUżytkownikówToolStripMenuItem;
     }
 }
 

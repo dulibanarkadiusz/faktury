@@ -17,10 +17,10 @@ namespace fakturyA
         {
             InitializeComponent();
             MainProgram.DatabaseName = "faktury";
-            MainProgram.LoggIn(1); // zalogowano jako user o ID 1
 
             MainProgram.InvoiceObjectsList = new List<Invoice>();
             FormArticles.articlesList = new List<Article>();
+            MainProgram.CustomersList = new List<Customers>();
         }
 
         private void buttonTowaryUslugi_Click(object sender, EventArgs e)
@@ -35,6 +35,7 @@ namespace fakturyA
             {
                 MainProgram.ArticlesWindow.Show();
             }
+            MainProgram.ArticlesWindow.EditMode = true;
         }
 
         private void buttonInvoicesList_Click(object sender, EventArgs e)
@@ -56,6 +57,35 @@ namespace fakturyA
         {
             MainProgram.InvoiceEditor = new FormInvoiceEditor();
             MainProgram.InvoiceEditor.ShowDialog();
+        }
+
+        private void pokażMojeUprawnieniaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormPermissionEditor w = new FormPermissionEditor(MainProgram.Worker, false);
+            w.ShowDialog();
+        }
+
+        private void pokażUżytkownikówToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormUserList w = new FormUserList();
+            w.ShowDialog();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            {
+                if (MainProgram.CustomerWindow == null)
+                {
+                    MainProgram.CustomerWindow = new FormCustomers();
+                    MainProgram.CustomerWindow.MdiParent = this;
+                    MainProgram.CustomerWindow.Show();
+                }
+                else
+                {
+                    MainProgram.CustomerWindow.Show();
+                }
+
+            }
         }
     }
 }

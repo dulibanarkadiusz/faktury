@@ -13,6 +13,8 @@ namespace fakturyA
     public partial class FormArticlesEditor : Form
     {
         private Article editArticle;
+        private bool check_filling = false;
+        private bool check_code_in_list = false;
 
         public FormArticlesEditor()
         {
@@ -22,6 +24,8 @@ namespace fakturyA
             FormArticleEditor_Button.Text = "Dodaj";
             editArticle = new Article();
             PriceNetto_RB.Checked = true;
+            Measure_CB.SelectedIndex = 0;
+            Vat_CB.SelectedIndex = 0;
         }
         public FormArticlesEditor(Article article)
         {
@@ -55,88 +59,147 @@ namespace fakturyA
         }
         public void changeDataInTB(object sender, EventArgs e)
         {
-            if (PriceNetto_RB.Checked)
+            Check_well_filled();
+            check_code();
+            if (check_filling == true)
             {
-                decimal brutto = Convert.ToDecimal(PriceNetto_TB.Text);
-                decimal vat = Convert.ToDecimal(Vat_CB.Text);
-                brutto = System.Decimal.Round(brutto + brutto * (vat / 100), 2);
-                PriceBrutto_TB.Text = Convert.ToString(brutto);
+
+                if (PriceNetto_RB.Checked)
+                {
+                    decimal brutto = System.Decimal.Round(Convert.ToDecimal(PriceNetto_TB.Text), 2);
+                    decimal vat = Convert.ToDecimal(Vat_CB.Text);
+                    brutto = System.Decimal.Round(brutto + brutto * (vat / 100), 2);
+                    PriceBrutto_TB.Text = Convert.ToString(brutto);
+                    check_filling = false;
+                }
+                else if (PriceBrutto_RB.Checked)
+                {
+                    decimal netto = System.Decimal.Round(Convert.ToDecimal(PriceBrutto_TB.Text), 2);
+                    decimal vat = Convert.ToDecimal(Vat_CB.Text);
+                    netto = System.Decimal.Round(netto - netto * (vat / 100), 2);
+                    PriceNetto_TB.Text = Convert.ToString(netto);
+                    check_filling = false;
+                }
+                else
+                {
+                    decimal netto = System.Decimal.Round(Convert.ToDecimal(PriceBrutto_TB.Text), 2);
+                    decimal vat = Convert.ToDecimal(Vat_CB.Text);
+                    netto = System.Decimal.Round(netto - netto * (vat / 100), 2);
+                    PriceNetto_TB.Text = Convert.ToString(netto);
+                    decimal brutto = System.Decimal.Round(Convert.ToDecimal(PriceNetto_TB.Text), 2);
+                    brutto = System.Decimal.Round(brutto + brutto * (vat / 100), 2);
+                    PriceBrutto_TB.Text = Convert.ToString(brutto);
+                    check_filling = false;
+                }
             }
-            else if (PriceBrutto_RB.Checked)
+
+            else
             {
-                decimal netto = Convert.ToDecimal(PriceBrutto_TB.Text);
-                decimal vat = Convert.ToDecimal(Vat_CB.Text);
-                netto = System.Decimal.Round(netto - netto * (vat / 100), 2);
-                PriceNetto_TB.Text = Convert.ToString(netto);
+                MessageBox.Show(" musisz wszystkie wypisać");
+            }
+        }
+        private void Check_well_filled()
+        {
+            string CodeTB = Code_TB.Text.Trim();
+            string NameTB = Name_TB.Text.Trim();
+            string brutto = "brutto";
+            string netto = "netto";
+            if (PriceBrutto_RB.Checked)
+            {
+                brutto = PriceBrutto_TB.Text.Trim();
             }
             else
             {
-                decimal netto = Convert.ToDecimal(PriceBrutto_TB.Text);
-                decimal vat = Convert.ToDecimal(Vat_CB.Text);
-                netto = System.Decimal.Round(netto - netto * (vat / 100), 2);
-                PriceNetto_TB.Text = Convert.ToString(netto);
-                decimal brutto = Convert.ToDecimal(PriceNetto_TB.Text);
-                brutto = System.Decimal.Round(brutto + brutto * (vat / 100), 2);
-                PriceBrutto_TB.Text = Convert.ToString(brutto);
+                netto = PriceNetto_TB.Text.Trim();
             }
+
+            if (CodeTB != "" && NameTB != "" && brutto != "" && netto != "")
+            {
+                check_filling = true;
+            }
+
+        }
+        private void check_code()
+        {
+            foreach (Article a in FormArticles.articlesList)
+            {
+                if (a.Code == Code_TB.Text)
+                {
+                    check_code_in_list = false;
+                    break;
+                }
+                check_code_in_list = true;
+
+            }
+
         }
         private void button1_Click(object sender, EventArgs e)
         {
-            if (FormArticleEditor_Button.Text == "Dodaj")
+
+            Check_well_filled();
+            check_code();
+            if (check_filling == true)
             {
-                editArticle.Code = Code_TB.Text;
-                editArticle.Name = Name_TB.Text;
-                editArticle.UnitMeasure = Measure_CB.Text;
-                editArticle.VATvalue = Convert.ToDecimal(Vat_CB.Text);
-                editArticle.Name = Name_TB.Text;
-                if (PriceBrutto_RB.Checked)
+
+                if (FormArticleEditor_Button.Text == "Dodaj")
                 {
-                    editArticle.PriceBrutto = Convert.ToDecimal(PriceBrutto_TB.Text);
-                    editArticle.PriceNetto = System.Decimal.Round(editArticle.PriceBrutto - editArticle.PriceBrutto * editArticle.VATvalue / 100, 2);
+                    if (check_code_in_list == true)
+                    {
+                        editArticle.Code = Code_TB.Text;
+                        editArticle.Name = Name_TB.Text;
+                        editArticle.UnitMeasure = Measure_CB.Text;
+                        editArticle.VATvalue = Convert.ToDecimal(Vat_CB.Text);
+
+                        if (PriceBrutto_RB.Checked)
+                        {
+                            editArticle.PriceBrutto = System.Decimal.Round(Convert.ToDecimal(PriceBrutto_TB.Text), 2);
+                            editArticle.PriceNetto = System.Decimal.Round(editArticle.PriceBrutto - editArticle.PriceBrutto * editArticle.VATvalue / 100, 2);
+                        }
+                        else
+                        {
+                            editArticle.PriceNetto = System.Decimal.Round(Convert.ToDecimal(PriceNetto_TB.Text), 2);
+                            editArticle.PriceBrutto = System.Decimal.Round(editArticle.PriceNetto + editArticle.PriceNetto * editArticle.VATvalue / 100, 2);
+                        }
+                        FormArticles.articlesList.Add(editArticle);
+                        editArticle.GenerateQueryInsertArticles();
+                        DatabaseMySQL.ExecuteQuery(editArticle.GenerateQueryInsertArticles());
+                        MainProgram.ArticlesWindow.AddRowsToDataGridView(editArticle);
+                        check_filling = false;
+                        Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show("kod juz istnieje ");
+                    }
                 }
                 else
                 {
-                    editArticle.PriceNetto = Convert.ToDecimal(PriceNetto_TB.Text);
-                    editArticle.PriceBrutto = System.Decimal.Round(editArticle.PriceNetto + editArticle.PriceNetto * editArticle.VATvalue / 100, 2);
-                }
-                FormArticles.articlesList.Add(editArticle);
-                editArticle.GenerateQueryInsertArticles();
-                MessageBox.Show(editArticle.Code + editArticle.Name);
-                DatabaseMySQL.ExecuteQuery(editArticle.GenerateQueryInsertArticles());
-                MainProgram.ArticlesWindow.AddRowsToDataGridView(editArticle);
-                Close();
 
-            }
-            else
-            {
+                    editArticle.Name = Name_TB.Text;
+                    editArticle.UnitMeasure = Measure_CB.Text;
+                    editArticle.VATvalue = Convert.ToDecimal(Vat_CB.Text);
+                    editArticle.Name = Name_TB.Text;
+                    if (PriceBrutto_RB.Checked)
+                    {
 
-                editArticle.Name = Name_TB.Text;
-                editArticle.UnitMeasure = Measure_CB.Text;
-                editArticle.VATvalue = Convert.ToDecimal(Vat_CB.Text);
-                editArticle.Name = Name_TB.Text;
-                if (PriceBrutto_RB.Checked)
-                {
-                    editArticle.PriceBrutto = Convert.ToDecimal(PriceBrutto_TB.Text);
-                    editArticle.PriceNetto = System.Decimal.Round(editArticle.PriceBrutto - editArticle.PriceBrutto * editArticle.VATvalue / 100, 2);
+                        editArticle.PriceBrutto = System.Decimal.Round(Convert.ToDecimal(PriceBrutto_TB.Text), 2);
+                        editArticle.PriceNetto = System.Decimal.Round(editArticle.PriceBrutto - editArticle.PriceBrutto * editArticle.VATvalue / 100, 2);
+                    }
+                    else
+                    {
+                        editArticle.PriceNetto = System.Decimal.Round(Convert.ToDecimal(PriceNetto_TB.Text), 2);
+                        editArticle.PriceBrutto = System.Decimal.Round(editArticle.PriceNetto + editArticle.PriceNetto * editArticle.VATvalue / 100, 2);
+                    }
+                    editArticle.GenerateQueryUpdateArticles();
+                    DatabaseMySQL.ExecuteQuery(editArticle.GenerateQueryUpdateArticles());
+                    MainProgram.ArticlesWindow.ReplaceEditRowArticleInDataGrid(editArticle);
+                    //szukanie w articlelist po indexie
+                    // datagrid.view.rows[inex]
+                    check_filling = false;
+                    Close();
                 }
-                else
-                {
-                    editArticle.PriceNetto = Convert.ToDecimal(PriceNetto_TB.Text);
-                    editArticle.PriceBrutto = System.Decimal.Round(editArticle.PriceNetto + editArticle.PriceNetto * editArticle.VATvalue / 100, 2);
-                }
-                editArticle.GenerateQueryUpdateArticles();
-                MessageBox.Show(editArticle.Code + editArticle.Name);
-                DatabaseMySQL.ExecuteQuery(editArticle.GenerateQueryUpdateArticles());
-                MainProgram.ArticlesWindow.ReplaceEditRowArticleInDataGrid(editArticle);
-                //szukanie w articlelist po indexie
-                // datagrid.view.rows[inex]
-                Close();
-
             }
         }
-
-
-
 
     }
 }

@@ -11,6 +11,21 @@
     <AssemblyName>fakturyA</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -30,6 +45,9 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <NoWin32Manifest>true</NoWin32Manifest>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="itextsharp">
@@ -55,12 +73,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AddArticleToInvoice.cs">
+    <Compile Include="EditorXML.cs" />
+    <Compile Include="FormAddNewWorker.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddArticleToInvoice.Designer.cs">
-      <DependentUpon>AddArticleToInvoice.cs</DependentUpon>
+    <Compile Include="FormAddNewWorker.Designer.cs">
+      <DependentUpon>FormAddNewWorker.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormAritcleAmount.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAritcleAmount.Designer.cs">
+      <DependentUpon>FormAritcleAmount.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Customers.cs" />
     <Compile Include="FormArticlesEditor.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -87,6 +113,18 @@
     <Compile Include="FormInvoicesList.Designer.cs">
       <DependentUpon>FormInvoicesList.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormLogin.Designer.cs">
+      <DependentUpon>FormLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormLogView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormLogView.Designer.cs">
+      <DependentUpon>FormLogView.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -100,14 +138,52 @@
     <Compile Include="FormArticles.Designer.cs">
       <DependentUpon>FormArticles.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormNewCustomers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormNewCustomers.Designer.cs">
+      <DependentUpon>FormNewCustomers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormOurCompanyDataEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormOurCompanyDataEditor.Designer.cs">
+      <DependentUpon>FormOurCompanyDataEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormPermissionEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormPermissionEditor.Designer.cs">
+      <DependentUpon>FormPermissionEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormUserList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormUserList.Designer.cs">
+      <DependentUpon>FormUserList.cs</DependentUpon>
+    </Compile>
     <Compile Include="Invoice.cs" />
     <Compile Include="Mail.cs" />
     <Compile Include="MainProgram.cs" />
     <Compile Include="PDFgenerator.cs" />
+    <Compile Include="Permission.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="AddArticleToInvoice.resx">
-      <DependentUpon>AddArticleToInvoice.cs</DependentUpon>
+    <Compile Include="UserControl_PermissionView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControl_PermissionView.Designer.cs">
+      <DependentUpon>UserControl_PermissionView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControl_PermissionsEditor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControl_PermissionsEditor.Designer.cs">
+      <DependentUpon>UserControl_PermissionsEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Worker.cs" />
+    <EmbeddedResource Include="FormAritcleAmount.resx">
+      <DependentUpon>FormAritcleAmount.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormArticlesEditor.resx">
       <DependentUpon>FormArticlesEditor.cs</DependentUpon>
@@ -121,11 +197,23 @@
     <EmbeddedResource Include="FormInvoicesList.resx">
       <DependentUpon>FormInvoicesList.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormLogin.resx">
+      <DependentUpon>FormLogin.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormArticles.resx">
       <DependentUpon>FormArticles.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormNewCustomers.resx">
+      <DependentUpon>FormNewCustomers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormPermissionEditor.resx">
+      <DependentUpon>FormPermissionEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormUserList.resx">
+      <DependentUpon>FormUserList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -135,7 +223,14 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="UserControl_PermissionView.resx">
+      <DependentUpon>UserControl_PermissionView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControl_PermissionsEditor.resx">
+      <DependentUpon>UserControl_PermissionsEditor.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -148,6 +243,47 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lock.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_ok1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_error.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ico_add.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ico_delete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ico_edit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ico_view.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ico_star.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

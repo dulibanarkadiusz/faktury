@@ -40,15 +40,18 @@
             this.Code_tb = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.Name_tb = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.comboBox_max = new System.Windows.Forms.ComboBox();
             this.AddArticle = new System.Windows.Forms.Button();
+            this.AddArticle_butt = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
             // 
+            this.tableLayoutPanel1.BackColor = System.Drawing.Color.MintCream;
+            //this.tableLayoutPanel1.BackgroundImage = global::fakturyA.Properties.Resources._112;
             this.tableLayoutPanel1.ColumnCount = 10;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
@@ -65,9 +68,10 @@
             this.tableLayoutPanel1.Controls.Add(this.Code_tb, 2, 1);
             this.tableLayoutPanel1.Controls.Add(this.label2, 3, 1);
             this.tableLayoutPanel1.Controls.Add(this.Name_tb, 4, 1);
-            this.tableLayoutPanel1.Controls.Add(this.label3, 5, 1);
             this.tableLayoutPanel1.Controls.Add(this.comboBox_max, 6, 1);
             this.tableLayoutPanel1.Controls.Add(this.AddArticle, 8, 1);
+            this.tableLayoutPanel1.Controls.Add(this.AddArticle_butt, 7, 1);
+            this.tableLayoutPanel1.Controls.Add(this.label3, 5, 1);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(1, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 3;
@@ -76,7 +80,6 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 450F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1041, 510);
             this.tableLayoutPanel1.TabIndex = 4;
-           // this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
             // 
             // dataGridView1
             // 
@@ -152,9 +155,11 @@
             // 
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(176, 38);
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label1.Location = new System.Drawing.Point(173, 37);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(29, 13);
+            this.label1.Size = new System.Drawing.Size(32, 15);
             this.label1.TabIndex = 1;
             this.label1.Text = "Kod:";
             // 
@@ -170,9 +175,11 @@
             // 
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(370, 38);
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label2.Location = new System.Drawing.Point(365, 37);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(43, 13);
+            this.label2.Size = new System.Drawing.Size(48, 15);
             this.label2.TabIndex = 3;
             this.label2.Text = "Nazwa:";
             // 
@@ -184,19 +191,11 @@
             this.Name_tb.TabIndex = 4;
             this.Name_tb.TextChanged += new System.EventHandler(this.FindInArticles);
             // 
-            // label3
-            // 
-            this.label3.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(544, 38);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(77, 13);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "Max. wyników:";
-            // 
             // comboBox_max
             // 
+            this.comboBox_max.BackColor = System.Drawing.Color.WhiteSmoke;
             this.comboBox_max.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox_max.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.comboBox_max.Items.AddRange(new object[] {
             "2",
             "50",
@@ -214,19 +213,53 @@
             // 
             // AddArticle
             // 
-            this.AddArticle.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.AddArticle.Location = new System.Drawing.Point(858, 33);
+            this.AddArticle.BackColor = System.Drawing.Color.WhiteSmoke;
+            //this.AddArticle.BackgroundImage = global::fakturyA.Properties.Resources.b;
+            this.AddArticle.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.AddArticle.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.AddArticle.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.AddArticle.Location = new System.Drawing.Point(835, 33);
             this.AddArticle.Name = "AddArticle";
-            this.AddArticle.Size = new System.Drawing.Size(75, 23);
+            this.AddArticle.Size = new System.Drawing.Size(98, 23);
             this.AddArticle.TabIndex = 7;
             this.AddArticle.Text = "Dodaj";
-            this.AddArticle.UseVisualStyleBackColor = true;
+            this.AddArticle.UseVisualStyleBackColor = false;
             this.AddArticle.Click += new System.EventHandler(this.AddArticle_Click);
+            // 
+            // AddArticle_butt
+            // 
+            this.AddArticle_butt.BackColor = System.Drawing.Color.WhiteSmoke;
+            //this.AddArticle_butt.BackgroundImage = global::fakturyA.Properties.Resources.b;
+            this.AddArticle_butt.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.AddArticle_butt.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.AddArticle_butt.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.AddArticle_butt.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.AddArticle_butt.ImageKey = "(none)";
+            this.AddArticle_butt.Location = new System.Drawing.Point(731, 33);
+            this.AddArticle_butt.Name = "AddArticle_butt";
+            this.AddArticle_butt.Size = new System.Drawing.Size(98, 23);
+            this.AddArticle_butt.TabIndex = 8;
+            this.AddArticle_butt.Text = "Dodaj artykul";
+            this.AddArticle_butt.UseVisualStyleBackColor = false;
+            this.AddArticle_butt.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // label3
+            // 
+            this.label3.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label3.Location = new System.Drawing.Point(538, 37);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(83, 15);
+            this.label3.TabIndex = 5;
+            this.label3.Text = "Max.wyników:";
             // 
             // FormArticles
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.BurlyWood;
             this.ClientSize = new System.Drawing.Size(1039, 506);
             this.Controls.Add(this.tableLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
@@ -244,12 +277,6 @@
 
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Kod;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Nazwa;
-        private System.Windows.Forms.DataGridViewTextBoxColumn JednostkaM;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CenaN;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CenaB;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Vat;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox Code_tb;
         private System.Windows.Forms.Label label2;
@@ -257,6 +284,13 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox comboBox_max;
         private System.Windows.Forms.Button AddArticle;
+        private System.Windows.Forms.Button AddArticle_butt;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Kod;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Nazwa;
+        private System.Windows.Forms.DataGridViewTextBoxColumn JednostkaM;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CenaN;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CenaB;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Vat;
 
 
 

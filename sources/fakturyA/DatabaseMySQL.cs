@@ -15,12 +15,11 @@ namespace fakturyA
         public static string Uzytkownik { get; set;  }
         public static string Haslo { private get; set; }
         public static uint Port { get; set; }
+        public static string Database { get; set; }
 
        static DatabaseMySQL()
         {
             Serwer = "localhost";
-            Uzytkownik = "root";
-            Haslo = "";
             Port = 3306;
         }
 
@@ -31,7 +30,7 @@ namespace fakturyA
             connection.UserID = Uzytkownik;
             connection.Password = Haslo;
             connection.Port = Port;
-            connection.Database = database;
+            connection.Database = Database;
 
             MySqlConnection makeConnect = new MySqlConnection(connection.ConnectionString);
             return makeConnect;
@@ -47,6 +46,38 @@ namespace fakturyA
             connect.Close();
         }
 
+        public static bool TryConnect(string login, string password, string databasename, string host, string port)
+        {
+            var conn_info = String.Format("Server={0};Port={1};Database={2};Uid={3};Pwd={4}",host,port,databasename,login,password);
+            bool isConn = false;
+            MySqlConnection conn = null;
+            try
+            {
+                conn = new MySqlConnection(conn_info);
+                conn.Open();
+                isConn = true;
+            }
+            catch (MySqlException ex)
+            {
+                isConn = false;
+                switch (ex.Number)
+                {
+                    case 1042:
+                        MessageBox.Show("Nie można było nawiązać połączenia z serwerem.\n Upewnij się, że nie są blokowane porty lub uruchomione jest oprogramowanie typu WebServ.");
+                        break;
+                    case 0:
+                        MessageBox.Show("Logowanie nieudane.");
+                        break;
+                    default:
+                        break;
+                }
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return isConn;
+        }
         
         public static void LoadInvoicesList()
         {
@@ -256,7 +287,38 @@ namespace fakturyA
             }
         }
 
+        public static void LoadCustomerList()
+        {
+            MainProgram.Connection = DatabaseMySQL.Connect(MainProgram.DatabaseName);
+            try
+            {
+                DatabaseMySQL.OpenConnection(MainProgram.Connection);
+                string queryText = string.Format("SELECT * from kontrahent");
+                MySqlCommand query = new MySqlCommand(queryText, MainProgram.Connection);
+                MySqlDataReader dataReader = query.ExecuteReader();
 
+                while (dataReader.Read())
+                {
+                    string[] cols = new string[dataReader.FieldCount];
+
+                    for (int i = 0; i < dataReader.FieldCount; i++)
+                    {
+                        cols[i] = dataReader[i].ToString();
+                    }
+
+                    MainProgram.CustomersList.Add(new Customers(cols));
+                }
+                dataReader.Close();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
+            finally
+            {
+                DatabaseMySQL.CloseConnection(MainProgram.Connection);
+            }
+        }
         public static void LoadArticleList()
         {
             MainProgram.Connection = DatabaseMySQL.Connect(MainProgram.DatabaseName);
@@ -315,6 +377,140 @@ namespace fakturyA
 
             return n; // zwraca liczbę zmodyfikowanych rekordów.
         }
+
+
+        public static int ExecuteTransaction(List<string> queryList)
+        {
+            int n = -1;
+            
+            MainProgram.Connection = DatabaseMySQL.Connect(MainProgram.DatabaseName);
+            DatabaseMySQL.OpenConnection(MainProgram.Connection);
+
+            MySqlCommand command = MainProgram.Connection.CreateCommand();
+            MySqlTransaction transaction;
+
+            transaction = (MainProgram.Connection).BeginTransaction();
+            command.Connection = MainProgram.Connection;
+            command.Transaction = transaction;
+
+            try
+            {
+                MessageBox.Show("Zapytań:" + queryList.Count);
+                foreach (string query in queryList)
+                {
+                    command.CommandText = query;
+                    int a = command.ExecuteNonQuery();
+                    MessageBox.Show(a+"");
+                }
+
+                transaction.Commit();
+                MessageBox.Show("Poszło");
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc.Message);
+                //transaction.Rollback();
+            }
+            finally
+            {
+                DatabaseMySQL.CloseConnection(MainProgram.Connection);
+            }
+
+            return n; // zwraca liczbę zmodyfikowanych rekordów.
+        }
+
+
+        //////////////// USERS & PERMISSIONS /////////////
+        public static List<string> GetUserPermissions(string username)
+        {
+            MainProgram.Connection = DatabaseMySQL.Connect(MainProgram.DatabaseName);
+            List<string> data = new List<string>(); 
+            try
+            {
+                DatabaseMySQL.OpenConnection(MainProgram.Connection);
+
+                string queryText = string.Format("show grants for '{0}'@'{1}';", username, DatabaseMySQL.Serwer);
+                MySqlCommand query = new MySqlCommand(queryText, MainProgram.Connection);
+                MySqlDataReader dataReader = query.ExecuteReader();
+
+                while (dataReader.Read())
+                {
+                    for (int i = 0; i < dataReader.FieldCount; i++)
+                    {
+                        data.Add( dataReader[i].ToString());
+                    }
+                }
+                dataReader.Close();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
+            DatabaseMySQL.CloseConnection(MainProgram.Connection);
+
+            return data;
+        }
+
+
+        public static List<string> GetUsersNicknamesList()
+        {
+            MainProgram.Connection = DatabaseMySQL.Connect(MainProgram.DatabaseName);
+            List<string> data = new List<string>();
+            try
+            {
+                DatabaseMySQL.OpenConnection(MainProgram.Connection);
+
+                string queryText = string.Format("select User from mysql.user WHERE host='{0}' and Length(User)>0;", DatabaseMySQL.Serwer);
+                MySqlCommand query = new MySqlCommand(queryText, MainProgram.Connection);
+                MySqlDataReader dataReader = query.ExecuteReader();
+
+                while (dataReader.Read())
+                {
+                    for (int i = 0; i < dataReader.FieldCount; i++)
+                    {
+                        data.Add(dataReader[i].ToString());
+                    }
+                }
+                dataReader.Close();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
+            DatabaseMySQL.CloseConnection(MainProgram.Connection);
+
+            return data;
+        }
+
+
+        public static string[] GetUserIDandName(string login)
+        {
+            MainProgram.Connection = DatabaseMySQL.Connect(MainProgram.DatabaseName);
+            string[] data = new string[3];
+            try
+            {
+                DatabaseMySQL.OpenConnection(MainProgram.Connection);
+                string queryText = string.Format("SELECT id, imie, nazwisko from pracownik WHERE mysql_login='{0}'", login);
+                MySqlCommand query = new MySqlCommand(queryText, MainProgram.Connection);
+                MySqlDataReader dataReader = query.ExecuteReader();
+
+                dataReader.Read();
+                for (int i = 0; i < dataReader.FieldCount; i++)
+                {
+                    data[i] = dataReader[i].ToString();
+                }
+                dataReader.Close();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
+            DatabaseMySQL.CloseConnection(MainProgram.Connection);
+
+            return data;
+        }
+
+
     }
 
 }

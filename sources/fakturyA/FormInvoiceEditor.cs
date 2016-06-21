@@ -182,10 +182,10 @@ namespace fakturyA
             if (editInvoice.Number == null)
             {
                 FormCustomers SelectCustomerID = new FormCustomers();
+                SelectCustomerID.ukryj(true);
                 editInvoice.CustomerID = SelectCustomerID.ChooseConsumerWindow();
 
                 GetAndLoadCustomerDetails();
-                editInvoice.CusotmerName = labelCustomerName.Text;
             }
             else
             {
@@ -304,7 +304,8 @@ namespace fakturyA
 
         private void buttonEditArticleOnInvoice_Click(object sender, EventArgs e)
         {
-            AddArticleToInvoice w = new AddArticleToInvoice(1);
+            FormArticleAmount w = new FormArticleAmount(1);
+            //FormAritcleAmount w = new FormAritcleAmount(1);
             w.ShowDialog();
         }
 
