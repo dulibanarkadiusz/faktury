@@ -13,7 +13,9 @@ namespace fakturyA
     public partial class FormInvoiceEditor : Form
     {
         private List<string> productCodesOnInvoice = new List<string>();
-        private List<string> deleteProductsQueries = new List<string>();
+        private List<ArticleOnInvoice> addedArticlesToInvoice = new List<ArticleOnInvoice>();
+        private bool formLoaded = false;
+
         private List<string> queryList = new List<string>();
         private Invoice editInvoice;
         public Invoice EditInvoice
@@ -34,6 +36,8 @@ namespace fakturyA
             dateTimePickerDateInvoice.MinDate = DateTime.Now.AddDays(-14);
             dateTimePickerDatePayment.MaxDate = DateTime.Now.AddDays(30);
             dateTimePickerDatePayment.MinDate = DateTime.Now.AddDays(-14);
+            comboBoxPayMethod.SelectedIndex = 1;
+            comboBoxSelectPaymentDate.SelectedIndex = 1;
         }
 
         public FormInvoiceEditor() // konstruktor bezargumentowy, pozwala uruchomić edytor do utworzenia nowej faktury
@@ -61,6 +65,8 @@ namespace fakturyA
                     WriteArticleOnInvoice_ToDataGridView(articleOnInvoice);
                 }
             }
+
+            formLoaded = true;
                
 
             // odczytaj dane z istniejącej krotki (zapisanej w liście faktur) i wypisz do edytora
@@ -114,6 +120,11 @@ namespace fakturyA
                 editInvoice.AddArticlePositionToInvoice(article);
                 WriteArticleOnInvoice_ToDataGridView(article);
                 productCodesOnInvoice.Add(article.Article.Code);
+                if (formLoaded)
+                {
+                    MessageBox.Show("-+-");
+                    addedArticlesToInvoice.Add(article);
+                }
             }
             else
             {
@@ -131,7 +142,8 @@ namespace fakturyA
             // Zapis lub uaktualnienie akturalnie otwartej faktury
             if (ValidateForm() == false)
                 return;
-
+            
+            ReadFormValues();
 
             string query; bool isNewInvoice = false;
             if (editInvoice.Number == null)
@@ -148,7 +160,13 @@ namespace fakturyA
             }
             else
             {
+                MessageBox.Show("Update");
                 query = editInvoice.GenerateUpdateQuery(); // przygotowuje zapytanie UPDATE do bazy danych
+                foreach (ArticleOnInvoice invoiceArticle in addedArticlesToInvoice)
+                {
+                    queryList.Add(invoiceArticle.GetInsertQuery());
+                }
+                addedArticlesToInvoice.Clear();
             }
 
 
@@ -158,7 +176,6 @@ namespace fakturyA
             {
                 DatabaseMySQL.ExecuteQuery(mysqlQuery);
             }
-
 
 
             if (returnValue > 0)
@@ -249,24 +266,12 @@ namespace fakturyA
 
         }
 
-        private void dateTimePickerDateInvoice_ValueChanged(object sender, EventArgs e)
+        private void ReadFormValues()
         {
             editInvoice.InvoiceDate = dateTimePickerDateInvoice.Value;
-        }
-
-        private void dateTimePickerDateSale_ValueChanged(object sender, EventArgs e)
-        {
             editInvoice.SellingDate = dateTimePickerDateSale.Value;
-        }
-
-        private void comboBoxPayMethod_SelectedIndexChanged(object sender, EventArgs e)
-        {
             editInvoice.PaymentMethod = comboBoxPayMethod.Text;
-        }
-
-        private void textBoxAmountPaid_TextChanged(object sender, EventArgs e)
-        {
-            editInvoice.AmountPaid = Convert.ToDecimal(textBoxAmountPaid.Text); 
+            //editInvoice.AmountPaid = Convert.ToDecimal(textBoxAmountPaid.Text); 
         }
 
 
@@ -293,6 +298,18 @@ namespace fakturyA
                 errorProvider1.SetError(dataGridView1, "");
             }
 
+            decimal amountPaid;
+            if (Decimal.TryParse(textBoxAmountPaid.Text, out amountPaid))
+            {
+                editInvoice.AmountPaid = amountPaid;
+                errorProvider1.SetError(textBoxAmountPaid, "");
+            }
+            else
+            {
+                errorProvider1.SetError(textBoxAmountPaid, "Podaj wartość w odpowiednim formacie.");
+                return false;
+            }
+
             return true;
         }
 
@@ -305,7 +322,6 @@ namespace fakturyA
         private void buttonEditArticleOnInvoice_Click(object sender, EventArgs e)
         {
             FormArticleAmount w = new FormArticleAmount(1);
-            //FormAritcleAmount w = new FormAritcleAmount(1);
             w.ShowDialog();
         }
 

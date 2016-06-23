@@ -34,10 +34,9 @@ namespace fakturyA
             Code = row[0];
             Name = row[4];
             PriceNetto =Convert.ToDecimal(row[1]);
-            VATvalue = Convert.ToDecimal(row[3])*100;
-            PriceBrutto = PriceNetto + VATvalue;
+            VATvalue = Convert.ToDecimal(row[3]);
+            PriceBrutto = Math.Round(PriceNetto * (1m + VATvalue * 0.01m), 2);
             UnitMeasure = row[2];
-
         }
         public string GenerateQueryUpdateArticles()
         {
@@ -51,6 +50,5 @@ namespace fakturyA
         {
             return String.Format("Delete from artykul where kod='{0}'", Code);
         }
-
     }
 }

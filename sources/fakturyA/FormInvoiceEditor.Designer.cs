@@ -128,7 +128,6 @@
             this.comboBoxPayMethod.Name = "comboBoxPayMethod";
             this.comboBoxPayMethod.Size = new System.Drawing.Size(101, 21);
             this.comboBoxPayMethod.TabIndex = 5;
-            this.comboBoxPayMethod.SelectedIndexChanged += new System.EventHandler(this.comboBoxPayMethod_SelectedIndexChanged);
             // 
             // label5
             // 
@@ -229,7 +228,6 @@
             this.dateTimePickerDateInvoice.Name = "dateTimePickerDateInvoice";
             this.dateTimePickerDateInvoice.Size = new System.Drawing.Size(101, 20);
             this.dateTimePickerDateInvoice.TabIndex = 2;
-            this.dateTimePickerDateInvoice.ValueChanged += new System.EventHandler(this.dateTimePickerDateInvoice_ValueChanged);
             // 
             // tableLayoutPanel2
             // 
@@ -265,7 +263,6 @@
             this.dateTimePickerDateSale.Name = "dateTimePickerDateSale";
             this.dateTimePickerDateSale.Size = new System.Drawing.Size(101, 20);
             this.dateTimePickerDateSale.TabIndex = 2;
-            this.dateTimePickerDateSale.ValueChanged += new System.EventHandler(this.dateTimePickerDateSale_ValueChanged);
             // 
             // tableLayoutPanel1
             // 
@@ -654,7 +651,6 @@
             this.textBoxAmountPaid.Size = new System.Drawing.Size(63, 20);
             this.textBoxAmountPaid.TabIndex = 2;
             this.textBoxAmountPaid.Text = "0,00";
-            this.textBoxAmountPaid.TextChanged += new System.EventHandler(this.textBoxAmountPaid_TextChanged);
             // 
             // label12
             // 

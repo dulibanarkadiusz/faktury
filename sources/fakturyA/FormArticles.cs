@@ -178,7 +178,7 @@ namespace fakturyA
                 foreach (Article a in articlesList)
                 {
                     s++;
-                    if (row.Cells["Kod"].Value == a.Code)
+                    if (row.Cells["Kod"].Value.ToString() == a.Code)
                     {
                         indeks = s - 1;
                         break;

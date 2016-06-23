@@ -138,13 +138,30 @@ namespace fakturyA
 
         private void removeInvoice_Click(object sender, EventArgs e)
         {
-            string dialogText = String.Format("Próbujesz usunąć fakturę nr {0}.\n\nNie zaleca się usuwania wystawionych dokumentów.\nCzy mimo to chcesz usunąć?", MainProgram.InvoiceObjectsList[dataGridView1.SelectedRows[0].Index]);
+            string dialogText = String.Format("Próbujesz usunąć fakturę nr {0}.\n\nZdecydowanie nie zaleca się usuwania wystawionych dokumentów.\nCzy mimo to chcesz usunąć?", MainProgram.InvoiceObjectsList[dataGridView1.SelectedRows[0].Index].ToString());
             DialogResult result = MessageBox.Show(dialogText, "Ostrzeżenie", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
             if (result == DialogResult.Yes)
             {
-                MessageBox.Show(dataGridView1.SelectedRows[0].Index.ToString());
-                dataGridView1.Rows.RemoveAt(dataGridView1.SelectedRows[0].Index);
+                var findNumber = dataGridView1.Rows[dataGridView1.SelectedRows[0].Index].Cells["NrFaktury"].Value.ToString();
+                var invoiceObject = (from Invoice invoice in MainProgram.InvoiceObjectsList
+                                     where (invoice.Number == findNumber)
+                                     select invoice).FirstOrDefault();
+
+                List<string> transactionMySQL_queryList = new List<string>();
+                transactionMySQL_queryList.Add(invoiceObject.GenerateDeleteQuery());
+                transactionMySQL_queryList.Add(invoiceObject.GenerateDeleteQueryForArticlesOnInvoice());
+
+                int n = DatabaseMySQL.ExecuteTransaction(transactionMySQL_queryList);
+                if (n > 0)
+                {
+                    dataGridView1.Rows.RemoveAt(dataGridView1.SelectedRows[0].Index);
+                    MainProgram.InvoiceObjectsList.Remove(invoiceObject);
+                }
+                else
+                {
+                    MessageBox.Show("Nie udało się usunąć faktury.");
+                }
             }
         }
 

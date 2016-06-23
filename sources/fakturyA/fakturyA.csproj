@@ -73,6 +73,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DecimalToWords.cs" />
     <Compile Include="EditorXML.cs" />
     <Compile Include="FormAddNewWorker.cs">
       <SubType>Form</SubType>
@@ -165,6 +166,7 @@
     <Compile Include="Invoice.cs" />
     <Compile Include="Mail.cs" />
     <Compile Include="MainProgram.cs" />
+    <Compile Include="OurCompany.cs" />
     <Compile Include="PDFgenerator.cs" />
     <Compile Include="Permission.cs" />
     <Compile Include="Program.cs" />

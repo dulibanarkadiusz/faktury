@@ -123,6 +123,7 @@
             this.buttonSel.TabIndex = 20;
             this.buttonSel.Text = "WYBIERZ";
             this.buttonSel.UseVisualStyleBackColor = true;
+            this.buttonSel.Click += new System.EventHandler(this.buttonSel_Click);
             // 
             // NIP
             // 

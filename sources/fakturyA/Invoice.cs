@@ -220,7 +220,12 @@ namespace fakturyA
 
         public string GenerateDeleteQuery()
         {
-            return "";
+            return String.Format("DELETE FROM faktura WHERE numer='{0}'", Number);
+        }
+
+        public string GenerateDeleteQueryForArticlesOnInvoice()
+        {
+            return String.Format("DELETE FROM pozycja_faktury WHERE nr_faktury='{0}'", Number);
         }
     }
 }

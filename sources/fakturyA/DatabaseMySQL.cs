@@ -381,7 +381,7 @@ namespace fakturyA
 
         public static int ExecuteTransaction(List<string> queryList)
         {
-            int n = -1;
+            int n = 0;
             
             MainProgram.Connection = DatabaseMySQL.Connect(MainProgram.DatabaseName);
             DatabaseMySQL.OpenConnection(MainProgram.Connection);
@@ -399,8 +399,7 @@ namespace fakturyA
                 foreach (string query in queryList)
                 {
                     command.CommandText = query;
-                    int a = command.ExecuteNonQuery();
-                    MessageBox.Show(a+"");
+                    n += command.ExecuteNonQuery();
                 }
 
                 transaction.Commit();
@@ -409,7 +408,8 @@ namespace fakturyA
             catch (Exception exc)
             {
                 MessageBox.Show(exc.Message);
-                //transaction.Rollback();
+                n = -1;
+                transaction.Rollback();
             }
             finally
             {

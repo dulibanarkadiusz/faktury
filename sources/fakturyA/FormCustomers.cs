@@ -21,6 +21,8 @@ namespace fakturyA
             InitializeComponent();
             ukryj(false);
             WriteAllCustomer();
+
+            
         }
 
         public int ChooseConsumerWindow()
@@ -80,6 +82,12 @@ namespace fakturyA
             AddNew.ShowDialog();
             dataGridView1.Rows.Clear();
             WriteAllCustomer();
+        }
+
+        private void buttonSel_Click(object sender, EventArgs e)
+        {
+            SelectedConsumerID = dataGridView1.SelectedRows[0].Index;
+            this.Close();
         }
 
        
