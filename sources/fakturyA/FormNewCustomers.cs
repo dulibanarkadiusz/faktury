@@ -28,7 +28,7 @@ namespace fakturyA
         }
         private void button1_Click(object sender, EventArgs e)
         {
-            string[] s = { BoxCompName.Text, BoxCustName.Text, BoxAddress.Text, BoxCity.Text, BoxCode1.Text + BoxCode2.Text, BoxEmail.Text, BoxNIP.Text };
+            string[] s = { "", BoxCompName.Text, BoxCustName.Text, BoxAddress.Text, BoxCity.Text, BoxCode1.Text + BoxCode2.Text, BoxEmail.Text, BoxNIP.Text };
             Customers newCustomer = new Customers(s);
             bool empty_company = String.IsNullOrEmpty(BoxCompName.Text);
             bool empty_customer = String.IsNullOrEmpty(BoxCustName.Text);

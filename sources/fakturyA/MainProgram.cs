@@ -52,6 +52,7 @@ namespace fakturyA
         public const string InvoicesTablename = "faktura";
         public const string CustomersTablename = "kontrahent";
         public const int DateLength = 10;
+        public const string NameConfigFile = "config.xml";
 
         /* MySQL */
         public static MySqlConnection Connection { get; set; }

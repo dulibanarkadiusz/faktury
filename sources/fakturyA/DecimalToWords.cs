@@ -13,9 +13,9 @@ namespace fakturyA
             string part2 = "0";
             // If the number is 0, return zero.
             if (num == 0) return "zero";
-            if (num.ToString().Length > 0 && num.ToString().IndexOf('.') > 0)
+            if (num.ToString().Length > 0 && num.ToString().IndexOf(',') > 0)
             {
-                part2 = (num.ToString().Substring(num.ToString().IndexOf('.')+1));
+                part2 = (num.ToString().Substring(num.ToString().IndexOf(',')+1));
             }
 
             string[] groups = {"", "tysięcy", "million", "billion",
@@ -34,7 +34,7 @@ namespace fakturyA
                 // Convert the group into words.
                 if (remainder != 0)
                     result = GroupToWords(remainder) +
-                        " " + groups[group_num] +
+                        " " + groups[group_num] + " " +
                         result;
 
                 // Get ready for the next group.

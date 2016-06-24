@@ -14,19 +14,27 @@ namespace fakturyA
     class PDFgenerator
     {
         private Invoice invoice;
+        private string pdfName; 
         private const string FONT = "c:/windows/fonts/arial.ttf";
+        private BaseFont bf = BaseFont.CreateFont(FONT, BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
         private const int SMALL_FONT_SIZE = 8;
+
+        private decimal valueNetto = 0;
+        private decimal valueBrutto = 0;
+        private decimal valueVAT = 0;
+
+        private Document doc;
+        private decimal[] vatVALUE = new decimal[100];
+
         public PDFgenerator(Invoice invoice)
         {
             this.invoice = invoice;
             Create();
         }
 
-        private void Create()
+        private void CheckIfFileExsist()
         {
-            Document doc = new Document(iTextSharp.text.PageSize.A4);
-
-            string pdfName = invoice.Number.Replace('/', '_') + ".pdf";
+            pdfName = invoice.Number.Replace('/', '_') + ".pdf";
             if (File.Exists(pdfName))
             {
                 var result = MessageBox.Show("Plik tej faktury już istnieje. Czy chcesz kontynuować, nadpisując wcześniej wygenerowany dokument?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
@@ -36,34 +44,17 @@ namespace fakturyA
                     {
                         File.Delete(pdfName);
                     }
-                    catch(Exception e)
+                    catch (Exception e)
                     {
                         MessageBox.Show(e.Message);
                     }
-                    
+
                 }
             }
+        }
 
-            try
-            {
-                PdfWriter wr = PdfWriter.GetInstance(doc, new FileStream(pdfName, FileMode.CreateNew));
-            }
-            catch(Exception e)
-            {
-                MessageBox.Show(e.Message);
-            }
-
-            BaseFont bf = BaseFont.CreateFont(FONT, BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
-            BaseFont arialBold = BaseFont.CreateFont(FONT, BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
-            doc.Open();
-
-            List<String> ContentList = new List<String>();
-            Paragraph paragraph;
-            string content;
-            decimal[] vatVALUE = new decimal[100];
-
-
-            // --- tabela na nagłówek
+        private void WriteHeader()
+        {
             PdfPTable table = new PdfPTable(2);
 
             float[] widths = new float[] { 60f, 40f };
@@ -72,11 +63,9 @@ namespace fakturyA
             table.WidthPercentage = 90f;
             table.SpacingBefore = 30f;
 
-
-            paragraph = new Paragraph("Faktura VAT nr " + invoice.Number, new Font(bf, 16));
+            Paragraph paragraph = new Paragraph("Faktura VAT nr " + invoice.Number, new Font(bf, 16));
             table.AddCell(paragraph);
 
-            ///
             PdfPTable table2 = new PdfPTable(2);
             table2.DefaultCell.Border = Rectangle.NO_BORDER;
             table2.WidthPercentage = 40f;
@@ -91,47 +80,40 @@ namespace fakturyA
             table.AddCell(table2);
             ///
             doc.Add(table);
+        }
 
-
-            // pozioma linia 
-            Paragraph horizontalLine = new Paragraph(new Chunk(new iTextSharp.text.pdf.draw.LineSeparator(0.0F, 100.0F, BaseColor.BLACK, Element.ALIGN_LEFT, 1)));
-            doc.Add(horizontalLine);
-
-
-
-            // --- tabela na dane kontrahenta i naszej firmy --- 
-            table = new PdfPTable(2);
-            widths = new float[] { 65f, 35f };
+        private void WriteSellerAndConsumerData()
+        {
+            PdfPTable table = new PdfPTable(2);
+            float[] widths = new float[] { 65f, 35f };
             table.SetWidths(widths);
             table.DefaultCell.Border = Rectangle.NO_BORDER;
             table.WidthPercentage = 90f;
             table.SpacingBefore = 10f;
 
             // sprzedawca
-            content = String.Format("Sprzedający:\n\n{0}\n{1}\n{2}\nNIP: {3}", "Fakturzyści sp. z o.o.", "Kaszubska 28", "44-100 Gliwice", "8392102392");
-            paragraph = new Paragraph(content, new Font(bf, 10));
+            Paragraph paragraph = new Paragraph(String.Format("Sprzedający:\n\n{0}\n{1}\n{2}\nNIP: {3}", "Fakturzyści sp. z o.o.", "Kaszubska 28", "44-100 Gliwice", "8392102392"), new Font(bf, 10));
             table.AddCell(paragraph);
 
             // kupujący
-            content = String.Format("Nabywca:\n\n{0}\n{1}\n{2}\n", invoice.CusotmerName, "ul. Jakaś 90/8", "00-000 Warszawa");
-            paragraph = new Paragraph(content, new Font(bf, 10));
-            table.AddCell (paragraph);
+            paragraph = new Paragraph(String.Format("Nabywca:\n\n{0}\n{1}\n{2}\n", invoice.CusotmerName, "ul. Jakaś 90/8", "00-000 Warszawa"), new Font(bf, 10));
+            table.AddCell(paragraph);
 
             doc.Add(table);
-            // ---- KONIEC TABELI --- 
+        }
 
-
-            // --- tabela na artykuły --- 
-            table = new PdfPTable(11);
-            table.SpacingBefore = 20f;
+        private void WriteArticlesList()
+        {
+            PdfPTable table = new PdfPTable(11);
+            table.SpacingBefore = 40f;
             table.WidthPercentage = 100f;
-            widths = new float[] { 3f, 23f, 4f, 3f, 3f, 10f, 4f, 10f, 10f, 10f, 10f };
+            float[] widths = new float[] { 3f, 23f, 6f, 5f, 6f, 7f, 4f, 9f, 9f, 9f, 9f };
             table.SetWidths(widths);
-            string[] descs = new string[] { "Lp.", "Nazwa", "j.m.", "ilość", "rabat [%]", "cena netto", "VAT [%]", "cena brutto [zł]", "kwota VAT [zł]", "wartość netto [zł]", "wartość brutto [zł]"};
-            
+            string[] descs = new string[] { "Lp.", "Nazwa", "j.m.", "ilość", "rabat [%]", "cena netto", "VAT [%]", "cena brutto [zł]", "kwota VAT [zł]", "wartość netto [zł]", "wartość brutto [zł]" };
+
             foreach (String desc in descs)
             {
-                paragraph = new Paragraph(desc, new Font(bf, SMALL_FONT_SIZE));
+                Paragraph paragraph = new Paragraph(desc, new Font(bf, SMALL_FONT_SIZE));
                 table.AddCell(paragraph);
             }
 
@@ -144,7 +126,7 @@ namespace fakturyA
             int i = 0;
             foreach (ArticleOnInvoice articleInvoice in invoice.ArticlesOnInvoiceList)
             {
-                table.AddCell(new Paragraph(i+1+".", new Font(bf, SMALL_FONT_SIZE)));
+                table.AddCell(new Paragraph(i + 1 + ".", new Font(bf, SMALL_FONT_SIZE)));
                 table.AddCell(new Paragraph(invoice.ArticlesOnInvoiceList[i].Article.Name, new Font(bf, SMALL_FONT_SIZE)));
                 table.AddCell(new Paragraph(invoice.ArticlesOnInvoiceList[i].Article.UnitMeasure, new Font(bf, SMALL_FONT_SIZE)));
                 table.AddCell(new Paragraph("" + invoice.ArticlesOnInvoiceList[i].Amount, new Font(bf, SMALL_FONT_SIZE)));
@@ -156,27 +138,50 @@ namespace fakturyA
                 table.AddCell(new Paragraph("" + invoice.ArticlesOnInvoiceList[i].ValueNetto, new Font(bf, SMALL_FONT_SIZE)));
                 table.AddCell(new Paragraph("" + invoice.ArticlesOnInvoiceList[i].ValueBrutto, new Font(bf, SMALL_FONT_SIZE)));
 
-                //MessageBox.Show(Convert.ToInt16(invoice.ArticlesOnInvoiceList[i].Article.VATvalue)+"");
-                //vatVALUE[Convert.ToInt16(invoice.ArticlesOnInvoiceList[i].Article.VATvalue)/100] = 0;
                 vatVALUE[Convert.ToInt16(invoice.ArticlesOnInvoiceList[i].Article.VATvalue)] += invoice.ArticlesOnInvoiceList[i].ValueNetto;
                 i++;
             }
             doc.Add(table);
+        }
 
-
+        private void WritePaymentDetails_And_VATtarget()
+        {
+            PdfPTable table2 = new PdfPTable(3);
+            float[] widths = new float[] { 30f, 60f, 10f };
+            table2.SetWidths(widths);
+            table2.DefaultCell.Border = Rectangle.NO_BORDER;
+            table2.AddCell(new Paragraph("Forma płatności: \t", new Font(bf, SMALL_FONT_SIZE)));
+            table2.AddCell(new Paragraph("" + invoice.PaymentMethod, new Font(bf, SMALL_FONT_SIZE)));
+            table2.AddCell("");
+            table2.AddCell(new Paragraph("Numer konta: \t", new Font(bf, SMALL_FONT_SIZE)));
+            table2.AddCell(new Paragraph("00 1111 2222 3333 4444 5555", new Font(bf, SMALL_FONT_SIZE)));
+            table2.AddCell("");
+            table2.AddCell(new Paragraph("Termin płatności: \t", new Font(bf, SMALL_FONT_SIZE)));
+            table2.AddCell(new Paragraph("" + invoice.PaymentDate, new Font(bf, SMALL_FONT_SIZE)));
+            table2.AddCell("");
+            table2.AddCell(new Paragraph("Do zapłaty: \t", new Font(bf, SMALL_FONT_SIZE)));
+            table2.AddCell(new Paragraph(invoice.InvoiceValue + " zł", new Font(bf, SMALL_FONT_SIZE)));
+            table2.AddCell("");
+            table2.AddCell(new Paragraph("Słownie: \t", new Font(bf, SMALL_FONT_SIZE)));
+            table2.AddCell(new Paragraph(DecimalToWords.Convert(invoice.InvoiceValue), new Font(bf, SMALL_FONT_SIZE)));
+            table2.AddCell("");
+            table2.AddCell(new Paragraph("Zapłacono: \t", new Font(bf, SMALL_FONT_SIZE)));
+            table2.AddCell(new Paragraph(invoice.AmountPaid + " zł", new Font(bf, SMALL_FONT_SIZE)));
+            table2.AddCell("");
 
             // ---- podsumowanie stawek VAT na fakturze
-            table = new PdfPTable(2);
-            widths = new float[] { 40, 50};
+            PdfPTable table = new PdfPTable(2);
+            table.SpacingBefore = 15f;
+            table.WidthPercentage = 100f;
+            widths = new float[] { 50, 50 };
             table.SetWidths(widths);
+            //table.SpacingBefore = -50;
             table.DefaultCell.Border = Rectangle.NO_BORDER;
-            table.AddCell("");
+            table.AddCell(table2);
 
             table2 = new PdfPTable(4);
-            table2.SpacingBefore = 20f;
-
-
-            descs = new string[] { "Wartość netto [zł]", "VAT [%]", "Kwota VAT [zł]", "Wartość brutto [zł]" };
+            table2.SpacingBefore = 40f;
+            string[] descs = new string[] { "Wartość netto [zł]", "VAT [%]", "Kwota VAT [zł]", "Wartość brutto [zł]" };
             foreach (String desc in descs)
             {
                 table2.AddCell(new Paragraph(desc, new Font(bf, SMALL_FONT_SIZE)));
@@ -188,48 +193,104 @@ namespace fakturyA
                 if (vatTax > 0)
                 {
                     table2.AddCell(new Paragraph("" + vatTax, new Font(bf, SMALL_FONT_SIZE)));
-                    table2.AddCell(new Paragraph(j + "",new Font(bf, SMALL_FONT_SIZE)));
+                    table2.AddCell(new Paragraph(j + "", new Font(bf, SMALL_FONT_SIZE)));
                     table2.AddCell(new Paragraph(Math.Round(vatTax * j * 0.01m, 2) + "", new Font(bf, SMALL_FONT_SIZE)));
                     table2.AddCell(new Paragraph(Math.Round(vatTax * j * 0.01m + vatTax, 2) + "", new Font(bf, SMALL_FONT_SIZE)));
+
+                    valueNetto += vatTax;
+                    valueBrutto += Math.Round(vatTax * j * 0.01m + vatTax, 2);
+                    valueVAT += Math.Round(vatTax * j * 0.01m, 2);
                 }
 
                 j++;
             }
-            table.AddCell(table2);
-            table.HorizontalAlignment = Element.ALIGN_RIGHT;
+
+            PdfPCell cell = new PdfPCell(table2);
+            cell.Border = Rectangle.NO_BORDER;
+            cell.VerticalAlignment = Element.ALIGN_RIGHT;
+            table.AddCell(cell);
+            table.AddCell("");
+            table2 = new PdfPTable(4);
+            table2.SpacingBefore = 5f;
+            table2.AddCell(new Paragraph("" + valueNetto, new Font(bf, SMALL_FONT_SIZE)));
+            table2.AddCell(new Paragraph("-", new Font(bf, SMALL_FONT_SIZE)));
+            table2.AddCell(new Paragraph("" + valueVAT, new Font(bf, SMALL_FONT_SIZE)));
+            table2.AddCell(new Paragraph("" + valueBrutto, new Font(bf, SMALL_FONT_SIZE)));
+
+            cell = new PdfPCell(table2);
+            cell.Border = Rectangle.NO_BORDER;
+            cell.VerticalAlignment = Element.ALIGN_RIGHT;
+            table.AddCell(cell);
+
+
+            //table.HorizontalAlignment = Element.ALIGN_RIGHT;
 
             doc.Add(table);
-            ////////
+        }
 
-
-            // ---- informacje tabela ----
-            table = new PdfPTable(3);
-            widths = new float[] { 20f, 30f, 50f };
-            table.SetWidths(widths);
-            table.SpacingBefore = 5f;
+        private void WriteSignatures()
+        {
+            PdfPTable table = new PdfPTable(2);
+            table.SpacingBefore = 70f;
+            table.WidthPercentage = 90f;
+            table.HorizontalAlignment = Element.ALIGN_CENTER;
+            table.DefaultCell.HorizontalAlignment = Element.ALIGN_CENTER;
             table.DefaultCell.Border = Rectangle.NO_BORDER;
-            table.AddCell(new Paragraph("Forma płatności: \t", new Font(bf, SMALL_FONT_SIZE)));
-            table.AddCell(new Paragraph("przelew bankowy", new Font(bf, SMALL_FONT_SIZE)));
+            float[] widths = new float[] { 45, 45 };
+            string dotted = ".";
+            for (int k = 2; k < 75; k++)
+            {
+                dotted += ".";
+            }
+
             table.AddCell("");
-            table.AddCell(new Paragraph("Numer konta: \t", new Font(bf, SMALL_FONT_SIZE)));
-            table.AddCell(new Paragraph("00 1111 2222 3333 4444 5555", new Font(bf, SMALL_FONT_SIZE)));
-            table.AddCell("");
-            table.AddCell(new Paragraph("Termin płatności: \t", new Font(bf, SMALL_FONT_SIZE)));
-            table.AddCell(new Paragraph("2016-07-10", new Font(bf, SMALL_FONT_SIZE)));
-            table.AddCell("");
-            table.AddCell(new Paragraph("Do zapłaty: \t", new Font(bf, SMALL_FONT_SIZE)));
-            table.AddCell(new Paragraph("10293.92 zł", new Font(bf, SMALL_FONT_SIZE)));
-            table.AddCell("");
-            table.AddCell(new Paragraph("Słownie: \t", new Font(bf, SMALL_FONT_SIZE)));
-            table.AddCell(new Paragraph(DecimalToWords.Convert(10293.92m), new Font(bf, SMALL_FONT_SIZE)));
-            table.AddCell("");
+            table.AddCell(new Paragraph(invoice.EmployeeName, new Font(bf, 12)));
+            table.AddCell(new Paragraph("" + dotted, new Font(bf, SMALL_FONT_SIZE)));
+            table.AddCell(new Paragraph("" + dotted, new Font(bf, SMALL_FONT_SIZE)));
+            table.AddCell(new Paragraph("osoba upoważniona do odbioru", new Font(bf, SMALL_FONT_SIZE)));
+            table.AddCell(new Paragraph("osoba upoważniona do wystawienia", new Font(bf, SMALL_FONT_SIZE)));
+
             doc.Add(table);
-            // ------------------
+        }
+
+
+        private void Create()
+        {
+            doc = new Document(iTextSharp.text.PageSize.A4);
+            CheckIfFileExsist();
+
+            try
+            {
+                PdfWriter wr = PdfWriter.GetInstance(doc, new FileStream(pdfName, FileMode.CreateNew));
+            }
+            catch(Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
+
+            doc.Open();
+
+            List<String> ContentList = new List<String>();
+            decimal[] vatVALUE = new decimal[100];
+
+
+            WriteHeader();
+
+            // pozioma linia 
+            Paragraph horizontalLine = new Paragraph(new Chunk(new iTextSharp.text.pdf.draw.LineSeparator(0.0F, 100.0F, BaseColor.BLACK, Element.ALIGN_LEFT, 1)));
+            doc.Add(horizontalLine);
+
+            WriteSellerAndConsumerData();
+
+            WriteArticlesList();
+
+            WritePaymentDetails_And_VATtarget();
+
+            WriteSignatures();
 
 
             doc.Close();
             Mail mail = new Mail(pdfName);
-
         }
     }
 }
