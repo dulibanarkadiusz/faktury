@@ -379,7 +379,7 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.checkBoxSuperUser);
             this.Name = "FormPermissionEditor";
-            this.Text = "FormMyPermissionView";
+            this.Text = "Uprawnienia dostępu";
             this.Load += new System.EventHandler(this.FormMyPermissionView_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();

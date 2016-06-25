@@ -273,14 +273,13 @@ namespace fakturyA
             editInvoice.InvoiceDate = dateTimePickerDateInvoice.Value;
             editInvoice.SellingDate = dateTimePickerDateSale.Value;
             editInvoice.PaymentMethod = comboBoxPayMethod.Text;
-            //editInvoice.AmountPaid = Convert.ToDecimal(textBoxAmountPaid.Text); 
         }
 
 
 
         private bool ValidateForm()
         {
-            if (editInvoice.CustomerID == -1)
+            if (editInvoice.Customer == null)
             {
                 errorProvider1.SetError(groupBox1, "Należy wybrać kontrahenta.");
                 return false;

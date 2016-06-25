@@ -22,7 +22,6 @@ namespace fakturyA
         private string customerName;
         private string paymentMethod = "przelew";
         //private string customerNIP;
-         
 
         string[] paymentMethods = { "przelew", "gotówka", "karta płatnicza", "płatność online", "płatność ratalna" };
 
@@ -184,6 +183,7 @@ namespace fakturyA
                 PaymentDate = Convert.ToDateTime(dataRow[9]);
                 SellingDate = Convert.ToDateTime(dataRow[10]);
                 CustomerID = Convert.ToInt16(dataRow[12]);
+
                 PaymentMethod = dataRow[11];
                 AmountPaid = Convert.ToDecimal(dataRow[13]);
 

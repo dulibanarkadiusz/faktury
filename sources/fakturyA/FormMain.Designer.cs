@@ -41,9 +41,9 @@
             this.dataSet1 = new System.Data.DataSet();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.button5 = new System.Windows.Forms.Button();
-            this.buttonTowaryUslugi = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.buttonShowArticles = new System.Windows.Forms.Button();
+            this.buttonShowCustomers = new System.Windows.Forms.Button();
+            this.buttonNewInvoice = new System.Windows.Forms.Button();
             this.buttonInvoicesList = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataSet1)).BeginInit();
@@ -146,9 +146,9 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.tableLayoutPanel1.Controls.Add(this.button5, 4, 0);
-            this.tableLayoutPanel1.Controls.Add(this.buttonTowaryUslugi, 3, 0);
-            this.tableLayoutPanel1.Controls.Add(this.button3, 2, 0);
-            this.tableLayoutPanel1.Controls.Add(this.button2, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.buttonShowArticles, 3, 0);
+            this.tableLayoutPanel1.Controls.Add(this.buttonShowCustomers, 2, 0);
+            this.tableLayoutPanel1.Controls.Add(this.buttonNewInvoice, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.buttonInvoicesList, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 24);
@@ -172,38 +172,38 @@
             this.button5.Text = "Informacje o firmie";
             this.button5.UseVisualStyleBackColor = true;
             // 
-            // buttonTowaryUslugi
+            // buttonShowArticles
             // 
-            this.buttonTowaryUslugi.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.buttonTowaryUslugi.Location = new System.Drawing.Point(336, 3);
-            this.buttonTowaryUslugi.Name = "buttonTowaryUslugi";
-            this.buttonTowaryUslugi.Size = new System.Drawing.Size(105, 65);
-            this.buttonTowaryUslugi.TabIndex = 7;
-            this.buttonTowaryUslugi.Text = "Towary i usługi";
-            this.buttonTowaryUslugi.UseVisualStyleBackColor = true;
-            this.buttonTowaryUslugi.Click += new System.EventHandler(this.buttonTowaryUslugi_Click);
+            this.buttonShowArticles.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonShowArticles.Location = new System.Drawing.Point(336, 3);
+            this.buttonShowArticles.Name = "buttonShowArticles";
+            this.buttonShowArticles.Size = new System.Drawing.Size(105, 65);
+            this.buttonShowArticles.TabIndex = 7;
+            this.buttonShowArticles.Text = "Towary i usługi";
+            this.buttonShowArticles.UseVisualStyleBackColor = true;
+            this.buttonShowArticles.Click += new System.EventHandler(this.buttonTowaryUslugi_Click);
             // 
-            // button3
+            // buttonShowCustomers
             // 
-            this.button3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button3.Location = new System.Drawing.Point(225, 3);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(105, 65);
-            this.button3.TabIndex = 6;
-            this.button3.Text = "Kontrahenci";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.buttonShowCustomers.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonShowCustomers.Location = new System.Drawing.Point(225, 3);
+            this.buttonShowCustomers.Name = "buttonShowCustomers";
+            this.buttonShowCustomers.Size = new System.Drawing.Size(105, 65);
+            this.buttonShowCustomers.TabIndex = 6;
+            this.buttonShowCustomers.Text = "Kontrahenci";
+            this.buttonShowCustomers.UseVisualStyleBackColor = true;
+            this.buttonShowCustomers.Click += new System.EventHandler(this.button3_Click);
             // 
-            // button2
+            // buttonNewInvoice
             // 
-            this.button2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button2.Location = new System.Drawing.Point(114, 3);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(105, 65);
-            this.button2.TabIndex = 5;
-            this.button2.Text = "Nowa faktura";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.buttonNewInvoice.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonNewInvoice.Location = new System.Drawing.Point(114, 3);
+            this.buttonNewInvoice.Name = "buttonNewInvoice";
+            this.buttonNewInvoice.Size = new System.Drawing.Size(105, 65);
+            this.buttonNewInvoice.TabIndex = 5;
+            this.buttonNewInvoice.Text = "Nowa faktura";
+            this.buttonNewInvoice.UseVisualStyleBackColor = true;
+            this.buttonNewInvoice.Click += new System.EventHandler(this.button2_Click);
             // 
             // buttonInvoicesList
             // 
@@ -228,6 +228,7 @@
             this.Name = "FormMain";
             this.Text = "Fakturka";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormMain_FormClosing);
+            this.Load += new System.EventHandler(this.FormMain_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataSet1)).EndInit();
@@ -244,9 +245,9 @@
         private System.Windows.Forms.ToolStripMenuItem programToolStripMenuItem;
         private System.Data.DataSet dataSet1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.Button buttonTowaryUslugi;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button buttonShowArticles;
+        private System.Windows.Forms.Button buttonShowCustomers;
+        private System.Windows.Forms.Button buttonNewInvoice;
         private System.Windows.Forms.Button buttonInvoicesList;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.ToolStripMenuItem bazaDanychToolStripMenuItem;

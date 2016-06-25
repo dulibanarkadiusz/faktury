@@ -23,12 +23,14 @@ namespace fakturyA
         public void LoadContent()
         {
             UsersNicknames.Clear();
+            componentsList.Clear();
             UsersNicknames = DatabaseMySQL.GetUsersNicknamesList();
+            panel1.Controls.Clear();
             int posY = 0; int i = 0;
             for (int j = 0; j < 3; j++)
                 foreach (string nickname in UsersNicknames)
                 {
-                    componentsList.Add(new UserControl_PermissionsEditor(nickname));
+                    componentsList.Add(new UserControl_PermissionsEditor(nickname, this));
 
                     componentsList[i].Location = new Point(0, posY);
                     panel1.Controls.Add(componentsList[i++]);

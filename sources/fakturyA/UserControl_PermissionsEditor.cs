@@ -13,13 +13,15 @@ namespace fakturyA
     public partial class UserControl_PermissionsEditor : UserControl
     {
         private Worker worker;
-        public UserControl_PermissionsEditor(string login)
+        private FormUserList formUserList_ref; 
+        public UserControl_PermissionsEditor(string login, FormUserList form_UserList)
         {
             InitializeComponent();
             userControl_PermissionViewArticles.SetName("Artykuły");
             userControl_PermissionViewCustomer.SetName("Klienci");
             userControl_PermissionViewInvoice.SetName("Faktury");
 
+            formUserList_ref = form_UserList;
             worker = new Worker(login);
             labelUser.Text = login + " ("+ worker.Name + " " + worker.SurnName + ")";
             WritePermissions();
@@ -50,8 +52,10 @@ namespace fakturyA
 
         private void buttonEdit_Click(object sender, EventArgs e)
         {
-            FormPermissionEditor w = new FormPermissionEditor(worker, true);
+            FormPermissionEditor w = new FormPermissionEditor(worker, true, formUserList_ref);
             w.ShowDialog();
+
+            formUserList_ref.LoadContent();
         }
 
         private void buttonRemove_Click(object sender, EventArgs e)

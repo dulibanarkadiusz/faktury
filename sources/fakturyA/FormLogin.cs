@@ -16,7 +16,6 @@ namespace fakturyA
         public FormLogin()
         {
             InitializeComponent();
-            MainProgram.LoginWindow = this;
         }
 
         private void buttonExit_Click(object sender, EventArgs e)
@@ -88,7 +87,7 @@ namespace fakturyA
             {
                 SaveConfiguration();
 
-                MainProgram.LoggIn(textBoxLoginname.Text);
+                //MainProgram.LoggIn(textBoxLoginname.Text);
                 DatabaseMySQL.Uzytkownik = textBoxLoginname.Text;
                 DatabaseMySQL.Haslo = textBoxPassword.Text;
                 DatabaseMySQL.Port = (uint)(numericUpDownPortNumbrt.Value);

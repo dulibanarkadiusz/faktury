@@ -61,7 +61,7 @@ namespace fakturyA
 
         private void pokażMojeUprawnieniaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FormPermissionEditor w = new FormPermissionEditor(MainProgram.Worker, false);
+            FormPermissionEditor w = new FormPermissionEditor(MainProgram.Worker, false, null);
             w.ShowDialog();
         }
 
@@ -91,6 +91,32 @@ namespace fakturyA
         private void FormMain_FormClosing(object sender, FormClosingEventArgs e)
         {
             Application.Exit();
+        }
+
+        private void FormMain_Load(object sender, EventArgs e)
+        {
+            if (MainProgram.Worker.Invoice_tablePermission.AllowSelect == false)
+            {
+                buttonInvoicesList.Enabled = false;
+            }
+            if (MainProgram.Worker.Invoice_tablePermission.AllowInsert == false)
+            {
+                buttonNewInvoice.Enabled = false;
+            }
+            if (MainProgram.Worker.Customer_tablePermission.AllowSelect == false)
+            {
+                buttonShowCustomers.Enabled = false;
+            }
+            if (MainProgram.Worker.Invoice_tablePermission.AllowSelect == false)
+            {
+                buttonShowArticles.Enabled = false;
+            }
+
+            // menu 
+            if (MainProgram.Worker.SuperUser == false)
+            {
+                pokażUżytkownikówToolStripMenuItem.Visible = false;
+            }
         }
     }
 }

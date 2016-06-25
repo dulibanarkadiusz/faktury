@@ -398,6 +398,7 @@ namespace fakturyA
                 MessageBox.Show("Zapytań:" + queryList.Count);
                 foreach (string query in queryList)
                 {
+                    MessageBox.Show(query);
                     command.CommandText = query;
                     n += command.ExecuteNonQuery();
                 }

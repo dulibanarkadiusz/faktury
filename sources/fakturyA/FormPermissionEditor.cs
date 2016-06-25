@@ -14,8 +14,9 @@ namespace fakturyA
     {
         private Worker worker;
         private bool isLoad = false;
+        private FormUserList formUserList;
 
-        public FormPermissionEditor(Worker worker, bool editMode)
+        public FormPermissionEditor(Worker worker, bool editMode, FormUserList form)
         {
             InitializeComponent();
             this.worker = worker;
@@ -26,6 +27,7 @@ namespace fakturyA
                 checkBoxSuperUser.Visible = false;
             }
 
+            formUserList = form;
         }
 
         private void FormMyPermissionView_Load(object sender, EventArgs e)
@@ -79,26 +81,39 @@ namespace fakturyA
                 if (checkBoxCustomerUpdate.Checked) customers_Permissions += "UPDATE, ";
                 if (checkBoxCustomerDelete.Checked) customers_Permissions += "DELETE, ";
 
+
+                if (worker.Article_tablePermission.AllowDelete || worker.Article_tablePermission.AllowInsert || worker.Article_tablePermission.AllowSelect || worker.Article_tablePermission.AllowUpdate)
+                {
+                    queryList.Add(String.Format("REVOKE ALL PRIVILEGES ON {0}.{1} FROM {2}@{3};", DatabaseMySQL.Database, MainProgram.ArticlesTablename, worker.LoginName, DatabaseMySQL.Serwer));
+                }
                 if (articles_Permissions.Length > 0)
                 {
                     articles_Permissions = articles_Permissions.Remove(articles_Permissions.Length - 2);
-                    queryList.Add(String.Format("REVOKE ALL PRIVILEGES ON {0}.{1} FROM {2}@{3};", DatabaseMySQL.Database, MainProgram.ArticlesTablename, worker.LoginName, DatabaseMySQL.Serwer));
+
                     queryList.Add(String.Format("GRANT {0} ON {1}.{2} TO {3}@{4};", articles_Permissions, DatabaseMySQL.Database, MainProgram.ArticlesTablename, worker.LoginName, DatabaseMySQL.Serwer));
-                    MessageBox.Show(queryList[0]);
+                }
+
+
+                if (worker.Invoice_tablePermission.AllowDelete || worker.Invoice_tablePermission.AllowInsert || worker.Invoice_tablePermission.AllowSelect || worker.Invoice_tablePermission.AllowUpdate)
+                {
+                    queryList.Add(String.Format("REVOKE ALL PRIVILEGES ON {0}.{1} FROM {2}@{3};", DatabaseMySQL.Database, MainProgram.InvoicesTablename, worker.LoginName, DatabaseMySQL.Serwer));
                 }
                 if (invoices_Permissions.Length > 0)
                 {
                     invoices_Permissions = invoices_Permissions.Remove(invoices_Permissions.Length - 2);
-                    queryList.Add(String.Format("REVOKE ALL PRIVILEGES ON {0}.{1} FROM {2}@{3};", DatabaseMySQL.Database, MainProgram.InvoicesTablename, worker.LoginName, DatabaseMySQL.Serwer));
                     queryList.Add(String.Format("GRANT {0} ON {1}.{2} TO {3}@{4};", invoices_Permissions, DatabaseMySQL.Database, MainProgram.InvoicesTablename, worker.LoginName, DatabaseMySQL.Serwer));
-                    MessageBox.Show(queryList[1]);
+                }
+
+
+
+                if (worker.Customer_tablePermission.AllowDelete || worker.Customer_tablePermission.AllowInsert || worker.Customer_tablePermission.AllowSelect || worker.Customer_tablePermission.AllowUpdate)
+                {
+                    queryList.Add(String.Format("REVOKE ALL PRIVILEGES ON {0}.{1} FROM {2}@{3};", DatabaseMySQL.Database, MainProgram.CustomersTablename, worker.LoginName, DatabaseMySQL.Serwer));
                 }
                 if (customers_Permissions.Length > 0)
                 {
                     customers_Permissions = customers_Permissions.Remove(customers_Permissions.Length - 2);
-                    queryList.Add(String.Format("REVOKE ALL PRIVILEGES ON {0}.{1} FROM {2}@{3};", DatabaseMySQL.Database, MainProgram.CustomersTablename, worker.LoginName, DatabaseMySQL.Serwer));
                     queryList.Add(String.Format("GRANT {0} ON {1}.{2} TO {3}@{4};", customers_Permissions, DatabaseMySQL.Database, MainProgram.CustomersTablename, worker.LoginName, DatabaseMySQL.Serwer));
-                    MessageBox.Show(queryList[2]);
                 }
 
                 DatabaseMySQL.ExecuteTransaction(queryList);
@@ -108,6 +123,7 @@ namespace fakturyA
                 string myQuery = String.Format("GRANT ALL PRIVILEGES ON * . * TO {0}@{1} ", worker.LoginName, DatabaseMySQL.Serwer);
                 DatabaseMySQL.ExecuteQuery(myQuery);
             }
+
             this.Close();
         }
 

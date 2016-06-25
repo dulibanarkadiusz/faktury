@@ -37,9 +37,9 @@ namespace fakturyA
             MailMessage mm = new MailMessage();
             mm.From = new MailAddress("fakturka2016@gmail.com", "MojaFirma");
             mm.To.Add(new MailAddress("arkadiusz.duliban@gmail.com", "Arkadiusz Duliban"));
-            mm.Subject = "Nowa faktura VAT";
+            mm.Subject = "Nowa faktura VAT ";
             mm.IsBodyHtml = true;
-            mm.Body = "<b>Źródło szczęścia!</b>";
+            mm.Body = "Dzień dobry,<br><br>W załączniku przesyłam Państwa fakturę VAT. Można ją otworzyć przy wykorzystaniu przeglądarki internetowej (Google Chrome, Mozilla Firefox) lub oprogramowania pozwalającego wyświetlać pliki PDF (np. Adobe Reader)<br><br>W razie pytań pozostajemy do Państwa dyspozycji.<br><br><br>Z poważaniem<br>"+MainProgram.Worker.Name;
 
             System.Net.Mail.Attachment attachment;
             attachment = new System.Net.Mail.Attachment(fileName);
