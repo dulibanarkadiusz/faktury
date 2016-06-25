@@ -59,16 +59,6 @@
             this.labelCustomerName = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.nr = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.priceNetto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.vat = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.price_brutto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.discount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.measureUnit = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.valueNetto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.valueBrutto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.buttonSaveInvoice = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.buttonAddArticleToInvoice = new System.Windows.Forms.Button();
@@ -82,6 +72,16 @@
             this.label12 = new System.Windows.Forms.Label();
             this.buttonEditArticleOnInvoice = new System.Windows.Forms.Button();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.nr = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.priceNetto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.vat = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.price_brutto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.discount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.measureUnit = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.valueNetto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.valueBrutto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel5.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -466,73 +466,6 @@
             this.dataGridView1.Size = new System.Drawing.Size(674, 264);
             this.dataGridView1.TabIndex = 1;
             // 
-            // nr
-            // 
-            this.nr.HeaderText = "Lp.";
-            this.nr.Name = "nr";
-            this.nr.ReadOnly = true;
-            this.nr.Width = 40;
-            // 
-            // name
-            // 
-            this.name.HeaderText = "Nazwa produktu";
-            this.name.Name = "name";
-            this.name.ReadOnly = true;
-            // 
-            // priceNetto
-            // 
-            this.priceNetto.HeaderText = "Cena netto";
-            this.priceNetto.Name = "priceNetto";
-            this.priceNetto.ReadOnly = true;
-            // 
-            // vat
-            // 
-            this.vat.HeaderText = "VAT";
-            this.vat.Name = "vat";
-            this.vat.ReadOnly = true;
-            this.vat.Width = 35;
-            // 
-            // price_brutto
-            // 
-            this.price_brutto.HeaderText = "Cena brutto";
-            this.price_brutto.Name = "price_brutto";
-            this.price_brutto.ReadOnly = true;
-            // 
-            // discount
-            // 
-            this.discount.HeaderText = "Rabat";
-            this.discount.Name = "discount";
-            this.discount.ReadOnly = true;
-            this.discount.Width = 45;
-            // 
-            // amount
-            // 
-            this.amount.HeaderText = "Ilość";
-            this.amount.Name = "amount";
-            this.amount.ReadOnly = true;
-            this.amount.Width = 50;
-            // 
-            // measureUnit
-            // 
-            this.measureUnit.HeaderText = "j. m.";
-            this.measureUnit.Name = "measureUnit";
-            this.measureUnit.ReadOnly = true;
-            this.measureUnit.Width = 40;
-            // 
-            // valueNetto
-            // 
-            this.valueNetto.HeaderText = "Wartość netto";
-            this.valueNetto.Name = "valueNetto";
-            this.valueNetto.ReadOnly = true;
-            this.valueNetto.Width = 80;
-            // 
-            // valueBrutto
-            // 
-            this.valueBrutto.HeaderText = "Wartość brutto";
-            this.valueBrutto.Name = "valueBrutto";
-            this.valueBrutto.ReadOnly = true;
-            this.valueBrutto.Width = 80;
-            // 
             // buttonSaveInvoice
             // 
             this.buttonSaveInvoice.Location = new System.Drawing.Point(593, 584);
@@ -680,6 +613,73 @@
             this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             this.contextMenuStrip1.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip1_Opening);
             // 
+            // nr
+            // 
+            this.nr.HeaderText = "Kod";
+            this.nr.Name = "nr";
+            this.nr.ReadOnly = true;
+            this.nr.Width = 40;
+            // 
+            // name
+            // 
+            this.name.HeaderText = "Nazwa produktu";
+            this.name.Name = "name";
+            this.name.ReadOnly = true;
+            // 
+            // priceNetto
+            // 
+            this.priceNetto.HeaderText = "Cena netto";
+            this.priceNetto.Name = "priceNetto";
+            this.priceNetto.ReadOnly = true;
+            // 
+            // vat
+            // 
+            this.vat.HeaderText = "VAT";
+            this.vat.Name = "vat";
+            this.vat.ReadOnly = true;
+            this.vat.Width = 35;
+            // 
+            // price_brutto
+            // 
+            this.price_brutto.HeaderText = "Cena brutto";
+            this.price_brutto.Name = "price_brutto";
+            this.price_brutto.ReadOnly = true;
+            // 
+            // discount
+            // 
+            this.discount.HeaderText = "Rabat";
+            this.discount.Name = "discount";
+            this.discount.ReadOnly = true;
+            this.discount.Width = 45;
+            // 
+            // amount
+            // 
+            this.amount.HeaderText = "Ilość";
+            this.amount.Name = "amount";
+            this.amount.ReadOnly = true;
+            this.amount.Width = 50;
+            // 
+            // measureUnit
+            // 
+            this.measureUnit.HeaderText = "j. m.";
+            this.measureUnit.Name = "measureUnit";
+            this.measureUnit.ReadOnly = true;
+            this.measureUnit.Width = 40;
+            // 
+            // valueNetto
+            // 
+            this.valueNetto.HeaderText = "Wartość netto";
+            this.valueNetto.Name = "valueNetto";
+            this.valueNetto.ReadOnly = true;
+            this.valueNetto.Width = 80;
+            // 
+            // valueBrutto
+            // 
+            this.valueBrutto.HeaderText = "Wartość brutto";
+            this.valueBrutto.Name = "valueBrutto";
+            this.valueBrutto.ReadOnly = true;
+            this.valueBrutto.Width = 80;
+            // 
             // FormInvoiceEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -762,16 +762,6 @@
         private System.Windows.Forms.Label labelCustomerNIP;
         private System.Windows.Forms.Label labelCustomerName;
         private System.Windows.Forms.Button buttonAddArticleToInvoice;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nr;
-        private System.Windows.Forms.DataGridViewTextBoxColumn name;
-        private System.Windows.Forms.DataGridViewTextBoxColumn priceNetto;
-        private System.Windows.Forms.DataGridViewTextBoxColumn vat;
-        private System.Windows.Forms.DataGridViewTextBoxColumn price_brutto;
-        private System.Windows.Forms.DataGridViewTextBoxColumn discount;
-        private System.Windows.Forms.DataGridViewTextBoxColumn amount;
-        private System.Windows.Forms.DataGridViewTextBoxColumn measureUnit;
-        private System.Windows.Forms.DataGridViewTextBoxColumn valueNetto;
-        private System.Windows.Forms.DataGridViewTextBoxColumn valueBrutto;
         private System.Windows.Forms.Button buttonRemoveArticleFromInvoice;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel9;
         private System.Windows.Forms.Label label9;
@@ -782,6 +772,16 @@
         private System.Windows.Forms.TextBox textBoxAmountPaid;
         private System.Windows.Forms.Button buttonEditArticleOnInvoice;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nr;
+        private System.Windows.Forms.DataGridViewTextBoxColumn name;
+        private System.Windows.Forms.DataGridViewTextBoxColumn priceNetto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn vat;
+        private System.Windows.Forms.DataGridViewTextBoxColumn price_brutto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn discount;
+        private System.Windows.Forms.DataGridViewTextBoxColumn amount;
+        private System.Windows.Forms.DataGridViewTextBoxColumn measureUnit;
+        private System.Windows.Forms.DataGridViewTextBoxColumn valueNetto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn valueBrutto;
 
 
     }

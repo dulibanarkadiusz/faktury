@@ -50,13 +50,17 @@ namespace fakturyA
                     row.Cells["KlientName"].Value = invoice.CusotmerName;
                     row.Cells["WartoscFaktury"].Value = invoice.InvoiceValue + MainProgram.CurrencySymbol;
                     row.Cells["DoZaplaty"].Value = invoice.InvoiceValue - invoice.AmountPaid + MainProgram.CurrencySymbol;
-                    if (invoice.InvoiceValue != invoice.AmountPaid)
+                    if (invoice.InvoiceValue > invoice.AmountPaid)
                     {
                         row.Cells["DoZaplaty"].Style.ForeColor = Color.Red;
                         if (invoice.PaymentDate < DateTime.Now)
                         {
                             row.Cells["TerminPlatnosci"].Style.ForeColor = Color.Red;
                         }
+                    }
+                    else
+                    {
+                        row.Cells["DoZaplaty"].Value = 0 + MainProgram.CurrencySymbol;
                     }
 
                     row.Cells["DataWystawienia"].Value = invoice.InvoiceDate.ToString().Remove(MainProgram.DateLength);

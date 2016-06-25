@@ -63,6 +63,7 @@ namespace fakturyA
         public static FormArticles ArticlesWindow { get; set; }
         public static FormInvoiceEditor InvoiceEditor { get; set; }
         public static FormCustomers CustomerWindow { get; set; }
+        public static FormLogin LoginWindow { get; set; }
 
         /* Listy */
         public static List<Invoice> InvoiceObjectsList { get; set; }

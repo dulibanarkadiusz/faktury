@@ -31,6 +31,7 @@ namespace fakturyA
         public int EmployeeID { get; private set; }
         public string EmployeeName { get; private set; }
         public string CustomerNIP { get; private set; }
+        public Customers Customer { get; set; }
         public List<ArticleOnInvoice> ArticlesOnInvoiceList { get; private set; }
 
         public int CustomerID

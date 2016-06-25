@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace fakturyA
 {
-    class Customers
+    public class Customers
     {
         private int customerID;
         public int IdNumber { get; private set; } //0
@@ -26,11 +26,24 @@ namespace fakturyA
                 customerID = value;
             }
         }
+        public Customers()
+        {
+
+            CompanyName = "";
+            CustomerName = "";
+            Address = "";
+            City = "";
+            Code = "";
+            Email = "";
+            CustomerNIP = "";
+
+        }
         public Customers(string[] dataRow)
         {
-            
+
             try
             {
+                // CustomerID = Convert.ToInt32(dataRow[0]);
                 CompanyName = dataRow[1];
                 CustomerName = dataRow[2];
                 Address = dataRow[3];
@@ -40,8 +53,8 @@ namespace fakturyA
 
                 if (dataRow.Length == 8)
                     CustomerNIP = dataRow[7];
-   
-                
+
+
 
             }
             catch (Exception exc)
@@ -52,13 +65,12 @@ namespace fakturyA
 
         public string GenerateInsertQuery()
         {
-            return String.Format("INSERT INTO kontrahent SET  nazwa='{0}', imie_nazwisko='{1}', ulica='{2}', miasto='{3}', kod_pocztowy='{4}', email='{5}', NIP='{6}'", CompanyName, CompanyName, Address, City, Code, Email, CustomerNIP);
+            return String.Format("INSERT INTO kontrahent SET  nazwa='{0}', imie_nazwisko='{1}', ulica='{2}', miasto='{3}', kod_pocztowy='{4}', email='{5}', NIP='{6}'", CompanyName, CustomerName, Address, City, Code, Email, CustomerNIP);
         }
 
-        public string GenerateDeleteQuery()
+        public string GenerateQueryDropCustomer()
         {
-            return "";
+            return String.Format("Delete from kontrahent where nazwa='{0}'", CompanyName);
         }
     }
-
 }

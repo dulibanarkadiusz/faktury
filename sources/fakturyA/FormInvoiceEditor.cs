@@ -200,7 +200,7 @@ namespace fakturyA
             {
                 FormCustomers SelectCustomerID = new FormCustomers();
                 SelectCustomerID.ukryj(true);
-                editInvoice.CustomerID = SelectCustomerID.ChooseConsumerWindow();
+                editInvoice.Customer = SelectCustomerID.ChooseConsumerWindow();
 
                 GetAndLoadCustomerDetails();
             }
@@ -232,14 +232,16 @@ namespace fakturyA
 
         private void GetAndLoadCustomerDetails()
         {
-            if (editInvoice.CustomerID > 0)
+            if (editInvoice.Customer != null)
             {
-
-                labelCustomerName.Text = editInvoice.CustomerID.ToString();
-                string[] consumerData = DatabaseMySQL.GetCustomerData(editInvoice.CustomerID);
-                labelCustomerName.Text = consumerData[0];
-                labelCustomerAdress.Text = consumerData[1];
-                labelCustomerNIP.Text = consumerData[2];
+                //labelCustomerName.Text = editInvoice.CustomerID.ToString();
+                //string[] consumerData = DatabaseMySQL.GetCustomerData(editInvoice.CustomerID);
+                //labelCustomerName.Text = consumerData[0];
+                //labelCustomerAdress.Text = consumerData[1];
+                //labelCustomerNIP.Text = consumerData[2];
+                labelCustomerName.Text = editInvoice.Customer.CompanyName;
+                labelCustomerAdress.Text = String.Format("{0}\n{1} {2}", editInvoice.Customer.Address, editInvoice.Customer.Code, editInvoice.Customer.City);
+                labelCustomerNIP.Text = editInvoice.Customer.CustomerNIP;
             }
         }
 

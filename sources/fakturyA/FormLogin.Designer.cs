@@ -300,6 +300,7 @@
             this.Name = "FormLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Logowanie do systemu Fakturka";
+            this.Load += new System.EventHandler(this.FormLogin_Load);
             this.groupBox1.ResumeLayout(false);
             this.panelFormInputs.ResumeLayout(false);
             this.panelFormInputs.PerformLayout();

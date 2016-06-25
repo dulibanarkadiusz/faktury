@@ -14,22 +14,28 @@ namespace fakturyA
     {
 
         private int SelectedConsumerID { get; set; }
-
+        public bool EditMode { get; set; }
 
         public FormCustomers()
         {
             InitializeComponent();
             ukryj(false);
             WriteAllCustomer();
-
-            
+            SelectedConsumerID = -1;
         }
 
-        public int ChooseConsumerWindow()
+        public Customers ChooseConsumerWindow()
         {
             this.ShowDialog();
-            return SelectedConsumerID; // przekaż na wyjście ID zaznaczonego rekordu. 
-            // ktoś nie zaznaczył nic -> zwróć:  -1
+            if (SelectedConsumerID >= 0)
+            {
+                return MainProgram.CustomersList[SelectedConsumerID];
+            }
+            else
+            {
+                return null;
+            }
+       
         }
         public void ukryj(bool ktory)
         {
@@ -45,6 +51,17 @@ namespace fakturyA
             }
 
         }
+        private void dataGridView1_MouseClick(object sender, MouseEventArgs e)
+        {
+            int mouseOnRow = dataGridView1.HitTest(e.X, e.Y).RowIndex;
+            if (mouseOnRow >= 0 && EditMode)
+            {
+                ContextMenu a = new ContextMenu();
+                // a.MenuItems.Add(new MenuItem(string.Format("Edytuj", dataGridView1.Rows[mouseOnRow].Cells["Kod"].Value), new EventHandler(this.editArticle_click)));
+                // a.MenuItems.Add(new MenuItem(string.Format("Usuń", dataGridView1.Rows[mouseOnRow].Cells["NazwaFirmy"].Value), new EventHandler(this.DeleteCustomer)));
+                a.Show(dataGridView1, new Point(e.X, e.Y));
+            }
+        }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -52,7 +69,7 @@ namespace fakturyA
         }
         private void WriteAllCustomer()
         {
-            dataGridView1.Rows.Clear(); // wyczyść poprzednie dane nim załadujesz
+            MainProgram.CustomersList.Clear(); // wyczyść poprzednie dane nim załadujesz
             DatabaseMySQL.LoadCustomerList();
 
             if (MainProgram.CustomersList.Count > 0) // jeśli tablica nie-pusta
@@ -84,12 +101,24 @@ namespace fakturyA
             WriteAllCustomer();
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (this.dataGridView1.SelectedRows.Count > 0)
+            {
+                int rowIndeks = dataGridView1.SelectedRows[0].Index;
+                Customers customer = MainProgram.CustomersList[rowIndeks];
+                DatabaseMySQL.ExecuteQuery(customer.GenerateQueryDropCustomer());
+                dataGridView1.Rows.RemoveAt(this.dataGridView1.SelectedRows[0].Index);
+                MessageBox.Show("Kontrahent został usunięty poprawnie");
+            }
+        }
+
         private void buttonSel_Click(object sender, EventArgs e)
         {
-            SelectedConsumerID = dataGridView1.SelectedRows[0].Index;
+
+            SelectedConsumerID = this.dataGridView1.SelectedRows[0].Index;
             this.Close();
         }
 
-       
     }
 }
