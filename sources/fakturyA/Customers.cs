@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace fakturyA
 {
@@ -41,17 +42,17 @@ namespace fakturyA
         public Customers(int id)
         {
             string [] dane = DatabaseMySQL.GetCustomerData(id);
+            MessageBox.Show(dane.Length+ "");
             try
             {
-                CustomerID = Convert.ToInt32(dane[0]);
+                CustomerID = id;
                 CompanyName = dane[1];
                 CustomerName = dane[2];
                 Address = dane[3];
                 City = dane[4];
                 Code = Convert.ToInt32(dane[5]);
                 Email = dane[6];
-                if (dane.Length == 8)
-                    CustomerNIP = dane[7];
+                CustomerNIP = dane[7];
             }
             catch (Exception exc)
             {

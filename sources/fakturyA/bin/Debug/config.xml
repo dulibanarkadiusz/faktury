@@ -3,12 +3,12 @@
   <databaseName>faktury</databaseName>
   <hostname>localhost</hostname>
   <port>3306</port>
-  <NazwaFirmy>qwe</NazwaFirmy>
-  <MiastoFirmy>qwe</MiastoFirmy>
-  <UlicaFirmy>qwe</UlicaFirmy>
-  <NIPFirmy>qwe</NIPFirmy>
-  <KodFirmy>qwe</KodFirmy>
-  <REGONFirmy>er</REGONFirmy>
-  <kontoBankowe1Firmy>wer</kontoBankowe1Firmy>
-  <kontoBankowe2Firmy>err</kontoBankowe2Firmy>
+  <NazwaFirmy>Firma sp. j.</NazwaFirmy>
+  <MiastoFirmy>Gliwice</MiastoFirmy>
+  <UlicaFirmy>Bankowa 494 lok. 2</UlicaFirmy>
+  <NIPFirmy>1234567890</NIPFirmy>
+  <KodFirmy>44100</KodFirmy>
+  <REGONFirmy></REGONFirmy>
+  <kontoBankowe1Firmy>481111222233334444</kontoBankowe1Firmy>
+  <kontoBankowe2Firmy>629999888877776666</kontoBankowe2Firmy>
 </body>

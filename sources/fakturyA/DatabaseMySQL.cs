@@ -197,12 +197,12 @@ namespace fakturyA
         {
             // Pobiera dane na temat danego kontrahenta
             // Stworzone jedynie testowo. 
-            string[] data = new string[3];
+            string[] data = new string[8];
             MainProgram.Connection = DatabaseMySQL.Connect(MainProgram.DatabaseName);
             try
             {
                 DatabaseMySQL.OpenConnection(MainProgram.Connection);
-                string queryText = string.Format("SELECT nazwa, concat(ulica, '\n', left(kod_pocztowy,2), '-', right(kod_pocztowy,3), ' ', miasto), nip from kontrahent WHERE id={0}", id);
+                string queryText = string.Format("SELECT * from kontrahent WHERE id={0}", id);
                 MySqlCommand query = new MySqlCommand(queryText, MainProgram.Connection);
                 MySqlDataReader dataReader = query.ExecuteReader();
 

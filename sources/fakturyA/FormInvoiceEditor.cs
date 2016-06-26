@@ -52,7 +52,7 @@ namespace fakturyA
             InitializeComponent();
             EditInvoice = invoice;
             MainProgram.InvoiceEditor = this;
-
+            editInvoice.Customer = new Customers(editInvoice.CustomerID);
 
             if (EditInvoice.InvoiceTotalNetto < 0.01m)
             {
@@ -323,7 +323,8 @@ namespace fakturyA
         private void buttonEditArticleOnInvoice_Click(object sender, EventArgs e)
         {
             //MessageBox.Show((editInvoice.ArticlesOnInvoiceList[dataGridView1.SelectedRows[0].Index]).Amount + "szt");
-            FormArticleAmount w = new FormArticleAmount(editInvoice.ArticlesOnInvoiceList[dataGridView1.SelectedRows[0].Index]);
+            ArticleOnInvoice editedItem = editInvoice.ArticlesOnInvoiceList[dataGridView1.SelectedRows[0].Index];
+            FormArticleAmount w = new FormArticleAmount(ref editedItem);
             w.ShowDialog();
         }
 

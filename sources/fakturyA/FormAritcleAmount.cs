@@ -16,7 +16,7 @@ namespace fakturyA
         public double Discount { get; set; }
         private int indeks;
         private bool edit_window;
-        private ArticleOnInvoice edit = new ArticleOnInvoice(FormArticles.articlesList[1], 12, 11);
+        private ArticleOnInvoice edit;
         public FormArticleAmount(int indeks)
         {
            
@@ -25,7 +25,7 @@ namespace fakturyA
             InitializeComponent();
             button1.Text = "Dodaj Rabat i ilość";
         }
-        public FormArticleAmount(ArticleOnInvoice a)
+        public FormArticleAmount(ref ArticleOnInvoice a)
         {
             edit_window = true;
             InitializeComponent();

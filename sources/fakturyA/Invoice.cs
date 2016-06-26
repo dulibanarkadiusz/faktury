@@ -21,7 +21,6 @@ namespace fakturyA
         private decimal invoiceTotalNetto = 0;
         private string customerName;
         private string paymentMethod = "przelew";
-        //private string customerNIP;
 
         string[] paymentMethods = { "przelew", "gotówka", "karta płatnicza", "płatność online", "płatność ratalna" };
 
