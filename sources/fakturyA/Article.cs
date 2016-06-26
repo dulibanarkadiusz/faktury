@@ -14,10 +14,8 @@ namespace fakturyA
         public decimal PriceNetto { get; set; }
         public decimal PriceBrutto { get; set; }
         public decimal VATvalue { get; set; }
-        public int Amount { get; set; } //ilosc
         public string UnitMeasure { get; set; }// jednostka miary
-        public decimal Discount { get; set; }
-
+       
         public Article()
         {
             Code = "";
@@ -26,8 +24,7 @@ namespace fakturyA
             PriceBrutto = 0.0M;
             VATvalue = 0.0m;
             UnitMeasure = "usluga";
-            Discount = 0.0m;
-            Amount = 0;
+           
         }
         public Article(string[] row)
         {

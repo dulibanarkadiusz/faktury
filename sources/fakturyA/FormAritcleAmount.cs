@@ -15,13 +15,15 @@ namespace fakturyA
         public int Amount { get; set; }
         public double Discount { get; set; }
         private int indeks;
-        private bool edit_window = false;
+        private bool edit_window;
         private ArticleOnInvoice edit = new ArticleOnInvoice(FormArticles.articlesList[1], 12, 11);
         public FormArticleAmount(int indeks)
         {
+           
             edit_window = false;
             this.indeks = indeks;
             InitializeComponent();
+            button1.Text = "Dodaj Rabat i ilość";
         }
         public FormArticleAmount(ArticleOnInvoice a)
         {
@@ -54,21 +56,16 @@ namespace fakturyA
                 Discount_TB.Text = Discount_TB.Text.Trim().ToString();
                 if (Discount_TB.Text != "" && Amount_TB.Text != "")
                 {
-
-
-                    FormArticles.articlesList[indeks].Discount = Convert.ToDecimal(Discount_TB.Text);
-                    FormArticles.articlesList[indeks].Amount = Convert.ToInt32(Amount_TB.Text);
-
                     // MainProgram.AddArticletoInvoiceWindow.
                     // MainProgram.AddArticletoInvoiceWindow.Close();
                     /* POPRAWECZKI ARECZKA --- tam na dole \/ */
                     ArticleOnInvoice pos = new ArticleOnInvoice(FormArticles.articlesList[indeks], Convert.ToDecimal(Discount_TB.Text), Convert.ToDecimal(Amount_TB.Text));
                     MainProgram.InvoiceEditor.AddArticleToInvoice(pos);
-                    edit_window = false;
                     Close();
 
                 }
-                else
+            }
+                if(edit_window==true)
                 {
 
                     Amount_TB.Text = Amount_TB.Text.Trim().ToString();
@@ -80,11 +77,10 @@ namespace fakturyA
                         edit.Discount = Convert.ToDecimal(Discount_TB.Text);
 
                         //  ArticleOnInvoice pos = new ArticleOnInvoice(FormArticles.articlesList[indeks], Convert.ToDecimal(Discount_TB.Text), Convert.ToDecimal(Amount_TB.Text));
-                        MainProgram.InvoiceEditor.AddArticleToInvoice(edit);
+                        //MainProgram.InvoiceEditor.AddArticleToInvoice(edit);
                         edit_window = false;
                         Close();
                     }
-                }
             }
         }
 

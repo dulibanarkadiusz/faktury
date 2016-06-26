@@ -322,7 +322,7 @@ namespace fakturyA
 
         private void buttonEditArticleOnInvoice_Click(object sender, EventArgs e)
         {
-            MessageBox.Show((editInvoice.ArticlesOnInvoiceList[dataGridView1.SelectedRows[0].Index]).Amount + "szt");
+            //MessageBox.Show((editInvoice.ArticlesOnInvoiceList[dataGridView1.SelectedRows[0].Index]).Amount + "szt");
             FormArticleAmount w = new FormArticleAmount(editInvoice.ArticlesOnInvoiceList[dataGridView1.SelectedRows[0].Index]);
             w.ShowDialog();
         }
