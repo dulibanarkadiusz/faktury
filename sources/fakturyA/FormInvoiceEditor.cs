@@ -32,6 +32,11 @@ namespace fakturyA
 
         private void AddNewInvoice_Load(object sender, EventArgs e)
         {
+            
+        }
+
+        private void SetDefaultValues()
+        {
             dateTimePickerDateInvoice.MaxDate = DateTime.Now;
             dateTimePickerDateInvoice.MinDate = DateTime.Now.AddDays(-14);
             dateTimePickerDatePayment.MaxDate = DateTime.Now.AddDays(30);
@@ -44,6 +49,7 @@ namespace fakturyA
         {
             InitializeComponent();
             editInvoice = new Invoice();
+            SetDefaultValues();
         }
 
 
@@ -52,20 +58,8 @@ namespace fakturyA
             InitializeComponent();
             EditInvoice = invoice;
             MainProgram.InvoiceEditor = this;
-            //editInvoice.Customer = new Customers(editInvoice.CustomerID);
 
-            if (EditInvoice.InvoiceTotalNetto < 0.01m)
-            {
-                DatabaseMySQL.LoadPositionsOnInvoice(invoice);
-            }
-            else
-            {
-                foreach (ArticleOnInvoice articleOnInvoice in invoice.ArticlesOnInvoiceList)
-                {
-                    WriteArticleOnInvoice_ToDataGridView(articleOnInvoice);
-                }
-            }
-
+            GetAndWriteArticlesToInvoiceEditor();
             formLoaded = true;
                
 
@@ -87,6 +81,21 @@ namespace fakturyA
             labelInvoiceValue.Text = EditInvoice.InvoiceValue.ToString() + " zł";
         }
 
+        private void GetAndWriteArticlesToInvoiceEditor()
+        {
+            if (EditInvoice.InvoiceTotalNetto < 0.01m)
+            {
+                DatabaseMySQL.LoadPositionsOnInvoice(editInvoice);
+            }
+            else
+            {
+                foreach (ArticleOnInvoice articleOnInvoice in editInvoice.ArticlesOnInvoiceList)
+                {
+                    WriteArticleOnInvoice_ToDataGridView(articleOnInvoice);
+                }
+            }
+        }
+
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             // zmieniono termin płatności
@@ -98,7 +107,7 @@ namespace fakturyA
                 dateTimePickerDatePayment.Value = (Convert.ToDateTime(dateTimePickerDateSale.Value)).AddDays(7);
             else if (selectedValue_DatePayment == "14 dni")
                 dateTimePickerDatePayment.Value = (Convert.ToDateTime(dateTimePickerDateSale.Value)).AddDays(14);
-            else
+            else if (editInvoice.Number == null)
             {
                 dateTimePickerDatePayment.Value = DateTime.Now;
                 dateTimePickerDatePayment.Enabled = true;
@@ -120,10 +129,12 @@ namespace fakturyA
                 editInvoice.AddArticlePositionToInvoice(article);
                 WriteArticleOnInvoice_ToDataGridView(article);
                 productCodesOnInvoice.Add(article.Article.Code);
+               
                 if (formLoaded)
                 {
-                    MessageBox.Show("-+-");
-                    addedArticlesToInvoice.Add(article);
+                    // jeśli już jest po załadowaniu istniejącej faktury, a dodawany jest [przez użytkownika] nowy artykuł : 
+                    MessageBox.Show("ok");
+                    queryList.Add(article.GetInsertQuery());
                 }
             }
             else
@@ -139,10 +150,12 @@ namespace fakturyA
 
         private void ButtonSaveInvoice_Click(object sender, EventArgs e)
         {
-            // Zapis lub uaktualnienie akturalnie otwartej faktury
+            // Zapis lub uaktualnienie aktualnie otwartej faktury
             if (ValidateForm() == false)
                 return;
-            
+
+            MessageBox.Show("ID klienta: " + editInvoice.Customer.CustomerID);
+
             ReadFormValues();
 
             string query; bool isNewInvoice = false;
@@ -160,15 +173,18 @@ namespace fakturyA
             }
             else
             {
-                MessageBox.Show("Update");
+                /// AKTUALIZACJA (UPDATE) istniejącej faktury
                 query = editInvoice.GenerateUpdateQuery(); // przygotowuje zapytanie UPDATE do bazy danych
-                foreach (ArticleOnInvoice invoiceArticle in addedArticlesToInvoice)
+                
+                foreach (string query_text in queryList)
                 {
-                    queryList.Add(invoiceArticle.GetInsertQuery());
+                    DatabaseMySQL.ExecuteQuery(query_text);
                 }
+                
                 addedArticlesToInvoice.Clear();
+                
             }
-
+            queryList.Clear(); // czyszczenie historii 
 
             int? returnValue = null;
             returnValue = DatabaseMySQL.ExecuteQuery(query);
@@ -202,6 +218,8 @@ namespace fakturyA
                 SelectCustomerID.ukryj(true);
                 editInvoice.Customer = SelectCustomerID.ChooseConsumerWindow();
 
+                MessageBox.Show("Wybrano id: " + editInvoice.Customer.CustomerID);
+                editInvoice.CustomerID = editInvoice.Customer.CustomerID;
                 GetAndLoadCustomerDetails();
             }
             else
@@ -234,11 +252,6 @@ namespace fakturyA
         {
             if (editInvoice.Customer != null)
             {
-                //labelCustomerName.Text = editInvoice.CustomerID.ToString();
-                //string[] consumerData = DatabaseMySQL.GetCustomerData(editInvoice.CustomerID);
-                //labelCustomerName.Text = consumerData[0];
-                //labelCustomerAdress.Text = consumerData[1];
-                //labelCustomerNIP.Text = consumerData[2];
                 labelCustomerName.Text = editInvoice.Customer.CompanyName;
                 labelCustomerAdress.Text = String.Format("{0}\n{1} {2}", editInvoice.Customer.Address, editInvoice.Customer.Code, editInvoice.Customer.City);
                 labelCustomerNIP.Text = editInvoice.Customer.CustomerNIP;
@@ -253,23 +266,22 @@ namespace fakturyA
 
             if (sellDate.AddDays(14) == paymentDate)
             {
-                comboBoxSelectPaymentDate.SelectedIndex = 2;
+                comboBoxSelectPaymentDate.SelectedIndex = 1;
             }
             else if (sellDate.AddDays(7) == paymentDate)
             {
-                comboBoxSelectPaymentDate.SelectedIndex = 1;
+                comboBoxSelectPaymentDate.SelectedIndex = 0;
             }
             else
             {
-                comboBoxSelectPaymentDate.SelectedIndex = 3;
+                comboBoxSelectPaymentDate.SelectedIndex = 2;
             }
-
-            editInvoice.PaymentDate = dateTimePickerDatePayment.Value;
 
         }
 
         private void ReadFormValues()
         {
+            editInvoice.PaymentDate = dateTimePickerDatePayment.Value;
             editInvoice.InvoiceDate = dateTimePickerDateInvoice.Value;
             editInvoice.SellingDate = dateTimePickerDateSale.Value;
             editInvoice.PaymentMethod = comboBoxPayMethod.Text;
@@ -322,11 +334,24 @@ namespace fakturyA
 
         private void buttonEditArticleOnInvoice_Click(object sender, EventArgs e)
         {
-            //MessageBox.Show((editInvoice.ArticlesOnInvoiceList[dataGridView1.SelectedRows[0].Index]).Amount + "szt");
             ArticleOnInvoice editedItem = editInvoice.ArticlesOnInvoiceList[dataGridView1.SelectedRows[0].Index];
             FormArticleAmount w = new FormArticleAmount(ref editedItem);
             editInvoice.ArticlesOnInvoiceList[dataGridView1.SelectedRows[0].Index] = editedItem;
+
             w.ShowDialog();
+
+            // po uzyskaniu odpowiedzi z okna edycji ilości:
+            // 1) oznacz jako artykuł do zaktualizowania 
+            //if (editInvoice.Number != null )
+           // {
+                // o ile faktura była już w ogóle zapisywana
+                // o ile ten artykuł 
+                queryList.Add(editInvoice.ArticlesOnInvoiceList[dataGridView1.SelectedRows[0].Index].GetUpdateQuery());
+          //  }
+
+            // 2) uaktualnij okno
+            dataGridView1.Rows.Clear();
+            GetAndWriteArticlesToInvoiceEditor();
         }
 
     }

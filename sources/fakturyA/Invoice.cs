@@ -11,7 +11,7 @@ namespace fakturyA
 {
     public class Invoice
     {
-        private int customerID;
+        //private int customerID;
         private string number;
         private DateTime invoiceDate;
         private DateTime paymentDate;
@@ -21,6 +21,7 @@ namespace fakturyA
         private decimal invoiceTotalNetto = 0;
         private string customerName;
         private string paymentMethod = "przelew";
+        private int customerID;
 
         string[] paymentMethods = { "przelew", "gotówka", "karta płatnicza", "płatność online", "płatność ratalna" };
 
@@ -38,7 +39,7 @@ namespace fakturyA
             set
             {
                 // sprawdź, czy klient istnieje
-                customerID=value;
+                customerID = value;
             }
         }
 
@@ -211,12 +212,12 @@ namespace fakturyA
         // generatory zapytań MySQL
         public string GenerateUpdateQuery()
         {
-            return String.Format("UPDATE faktura SET id_kontrahenta={0}, data_wystawienia='{1}', termin_platnosci='{2}', data_sprzedazy='{3}', forma_platnosci='{4}', zaplacona_kwota='{5}' WHERE numer='{6}'", CustomerID, InvoiceDate.ToString(), PaymentDate.ToString(), SellingDate.ToString(), Array.IndexOf(paymentMethods, PaymentMethod) + 1, AmountPaid.ToString(CultureInfo.InvariantCulture), Number);
+            return String.Format("UPDATE faktura SET id_kontrahenta={0}, data_wystawienia='{1}', termin_platnosci='{2}', data_sprzedazy='{3}', forma_platnosci='{4}', zaplacona_kwota='{5}' WHERE numer='{6}'", Customer.CustomerID, InvoiceDate.ToString(), PaymentDate.ToString(), SellingDate.ToString(), Array.IndexOf(paymentMethods, PaymentMethod) + 1, AmountPaid.ToString(CultureInfo.InvariantCulture), Number);
         }
 
         public string GenerateInsertQuery()
         {
-            return String.Format("INSERT INTO faktura SET numer='{0}', id_kontrahenta={1}, id_pracownika={2}, data_wystawienia='{3}', termin_platnosci='{4}', data_sprzedazy='{5}', forma_platnosci='{6}', zaplacona_kwota='{7}'", Number, CustomerID, MainProgram.Worker.ID, InvoiceDate, PaymentDate, SellingDate, Array.IndexOf(paymentMethods, PaymentMethod) + 1, AmountPaid);
+            return String.Format("INSERT INTO faktura SET numer='{0}', id_kontrahenta={1}, id_pracownika={2}, data_wystawienia='{3}', termin_platnosci='{4}', data_sprzedazy='{5}', forma_platnosci='{6}', zaplacona_kwota='{7}'", Number, Customer.CustomerID, MainProgram.Worker.ID, InvoiceDate, PaymentDate, SellingDate, Array.IndexOf(paymentMethods, PaymentMethod) + 1, AmountPaid);
         }
 
         public string GenerateDeleteQuery()
