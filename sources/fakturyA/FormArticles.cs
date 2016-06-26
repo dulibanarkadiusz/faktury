@@ -123,7 +123,7 @@ namespace fakturyA
             //int x=dataGridView1(dataGridView1.SelectedRows[0].Index);
             // string x=dataGridView1.Rows[selectedCellCount];
             int rowIndeks = dataGridView1.SelectedRows[0].Index;
-            MessageBox.Show(dataGridView1.SelectedRows[0].Index.ToString());
+           // MessageBox.Show(dataGridView1.SelectedRows[0].Index.ToString());
             Article artic = articlesList[rowIndeks];
             DatabaseMySQL.ExecuteQuery(artic.GenerateQueryDropArticles());
             dataGridView1.Rows.RemoveAt(dataGridView1.SelectedRows[0].Index);
@@ -181,7 +181,7 @@ namespace fakturyA
                     }
                 }
             }
-            MessageBox.Show(Convert.ToString(indeks));
+           // MessageBox.Show(Convert.ToString(indeks));
             FormArticleAmount addingArticle = new FormArticleAmount(indeks);
 
             addingArticle.Show();

@@ -31,17 +31,17 @@ namespace fakturyA
 
 
         }
-        public void EditOurCompany(OurCompany a)
+        public void EditOurCompany()
         {
 
-            XMLEdit.AddToXML("NazwaFirmy", a.CompanyName);
-            XMLEdit.AddToXML("MiastoFirmy", a.City);
-            XMLEdit.AddToXML("UlicaFirmy", a.PlaceAddres);
-            XMLEdit.AddToXML("NIPFirmy", a.NIP);
-            XMLEdit.AddToXML("KodFirmy", a.Code);
-            XMLEdit.AddToXML("REGONFirmy", a.Regon);
-            XMLEdit.AddToXML("kontoBankowe1Firmy", a.BankAccount1);
-            XMLEdit.AddToXML("kontoBankowe2Firmy", a.BankAccount2);
+            XMLEdit.AddToXML("NazwaFirmy", CompanyName);
+            XMLEdit.AddToXML("MiastoFirmy", City);
+            XMLEdit.AddToXML("UlicaFirmy", PlaceAddres);
+            XMLEdit.AddToXML("NIPFirmy", NIP);
+            XMLEdit.AddToXML("KodPocztowyFirmy", Code);
+            XMLEdit.AddToXML("REGONFirmy", Regon);
+            XMLEdit.AddToXML("kontoBankowe1Firmy", BankAccount1);
+            XMLEdit.AddToXML("kontoBankowe2Firmy", BankAccount2);
 
         }
     }
