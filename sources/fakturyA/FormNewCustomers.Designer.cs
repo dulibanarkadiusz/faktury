@@ -59,6 +59,7 @@
             this.BoxCode2.Name = "BoxCode2";
             this.BoxCode2.Size = new System.Drawing.Size(100, 20);
             this.BoxCode2.TabIndex = 37;
+            this.BoxCode2.TextChanged += new System.EventHandler(this.BoxCode2_TextChanged);
             // 
             // label9
             // 
@@ -140,6 +141,7 @@
             this.BoxCode1.Name = "BoxCode1";
             this.BoxCode1.Size = new System.Drawing.Size(26, 20);
             this.BoxCode1.TabIndex = 28;
+            this.BoxCode1.TextChanged += new System.EventHandler(this.BoxCode1_TextChanged);
             // 
             // BoxEmail
             // 

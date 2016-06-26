@@ -62,5 +62,15 @@ namespace fakturyA
             this.Close();
         }
 
+        private void BoxCode1_TextChanged(object sender, EventArgs e)
+        {
+            BoxCode1.MaxLength = 2;
+        }
+
+        private void BoxCode2_TextChanged(object sender, EventArgs e)
+        {
+            BoxCode2.MaxLength = 3;
+        }
+
     }
 }
