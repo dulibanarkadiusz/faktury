@@ -193,7 +193,7 @@
             this.buttonShowCustomers.TabIndex = 6;
             this.buttonShowCustomers.Text = "Kontrahenci";
             this.buttonShowCustomers.UseVisualStyleBackColor = true;
-            this.buttonShowCustomers.Click += new System.EventHandler(this.button3_Click);
+            this.buttonShowCustomers.Click += new System.EventHandler(this.buttonShowCustomers_Click);
             // 
             // buttonNewInvoice
             // 

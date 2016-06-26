@@ -71,20 +71,17 @@ namespace fakturyA
             w.ShowDialog();
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void buttonShowCustomers_Click(object sender, EventArgs e)
         {
+            if (MainProgram.CustomerWindow == null)
             {
-                if (MainProgram.CustomerWindow == null)
-                {
-                    MainProgram.CustomerWindow = new FormCustomers();
-                    MainProgram.CustomerWindow.MdiParent = this;
-                    MainProgram.CustomerWindow.Show();
-                }
-                else
-                {
-                    MainProgram.CustomerWindow.Show();
-                }
-
+                MainProgram.CustomerWindow = new FormCustomers();
+                MainProgram.CustomerWindow.MdiParent = this;
+                MainProgram.CustomerWindow.Show();
+            }
+            else
+            {
+                MainProgram.CustomerWindow.Show();
             }
         }
 

@@ -92,11 +92,11 @@ namespace fakturyA
             table.SpacingBefore = 10f;
 
             // sprzedawca
-            Paragraph paragraph = new Paragraph(String.Format("Sprzedający:\n\n{0}\n{1}\n{2}\nNIP: {3}", "Fakturzyści sp. z o.o.", "Kaszubska 28", "44-100 Gliwice", "8392102392"), new Font(bf, 10));
+            Paragraph paragraph = new Paragraph(String.Format("Sprzedający:\n\n{0}\n{1}\n{2}\nNIP: {3}", MainProgram.OurCompany.CompanyName, MainProgram.OurCompany.PlaceAddres, MainProgram.OurCompany.Code + ' ' +MainProgram.OurCompany.City, MainProgram.OurCompany.NIP), new Font(bf, 10));
             table.AddCell(paragraph);
 
             // kupujący
-            paragraph = new Paragraph(String.Format("Nabywca:\n\n{0}\n{1}\n{2}\n", invoice.CusotmerName, "ul. Jakaś 90/8", "00-000 Warszawa"), new Font(bf, 10));
+            paragraph = new Paragraph(String.Format("Nabywca:\n\n{0}\n{1}\n{2}\n{3} {4}\n", invoice.Customer.CompanyName, invoice.Customer.CustomerName, invoice.Customer.Address, invoice.Customer.Code, invoice.Customer.City), new Font(bf, 10));
             table.AddCell(paragraph);
 
             doc.Add(table);
@@ -290,7 +290,7 @@ namespace fakturyA
 
 
             doc.Close();
-            Mail mail = new Mail(pdfName);
+            Mail mail = new Mail(pdfName, invoice);
         }
     }
 }

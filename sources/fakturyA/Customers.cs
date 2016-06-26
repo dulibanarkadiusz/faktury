@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace fakturyA
 {
@@ -42,7 +41,6 @@ namespace fakturyA
         public Customers(int id)
         {
             string [] dane = DatabaseMySQL.GetCustomerData(id);
-            MessageBox.Show(dane.Length+ "");
             try
             {
                 CustomerID = id;

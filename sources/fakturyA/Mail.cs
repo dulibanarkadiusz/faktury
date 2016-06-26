@@ -11,11 +11,11 @@ namespace fakturyA
     class Mail
     {
         private string fileName;
-        private string receiverEmail;
-        public Mail(string fileName) /// , Customer customer); 
+        private Invoice invoice;
+        public Mail(string fileName, Invoice invoice)
         {
             this.fileName = fileName;
-            this.receiverEmail = receiverEmail;
+            this.invoice = invoice;
             Send();
         }
 
@@ -23,7 +23,6 @@ namespace fakturyA
         {
             Cursor.Current = Cursors.WaitCursor;
 
-            // Command line argument must the the SMTP host.
             SmtpClient client = new SmtpClient();
             client.Port = 587;
             client.Host = "smtp.gmail.com";
@@ -33,13 +32,16 @@ namespace fakturyA
             client.UseDefaultCredentials = false;
             client.Credentials = new System.Net.NetworkCredential("fakturka2016@gmail.com", "naszProjekt"); // set receiver
 
-
             MailMessage mm = new MailMessage();
-            mm.From = new MailAddress("fakturka2016@gmail.com", "MojaFirma");
-            mm.To.Add(new MailAddress("arkadiusz.duliban@gmail.com", "Arkadiusz Duliban"));
-            mm.Subject = "Nowa faktura VAT ";
+            mm.From = new MailAddress("fakturka2016@gmail.com", MainProgram.OurCompany.CompanyName);
+            string name = invoice.Customer.CompanyName == null ? invoice.Customer.CustomerName : invoice.Customer.CompanyName;
+            mm.To.Add(new MailAddress(invoice.Customer.Email, invoice.Customer.CompanyName));
+            mm.Subject = "Faktura VAT nr "+invoice.Number;
             mm.IsBodyHtml = true;
-            mm.Body = "Dzień dobry,<br><br>W załączniku przesyłam Państwa fakturę VAT. Można ją otworzyć przy wykorzystaniu przeglądarki internetowej (Google Chrome, Mozilla Firefox) lub oprogramowania pozwalającego wyświetlać pliki PDF (np. Adobe Reader)<br><br>W razie pytań pozostajemy do Państwa dyspozycji.<br><br><br>Z poważaniem<br>"+MainProgram.Worker.Name;
+            mm.Body = String.Format("Dzień dobry,<br><br>W załączniku przesyłam Państwa fakturę VAT nr {0} z dnia {1}. Faktura opiewa na kwotę {2} złotych, ", invoice.Number, invoice.InvoiceDate, invoice.InvoiceValue);
+            mm.Body += String.Format("która powinna zostać uregulawana najpóźniej do {0}.<br><br>Szczegóły dotyczące faktury znajdą Państwo w pliku faktury.<br><br>", invoice.PaymentDate);
+            mm.Body += String.Format("W imieniu firmy dziękuję za zakupy i zapraszam do dalszej współpracy.<br><br><br><b>{0}</b><i><br><br>{1}<br>{2}<br>{3}</i>", invoice.EmployeeName, MainProgram.OurCompany.CompanyName, MainProgram.OurCompany.PlaceAddres, MainProgram.OurCompany.Code + ' ' + MainProgram.OurCompany.City);
+
 
             System.Net.Mail.Attachment attachment;
             attachment = new System.Net.Mail.Attachment(fileName);

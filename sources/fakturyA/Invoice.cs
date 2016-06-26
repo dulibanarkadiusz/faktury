@@ -182,6 +182,7 @@ namespace fakturyA
                 PaymentDate = Convert.ToDateTime(dataRow[9]);
                 SellingDate = Convert.ToDateTime(dataRow[10]);
                 CustomerID = Convert.ToInt16(dataRow[12]);
+                Customer = new Customers(CustomerID);
 
                 PaymentMethod = dataRow[11];
                 AmountPaid = Convert.ToDecimal(dataRow[13]);
@@ -196,8 +197,8 @@ namespace fakturyA
         public Invoice() // konstruktor dla nowych faktur 
         {
             CustomerID = -1;
-            EmployeeID = MainProgram.LoggeUserID;
-            EmployeeName = MainProgram.LoggedUser;
+            EmployeeID = MainProgram.Worker.ID;
+            EmployeeName = MainProgram.Worker.Name;
             InvoiceDate = DateTime.Now;
             PaymentDate = DateTime.Now;
             SellingDate = DateTime.Now;
@@ -215,7 +216,7 @@ namespace fakturyA
 
         public string GenerateInsertQuery()
         {
-            return String.Format("INSERT INTO faktura SET numer='{0}', id_kontrahenta={1}, id_pracownika={2}, data_wystawienia='{3}', termin_platnosci='{4}', data_sprzedazy='{5}', forma_platnosci='{6}', zaplacona_kwota='{7}'", Number, CustomerID, MainProgram.LoggeUserID, InvoiceDate, PaymentDate, SellingDate, Array.IndexOf(paymentMethods, PaymentMethod) + 1, AmountPaid);
+            return String.Format("INSERT INTO faktura SET numer='{0}', id_kontrahenta={1}, id_pracownika={2}, data_wystawienia='{3}', termin_platnosci='{4}', data_sprzedazy='{5}', forma_platnosci='{6}', zaplacona_kwota='{7}'", Number, CustomerID, MainProgram.Worker.ID, InvoiceDate, PaymentDate, SellingDate, Array.IndexOf(paymentMethods, PaymentMethod) + 1, AmountPaid);
         }
 
         public string GenerateDeleteQuery()

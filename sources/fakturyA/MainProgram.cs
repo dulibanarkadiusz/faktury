@@ -10,23 +10,15 @@ namespace fakturyA
 {
     static class MainProgram
     {
-        public static string LoggedUser { get; private set; }
-        public static int LoggeUserID { get; private set; }
         public static Worker Worker { get; private set; }
-        public static bool PermissionsLevel { get; private set; }
-        public static Article AddedArticle { get; set; }
-        public static NumberFormatInfo NumberInfo { get; private set; }
-        public static OurCompany OurCompany { get; set; }
+        public static OurCompany OurCompany { get; private set; }
         static MainProgram()
         {
-            NumberInfo = new CultureInfo("pl-PL", false).NumberFormat;
-            NumberInfo.NumberDecimalSeparator = ".";
+            OurCompany = new OurCompany();
         }
 
         public static void LoggIn(Worker worker)
         {
-            LoggeUserID = 1;
-            LoggedUser = worker.LoginName;
             Worker = worker;
         }
 
@@ -36,7 +28,7 @@ namespace fakturyA
         public const string ArticlesTablename = "artykul";
         public const string InvoicesTablename = "faktura";
         public const string CustomersTablename = "kontrahent";
-        public const int DateLength = 10;
+        public const int DateLength = 10; // długość daty 
         public const string NameConfigFile = "config.xml";
 
         /* MySQL */

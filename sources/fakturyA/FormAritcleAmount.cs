@@ -56,9 +56,6 @@ namespace fakturyA
                 Discount_TB.Text = Discount_TB.Text.Trim().ToString();
                 if (Discount_TB.Text != "" && Amount_TB.Text != "")
                 {
-                    // MainProgram.AddArticletoInvoiceWindow.
-                    // MainProgram.AddArticletoInvoiceWindow.Close();
-                    /* POPRAWECZKI ARECZKA --- tam na dole \/ */
                     ArticleOnInvoice pos = new ArticleOnInvoice(FormArticles.articlesList[indeks], Convert.ToDecimal(Discount_TB.Text), Convert.ToDecimal(Amount_TB.Text));
                     MainProgram.InvoiceEditor.AddArticleToInvoice(pos);
                     Close();
@@ -75,9 +72,6 @@ namespace fakturyA
 
                         edit.Amount = Convert.ToDecimal(Amount_TB.Text);
                         edit.Discount = Convert.ToDecimal(Discount_TB.Text);
-
-                        //  ArticleOnInvoice pos = new ArticleOnInvoice(FormArticles.articlesList[indeks], Convert.ToDecimal(Discount_TB.Text), Convert.ToDecimal(Amount_TB.Text));
-                        //MainProgram.InvoiceEditor.AddArticleToInvoice(edit);
                         edit_window = false;
                         Close();
                     }

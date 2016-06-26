@@ -154,10 +154,6 @@ namespace fakturyA
             {
                 a.Close();
             }
-            // MessageBox.Show(articlesList[indeks].Name);
-            MainProgram.AddedArticle = articlesList[indeks];
-
-            //  return articlesList[indeks];
         }
 
         private void AddArticle_Click(object sender, EventArgs e)

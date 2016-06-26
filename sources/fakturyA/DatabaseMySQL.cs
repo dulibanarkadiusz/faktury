@@ -123,7 +123,7 @@ namespace fakturyA
                 CreateNumberForNewInvoice(); // tworzy numer faktury
                 
                 string queryText = string.Format("INSERT INTO faktura SET ");
-                queryText += string.Format("numer='{0}', id_kontrahenta={1}, id_pracownika={2}, ", MainProgram.EditedInvoiceNumber, ConsumerID, MainProgram.LoggeUserID);
+                queryText += string.Format("numer='{0}', id_kontrahenta={1}, id_pracownika={2}, ", MainProgram.EditedInvoiceNumber, ConsumerID, MainProgram.Worker.ID);
                 queryText += string.Format("data_wystawienia='{0}', termin_platnosci='{1}', forma_platnosci='{2}', zaplacona_kwota={3}", dateInvoice, datePayment, paymentForm, alreadyPaid);
                 MySqlCommand query = new MySqlCommand(queryText, MainProgram.Connection);
                 query.ExecuteNonQuery();
