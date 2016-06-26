@@ -134,6 +134,7 @@
             this.BoxNIP.Name = "BoxNIP";
             this.BoxNIP.Size = new System.Drawing.Size(257, 20);
             this.BoxNIP.TabIndex = 29;
+            this.BoxNIP.TextChanged += new System.EventHandler(this.BoxNIP_TextChanged);
             // 
             // BoxCode1
             // 

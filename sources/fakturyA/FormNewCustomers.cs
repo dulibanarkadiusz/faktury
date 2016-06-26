@@ -36,10 +36,11 @@ namespace fakturyA
             BoxCustName.Text = customer.CustomerName;
             BoxAddress.Text = customer.Address;
             BoxCity.Text = customer.City;
-            BoxCode1.Text = customer.Code.Substring(0, 2);
-            BoxCode2.Text = customer.Code.Remove(0, 2);
+            BoxCode1.Text = Convert.ToString(customer.Code).Substring(0, 2);
+            BoxCode2.Text = Convert.ToString(customer.Code).Remove(0, 2);
             BoxEmail.Text = customer.Email;
             BoxNIP.Text = customer.CustomerNIP;
+          
         }
         private void button1_Click(object sender, EventArgs e)
         {
@@ -70,6 +71,11 @@ namespace fakturyA
         private void BoxCode2_TextChanged(object sender, EventArgs e)
         {
             BoxCode2.MaxLength = 3;
+        }
+
+        private void BoxNIP_TextChanged(object sender, EventArgs e)
+        {
+            BoxNIP.MaxLength = 9;
         }
 
     }
