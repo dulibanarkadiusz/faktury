@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<body>
+  <databaseName>faktury</databaseName>
+  <hostname>localhost</hostname>
+  <port>3306</port>
+  <NazwaFirmy>qwe</NazwaFirmy>
+  <MiastoFirmy>qwe</MiastoFirmy>
+  <UlicaFirmy>qwe</UlicaFirmy>
+  <NIPFirmy>qwe</NIPFirmy>
+  <KodFirmy>qwe</KodFirmy>
+  <REGONFirmy>er</REGONFirmy>
+  <kontoBankowe1Firmy>wer</kontoBankowe1Firmy>
+  <kontoBankowe2Firmy>err</kontoBankowe2Firmy>
+</body>

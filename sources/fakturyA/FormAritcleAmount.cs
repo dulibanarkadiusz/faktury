@@ -29,7 +29,6 @@ namespace fakturyA
             InitializeComponent();
             button1.Text = "Edytuj Rabat i Ilość";
             edit = a;
-            this.indeks = indeks;
             Amount_TB.Text = Convert.ToString(a.Amount);
             Discount_TB.Text = Convert.ToString(a.Discount);
 
