@@ -12,13 +12,27 @@ namespace fakturyA
 {
     public partial class FormArticleAmount : Form
     {
-         public int Amount { get; set; }
+        public int Amount { get; set; }
         public double Discount { get; set; }
         private int indeks;
+        private bool edit_window = false;
+        private ArticleOnInvoice edit = new ArticleOnInvoice(FormArticles.articlesList[1], 12, 11);
         public FormArticleAmount(int indeks)
         {
-            this.indeks=indeks;
+            edit_window = false;
+            this.indeks = indeks;
             InitializeComponent();
+        }
+        public FormArticleAmount(ArticleOnInvoice a)
+        {
+            edit_window = true;
+            InitializeComponent();
+            button1.Text = "Edytuj Rabat i Ilość";
+            edit = a;
+            this.indeks = indeks;
+            Amount_TB.Text = Convert.ToString(a.Amount);
+            Discount_TB.Text = Convert.ToString(a.Discount);
+
         }
         protected override void OnFormClosing(FormClosingEventArgs e)
         {
@@ -32,29 +46,75 @@ namespace fakturyA
 
 
         }
+
         private void Add_Click(object sender, EventArgs e)
         {
-            Amount_TB.Text = Amount_TB.Text.Trim().ToString();
-            Discount_TB.Text = Discount_TB.Text.Trim().ToString();
-            if (Discount_TB.Text != "" && Amount_TB.Text != "")
+            if (edit_window == false)
             {
-                //poprawić sprawdzanie co wpisali 
-                // ideeexxxxx 
-                FormArticles.articlesList[indeks].Discount = Convert.ToDecimal(Discount_TB.Text);
-               FormArticles.articlesList[indeks].Amount = Convert.ToInt32(Amount_TB.Text);
-               // MessageBox.Show(Convert.ToString(indeks + " " + FormArticles.articlesList[indeks].Amount + " " + Convert.ToString(FormArticles.articlesList[indeks].Discount)));
+                Amount_TB.Text = Amount_TB.Text.Trim().ToString();
+                Discount_TB.Text = Discount_TB.Text.Trim().ToString();
+                if (Discount_TB.Text != "" && Amount_TB.Text != "")
+                {
+
+
+                    FormArticles.articlesList[indeks].Discount = Convert.ToDecimal(Discount_TB.Text);
+                    FormArticles.articlesList[indeks].Amount = Convert.ToInt32(Amount_TB.Text);
+
+                    // MainProgram.AddArticletoInvoiceWindow.
+                    // MainProgram.AddArticletoInvoiceWindow.Close();
+                    /* POPRAWECZKI ARECZKA --- tam na dole \/ */
+                    ArticleOnInvoice pos = new ArticleOnInvoice(FormArticles.articlesList[indeks], Convert.ToDecimal(Discount_TB.Text), Convert.ToDecimal(Amount_TB.Text));
+                    MainProgram.InvoiceEditor.AddArticleToInvoice(pos);
+                    edit_window = false;
+                    Close();
+
+                }
+                else
+                {
+
+                    Amount_TB.Text = Amount_TB.Text.Trim().ToString();
+                    Discount_TB.Text = Discount_TB.Text.Trim().ToString();
+                    if (Discount_TB.Text != "" && Amount_TB.Text != "")
+                    {
+
+                        edit.Amount = Convert.ToDecimal(Amount_TB.Text);
+                        edit.Discount = Convert.ToDecimal(Discount_TB.Text);
+
+                        //  ArticleOnInvoice pos = new ArticleOnInvoice(FormArticles.articlesList[indeks], Convert.ToDecimal(Discount_TB.Text), Convert.ToDecimal(Amount_TB.Text));
+                        MainProgram.InvoiceEditor.AddArticleToInvoice(edit);
+                        edit_window = false;
+                        Close();
+                    }
+                }
             }
-            // MainProgram.AddArticletoInvoiceWindow.
-            // MainProgram.AddArticletoInvoiceWindow.Close();
-            /* POPRAWECZKI ARECZKA --- tam na dole \/ */
-            ArticleOnInvoice pos = new ArticleOnInvoice(FormArticles.articlesList[indeks], Convert.ToDecimal(Discount_TB.Text), Convert.ToDecimal(Amount_TB.Text));
-            MainProgram.InvoiceEditor.AddArticleToInvoice(pos);
-            Close();
-          
+        }
+
+        private void Amount_TB_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Amount_TB.MaxLength = 10;
+            if (char.IsDigit(e.KeyChar) || e.KeyChar == (char)Keys.Back)
+                base.OnKeyPress(e);
+            else
+                e.Handled = true;
+        }
+
+        private void Discount_TB_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            string s = Discount_TB.Text;
+            Discount_TB.MaxLength = 2;
+
+
+            if (char.IsDigit(e.KeyChar) || e.KeyChar == (char)Keys.Back)
+                base.OnKeyPress(e);
+            else
+                e.Handled = true;
+
+
+            toolTip1.SetToolTip(this.Discount_TB, "Rabat nie może być wiekszy niż 99%");
+
 
         }
 
-        
+
     }
 }
-  

@@ -16,7 +16,7 @@ namespace fakturyA
         public static bool PermissionsLevel { get; private set; }
         public static Article AddedArticle { get; set; }
         public static NumberFormatInfo NumberInfo { get; private set; }
-
+        public static OurCompany OurCompany { get; set; }
         static MainProgram()
         {
             NumberInfo = new CultureInfo("pl-PL", false).NumberFormat;
@@ -48,6 +48,7 @@ namespace fakturyA
         public static FormArticles ArticlesWindow { get; set; }
         public static FormInvoiceEditor InvoiceEditor { get; set; }
         public static FormCustomers CustomerWindow { get; set; }
+        public static FormOurCompanyDataEditor OurCompanyWindow { get; set; }
 
         /* Listy */
         public static List<Invoice> InvoiceObjectsList { get; set; }

@@ -28,11 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.Amount_TB = new System.Windows.Forms.TextBox();
             this.Discount_TB = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.SuspendLayout();
             // 
             // Amount_TB
@@ -41,6 +43,7 @@
             this.Amount_TB.Name = "Amount_TB";
             this.Amount_TB.Size = new System.Drawing.Size(100, 20);
             this.Amount_TB.TabIndex = 0;
+            this.Amount_TB.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Amount_TB_KeyPress);
             // 
             // Discount_TB
             // 
@@ -48,6 +51,7 @@
             this.Discount_TB.Name = "Discount_TB";
             this.Discount_TB.Size = new System.Drawing.Size(100, 20);
             this.Discount_TB.TabIndex = 1;
+            this.Discount_TB.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Discount_TB_KeyPress);
             // 
             // button1
             // 
@@ -77,6 +81,12 @@
             this.label2.TabIndex = 4;
             this.label2.Text = "Rabat";
             // 
+            // toolTip1
+            // 
+            this.toolTip1.IsBalloon = true;
+            this.toolTip1.OwnerDraw = true;
+            this.toolTip1.ShowAlways = true;
+            // 
             // FormArticleAmount
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -101,5 +111,6 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }

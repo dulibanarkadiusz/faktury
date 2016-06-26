@@ -211,6 +211,9 @@
     <EmbeddedResource Include="FormNewCustomers.resx">
       <DependentUpon>FormNewCustomers.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormOurCompanyDataEditor.resx">
+      <DependentUpon>FormOurCompanyDataEditor.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormPermissionEditor.resx">
       <DependentUpon>FormPermissionEditor.cs</DependentUpon>
     </EmbeddedResource>

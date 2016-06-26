@@ -118,5 +118,22 @@ namespace fakturyA
                 pokażUżytkownikówToolStripMenuItem.Visible = false;
             }
         }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            if (MainProgram.OurCompany == null)
+            {
+                MainProgram.OurCompanyWindow = new FormOurCompanyDataEditor();
+                MainProgram.OurCompanyWindow.MdiParent = this;
+                MainProgram.OurCompanyWindow.Show();
+            }
+            else
+            {
+                MainProgram.OurCompanyWindow = new FormOurCompanyDataEditor();
+                MainProgram.OurCompanyWindow.MdiParent = this;
+                MainProgram.OurCompanyWindow.Show();
+                //MainProgram.OurCompanyWindow.Show();
+            }
+        }
     }
 }

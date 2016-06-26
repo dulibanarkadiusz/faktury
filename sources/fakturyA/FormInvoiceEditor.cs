@@ -322,7 +322,7 @@ namespace fakturyA
 
         private void buttonEditArticleOnInvoice_Click(object sender, EventArgs e)
         {
-            FormArticleAmount w = new FormArticleAmount(1);
+            FormArticleAmount w = new FormArticleAmount(addedArticlesToInvoice[0]);
             w.ShowDialog();
         }
 
