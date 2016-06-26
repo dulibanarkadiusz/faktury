@@ -196,3 +196,29 @@ C:\Users\Zumirka\Desktop\faktura 26.06 2\sources\fakturyA\obj\Debug\fakturyA.Pro
 C:\Users\Zumirka\Desktop\faktura 26.06 2\sources\fakturyA\obj\Debug\fakturyA.UserControl_PermissionView.resources
 C:\Users\Zumirka\Desktop\faktura 26.06 2\sources\fakturyA\obj\Debug\fakturyA.UserControl_PermissionsEditor.resources
 C:\Users\Zumirka\Desktop\faktura 26.06 2\sources\fakturyA\obj\Debug\fakturyA.csproj.GenerateResource.Cache
+C:\Users\User\Desktop\projekt v.3\faktury\sources\fakturyA\bin\Debug\fakturyA.exe.config
+C:\Users\User\Desktop\projekt v.3\faktury\sources\fakturyA\obj\Debug\fakturyA.exe
+C:\Users\User\Desktop\projekt v.3\faktury\sources\fakturyA\obj\Debug\fakturyA.pdb
+C:\Users\User\Desktop\projekt v.3\faktury\sources\fakturyA\bin\Debug\fakturyA.exe
+C:\Users\User\Desktop\projekt v.3\faktury\sources\fakturyA\bin\Debug\fakturyA.pdb
+C:\Users\User\Desktop\projekt v.3\faktury\sources\fakturyA\bin\Debug\itextsharp.xml
+C:\Users\User\Desktop\projekt v.3\faktury\sources\fakturyA\obj\Debug\fakturyA.csprojResolveAssemblyReference.cache
+C:\Users\User\Desktop\projekt v.3\faktury\sources\fakturyA\obj\Debug\fakturyA.FormArticleAmount.resources
+C:\Users\User\Desktop\projekt v.3\faktury\sources\fakturyA\obj\Debug\fakturyA.FormArticlesEditor.resources
+C:\Users\User\Desktop\projekt v.3\faktury\sources\fakturyA\obj\Debug\fakturyA.FormInvoiceEditor.resources
+C:\Users\User\Desktop\projekt v.3\faktury\sources\fakturyA\obj\Debug\fakturyA.FormCustomers.resources
+C:\Users\User\Desktop\projekt v.3\faktury\sources\fakturyA\obj\Debug\fakturyA.FormInvoicesList.resources
+C:\Users\User\Desktop\projekt v.3\faktury\sources\fakturyA\obj\Debug\fakturyA.FormLogin.resources
+C:\Users\User\Desktop\projekt v.3\faktury\sources\fakturyA\obj\Debug\fakturyA.FormMain.resources
+C:\Users\User\Desktop\projekt v.3\faktury\sources\fakturyA\obj\Debug\fakturyA.FormArticles.resources
+C:\Users\User\Desktop\projekt v.3\faktury\sources\fakturyA\obj\Debug\fakturyA.FormNewCustomers.resources
+C:\Users\User\Desktop\projekt v.3\faktury\sources\fakturyA\obj\Debug\fakturyA.FormOurCompanyDataEditor.resources
+C:\Users\User\Desktop\projekt v.3\faktury\sources\fakturyA\obj\Debug\fakturyA.FormPermissionEditor.resources
+C:\Users\User\Desktop\projekt v.3\faktury\sources\fakturyA\obj\Debug\fakturyA.FormUserList.resources
+C:\Users\User\Desktop\projekt v.3\faktury\sources\fakturyA\obj\Debug\fakturyA.Properties.Resources.resources
+C:\Users\User\Desktop\projekt v.3\faktury\sources\fakturyA\obj\Debug\fakturyA.UserControl_PermissionView.resources
+C:\Users\User\Desktop\projekt v.3\faktury\sources\fakturyA\obj\Debug\fakturyA.UserControl_PermissionsEditor.resources
+C:\Users\User\Desktop\projekt v.3\faktury\sources\fakturyA\obj\Debug\fakturyA.csproj.GenerateResource.Cache
+C:\Users\User\Desktop\aaaaaaaaaaaaa\faktury\sources\fakturyA\bin\Debug\fakturyA.exe.config
+C:\Users\User\Desktop\aaaaaaaaaaaaa\faktury\sources\fakturyA\obj\Debug\fakturyA.exe
+C:\Users\User\Desktop\aaaaaaaaaaaaa\faktury\sources\fakturyA\obj\Debug\fakturyA.pdb

@@ -41,6 +41,7 @@ namespace fakturyA
         {
             if (ktory == true)
             {
+                
                 buttonAdd.Hide();
                 buttonSel.Show();
             }
@@ -53,20 +54,21 @@ namespace fakturyA
         }
         private void dataGridView1_MouseClick(object sender, MouseEventArgs e)
         {
-            int mouseOnRow = dataGridView1.HitTest(e.X, e.Y).RowIndex;
-            if (mouseOnRow >= 0 && EditMode)
-            {
-                ContextMenu a = new ContextMenu();
-                // a.MenuItems.Add(new MenuItem(string.Format("Edytuj", dataGridView1.Rows[mouseOnRow].Cells["Kod"].Value), new EventHandler(this.editArticle_click)));
-                // a.MenuItems.Add(new MenuItem(string.Format("Usuń", dataGridView1.Rows[mouseOnRow].Cells["NazwaFirmy"].Value), new EventHandler(this.DeleteCustomer)));
-                a.Show(dataGridView1, new Point(e.X, e.Y));
-            }
+            
+                // context menu 
+                // int mouseOnRow = dataGridView1.HitTest(e.X, e.Y).RowIndex;
+                // if (mouseOnRow >= 0 && EditMode)
+            int currentMouseOverRow = dataGridView1.HitTest(e.X, e.Y).RowIndex;
+            if (currentMouseOverRow >= 0 && e.Button == MouseButtons.Left)
+                {
+                    ContextMenu m = new ContextMenu();
+                    m.MenuItems.Add(new MenuItem(string.Format("Edytuj"), new EventHandler(this.Edit_click)));
+                    m.MenuItems.Add(new MenuItem(string.Format("Usuń"), new EventHandler(this.Delete_Click)));
+                    m.Show(dataGridView1, new Point(e.X, e.Y));
+                }
+            
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
         private void WriteAllCustomer()
         {
             MainProgram.CustomersList.Clear(); // wyczyść poprzednie dane nim załadujesz
@@ -101,7 +103,7 @@ namespace fakturyA
             WriteAllCustomer();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void Delete_Click(object sender, EventArgs e)
         {
             if (this.dataGridView1.SelectedRows.Count > 0)
             {
@@ -119,6 +121,12 @@ namespace fakturyA
             SelectedConsumerID = this.dataGridView1.SelectedRows[0].Index;
             this.Close();
         }
-
+        private void Edit_click(object sender, EventArgs e)
+        {
+            List<Customers> cust = MainProgram.CustomersList;
+            FormNewCustomers edit = new FormNewCustomers(cust[dataGridView1.SelectedRows[0].Index]);
+            edit.Text = "Edytuj";
+            edit.ShowDialog();
+        }
     }
 }

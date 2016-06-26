@@ -55,21 +55,21 @@
             // 
             // textBox3
             // 
-            this.textBox3.Location = new System.Drawing.Point(528, 28);
+            this.textBox3.Location = new System.Drawing.Point(591, 28);
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(69, 20);
             this.textBox3.TabIndex = 17;
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(378, 28);
+            this.textBox2.Location = new System.Drawing.Point(423, 28);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(69, 20);
             this.textBox2.TabIndex = 16;
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(228, 28);
+            this.textBox1.Location = new System.Drawing.Point(255, 28);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(69, 20);
             this.textBox1.TabIndex = 15;
@@ -79,7 +79,7 @@
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label1.Location = new System.Drawing.Point(192, 29);
+            this.label1.Location = new System.Drawing.Point(219, 29);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(30, 16);
             this.label1.TabIndex = 14;
@@ -89,7 +89,7 @@
             // 
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(308, 31);
+            this.label2.Location = new System.Drawing.Point(353, 31);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(64, 13);
             this.label2.TabIndex = 18;
@@ -99,7 +99,7 @@
             // 
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(463, 31);
+            this.label3.Location = new System.Drawing.Point(526, 31);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(59, 13);
             this.label3.TabIndex = 19;
@@ -107,7 +107,7 @@
             // 
             // buttonAdd
             // 
-            this.buttonAdd.Location = new System.Drawing.Point(678, 28);
+            this.buttonAdd.Location = new System.Drawing.Point(759, 28);
             this.buttonAdd.Name = "buttonAdd";
             this.buttonAdd.Size = new System.Drawing.Size(70, 19);
             this.buttonAdd.TabIndex = 12;
@@ -117,7 +117,7 @@
             // 
             // buttonSel
             // 
-            this.buttonSel.Location = new System.Drawing.Point(678, 3);
+            this.buttonSel.Location = new System.Drawing.Point(759, 3);
             this.buttonSel.Name = "buttonSel";
             this.buttonSel.Size = new System.Drawing.Size(70, 19);
             this.buttonSel.TabIndex = 20;
@@ -219,9 +219,10 @@
             this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(745, 490);
+            this.dataGridView1.Size = new System.Drawing.Size(839, 490);
             this.dataGridView1.TabIndex = 11;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+         //   this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.dataGridView1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dataGridView1_MouseClick);
             // 
             // email
             // 
@@ -259,14 +260,14 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(751, 334);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(845, 366);
             this.tableLayoutPanel1.TabIndex = 7;
             // 
             // FormCustomers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(751, 334);
+            this.ClientSize = new System.Drawing.Size(845, 366);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "FormCustomers";
             this.Text = "Kontrahent";

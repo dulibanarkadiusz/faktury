@@ -15,6 +15,7 @@ namespace fakturyA
         public FormNewCustomers()
         {
             InitializeComponent();
+            button2.Hide();
         }
         private void clearTextBox()
         {
@@ -25,6 +26,20 @@ namespace fakturyA
             BoxEmail.Clear();
             BoxCustName.Clear();
             BoxCompName.Clear();
+        }
+        public FormNewCustomers (Customers customer)
+        {
+            InitializeComponent();
+            button1.Hide();
+            Customers editCustomer = new Customers();
+            BoxCompName.Text = customer.CompanyName;
+            BoxCustName.Text = customer.CustomerName;
+            BoxAddress.Text = customer.Address;
+            BoxCity.Text = customer.City;
+            BoxCode1.Text = customer.Code.Substring(0, 2);
+            BoxCode2.Text = customer.Code.Remove(0, 2);
+            BoxEmail.Text = customer.Email;
+            BoxNIP.Text = customer.CustomerNIP;
         }
         private void button1_Click(object sender, EventArgs e)
         {

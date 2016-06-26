@@ -49,6 +49,7 @@
             this.BoxAddress = new System.Windows.Forms.TextBox();
             this.BoxCustName = new System.Windows.Forms.TextBox();
             this.BoxCompName = new System.Windows.Forms.TextBox();
+            this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -211,11 +212,21 @@
             this.BoxCompName.Size = new System.Drawing.Size(257, 20);
             this.BoxCompName.TabIndex = 19;
             // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(192, 312);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 38;
+            this.button2.Text = "EDYTUJ";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
             // FormNewCustomers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(279, 347);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.BoxCode2);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label10);
@@ -265,5 +276,6 @@
         private System.Windows.Forms.TextBox BoxAddress;
         private System.Windows.Forms.TextBox BoxCustName;
         private System.Windows.Forms.TextBox BoxCompName;
+        private System.Windows.Forms.Button button2;
     }
 }
