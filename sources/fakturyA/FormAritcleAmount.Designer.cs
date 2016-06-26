@@ -35,6 +35,10 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorProvider2 = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider2)).BeginInit();
             this.SuspendLayout();
             // 
             // Amount_TB
@@ -43,6 +47,7 @@
             this.Amount_TB.Name = "Amount_TB";
             this.Amount_TB.Size = new System.Drawing.Size(100, 20);
             this.Amount_TB.TabIndex = 0;
+            this.Amount_TB.Text = "0";
             this.Amount_TB.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Amount_TB_KeyPress);
             // 
             // Discount_TB
@@ -51,6 +56,7 @@
             this.Discount_TB.Name = "Discount_TB";
             this.Discount_TB.Size = new System.Drawing.Size(100, 20);
             this.Discount_TB.TabIndex = 1;
+            this.Discount_TB.Text = "0";
             this.Discount_TB.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Discount_TB_KeyPress);
             // 
             // button1
@@ -77,15 +83,22 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(28, 91);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(36, 13);
+            this.label2.Size = new System.Drawing.Size(53, 13);
             this.label2.TabIndex = 4;
-            this.label2.Text = "Rabat";
+            this.label2.Text = "Rabat [%]";
             // 
             // toolTip1
             // 
             this.toolTip1.IsBalloon = true;
             this.toolTip1.OwnerDraw = true;
-            this.toolTip1.ShowAlways = true;
+            // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
+            // errorProvider2
+            // 
+            this.errorProvider2.ContainerControl = this;
             // 
             // FormArticleAmount
             // 
@@ -97,8 +110,12 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.Discount_TB);
             this.Controls.Add(this.Amount_TB);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "FormArticleAmount";
             this.Text = "FormArticleAmount";
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -112,5 +129,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.ErrorProvider errorProvider2;
     }
 }

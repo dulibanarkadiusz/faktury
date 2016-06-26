@@ -38,7 +38,11 @@ namespace fakturyA
         }
         private void FormOurCompanyDataEditor_Load(object sender, EventArgs e)
         {
-
+            Code_TB.Mask = "00 000";
+            NIP_TB.Mask = "0000000000";
+            Regon_TB.Mask = "00000000000000";
+            BankAccount1_TB.Mask = "00 0000 0000 0000 0000 0000 0000";
+            BankAccount2_TB.Mask = "00 0000 0000 0000 0000 0000 0000";
             CompanyName_TB.Text = ourComp.CompanyName;
             City_TB.Text = ourComp.City;
             Code_TB.Text = ourComp.Code;
@@ -53,11 +57,8 @@ namespace fakturyA
         {
             string comp = CompanyName_TB.Text.Trim();
             string place = PlaceAdres_TB.Text.Trim();
-            string nip = NIP_TB.Text.Trim();
             string city = City_TB.Text.Trim();
-            string code = Code_TB.Text.Trim();
-            string bank = BankAccount1_TB.Text.Trim();
-            if (comp != "" && place != "" && nip != "" && city != "" && code != "" && bank != "")
+            if (comp != "" && place != "" && city != "" && NIP_TB.MaskCompleted && Code_TB.MaskCompleted && BankAccount1_TB.MaskCompleted)
             {
 
 
@@ -74,6 +75,19 @@ namespace fakturyA
             else
             {
                 edit = false;
+                if (CompanyName_TB.Text == "")
+                    errorProvider1.SetError(CompanyName_TB, "Wpisz nazwę firmy");
+                if (!Code_TB.MaskCompleted)
+                    errorProvider1.SetError(Code_TB, "Wpisz kod pocztowy");
+                if (!NIP_TB.MaskCompleted)
+                    errorProvider1.SetError(NIP_TB, "Wpisz NIP");
+                if (City_TB.Text == "")
+                    errorProvider1.SetError(City_TB, "Wpisz miasto");
+                if (!BankAccount1_TB.MaskCompleted)
+                    errorProvider1.SetError(BankAccount1_TB, "Wpisz numer konta bankowego");
+                if (PlaceAdres_TB.Text == "")
+                    errorProvider1.SetError(PlaceAdres_TB, "Wpisz Adres");
+
             }
         }
 
@@ -83,14 +97,15 @@ namespace fakturyA
             if (edit)
             {
 
-                ourComp.EditOurCompany(ourComp);
+                ourComp.EditOurCompany();
 
                 edit = false;
                 Close();
             }
             else
             {
-                MessageBox.Show("Nie wypełniono poprawnie");
+
+
             }
 
         }

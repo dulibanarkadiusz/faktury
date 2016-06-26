@@ -61,6 +61,14 @@ namespace fakturyA
                     Close();
 
                 }
+                else
+                {
+                    if (Discount_TB.Text == "")
+                        errorProvider1.SetError(Discount_TB, "Wpisz rabat");
+                    if (Amount_TB.Text == "")
+                        errorProvider2.SetError(Amount_TB, "Wpisz Ilość");
+
+                }
             }
                 if(edit_window==true)
                 {
@@ -74,6 +82,13 @@ namespace fakturyA
                         edit.Discount = Convert.ToDecimal(Discount_TB.Text);
                         edit_window = false;
                         Close();
+                    }
+                    else
+                    {
+                        if (Discount_TB.Text == "")
+                            errorProvider1.SetError(Discount_TB, "Wpisz rabat");
+                        if (Amount_TB.Text == "")
+                            errorProvider2.SetError(Amount_TB, "Wpisz Ilość");
                     }
             }
         }
