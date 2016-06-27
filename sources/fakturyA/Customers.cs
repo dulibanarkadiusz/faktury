@@ -62,7 +62,7 @@ namespace fakturyA
 
             try
             {
-                //CustomerID = Convert.ToInt32(dataRow[0]);
+                CustomerID = Convert.ToInt32(dataRow[0]);
                 CompanyName = dataRow[1];
                 CustomerName = dataRow[2];
                 Address = dataRow[3];
