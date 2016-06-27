@@ -15,7 +15,7 @@ namespace fakturyA
 
         private int indeks = 1;
         private bool czy_zamknac = false;
-        public bool EditAddArticle = false;
+        private bool EditAddArticle = false;
         public bool EditMode { get; set; } // ustaw true kiedy zezwalasz na edytowanie artykułów
         public static List<Article> articlesList { get; set; } // weź to popraw STATYCZNE bo zabiję.
         // System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("de-DE");
@@ -147,6 +147,8 @@ namespace fakturyA
 
             FormArticles a = new FormArticles();
             EditMode = false;
+            a.StartPosition = FormStartPosition.Manual;
+            a.Location = new Point(this.Location.X + 520, this.Location.Y+130);
             a.Show();
             a.AddArticle.Show();
             a.AddArticle_butt.Hide();
@@ -181,8 +183,10 @@ namespace fakturyA
                     }
                 }
             }
-           // MessageBox.Show(Convert.ToString(indeks));
+      
             FormArticleAmount addingArticle = new FormArticleAmount(indeks);
+            addingArticle.StartPosition = FormStartPosition.Manual;
+            addingArticle.Location = new Point(this.Location.X + 200, this.Location.Y + 100);
 
             addingArticle.Show();
 

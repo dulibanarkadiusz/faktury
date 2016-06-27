@@ -337,7 +337,8 @@ namespace fakturyA
             ArticleOnInvoice editedItem = editInvoice.ArticlesOnInvoiceList[dataGridView1.SelectedRows[0].Index];
             FormArticleAmount w = new FormArticleAmount(ref editedItem);
             editInvoice.ArticlesOnInvoiceList[dataGridView1.SelectedRows[0].Index] = editedItem;
-
+            w.StartPosition = FormStartPosition.Manual;
+            w.Location = new Point(this.Location.X + 350, this.Location.Y + 150);
             w.ShowDialog();
 
             // po uzyskaniu odpowiedzi z okna edycji ilości:
