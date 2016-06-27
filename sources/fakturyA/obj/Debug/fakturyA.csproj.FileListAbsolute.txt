@@ -336,3 +336,28 @@ C:\Users\User\Desktop\Nowy folder (3)\faktury\sources\fakturyA\obj\Debug\faktury
 C:\Users\User\Desktop\Nowy folder (3)\faktury\sources\fakturyA\obj\Debug\fakturyA.UserControl_PermissionView.resources
 C:\Users\User\Desktop\Nowy folder (3)\faktury\sources\fakturyA\obj\Debug\fakturyA.UserControl_PermissionsEditor.resources
 C:\Users\User\Desktop\Nowy folder (3)\faktury\sources\fakturyA\obj\Debug\fakturyA.csproj.GenerateResource.Cache
+D:\faktury26czerwca_2\faktury\sources\fakturyA\bin\Debug\fakturyA.exe.config
+D:\faktury26czerwca_2\faktury\sources\fakturyA\obj\Debug\fakturyA.exe
+D:\faktury26czerwca_2\faktury\sources\fakturyA\obj\Debug\fakturyA.pdb
+D:\faktury26czerwca_2\faktury\sources\fakturyA\bin\Debug\fakturyA.exe
+D:\faktury26czerwca_2\faktury\sources\fakturyA\bin\Debug\fakturyA.pdb
+D:\faktury26czerwca_2\faktury\sources\fakturyA\bin\Debug\itextsharp.dll
+D:\faktury26czerwca_2\faktury\sources\fakturyA\bin\Debug\itextsharp.pdfa.dll
+D:\faktury26czerwca_2\faktury\sources\fakturyA\bin\Debug\itextsharp.xml
+D:\faktury26czerwca_2\faktury\sources\fakturyA\obj\Debug\fakturyA.csprojResolveAssemblyReference.cache
+D:\faktury26czerwca_2\faktury\sources\fakturyA\obj\Debug\fakturyA.FormArticleAmount.resources
+D:\faktury26czerwca_2\faktury\sources\fakturyA\obj\Debug\fakturyA.FormArticlesEditor.resources
+D:\faktury26czerwca_2\faktury\sources\fakturyA\obj\Debug\fakturyA.FormInvoiceEditor.resources
+D:\faktury26czerwca_2\faktury\sources\fakturyA\obj\Debug\fakturyA.FormCustomers.resources
+D:\faktury26czerwca_2\faktury\sources\fakturyA\obj\Debug\fakturyA.FormInvoicesList.resources
+D:\faktury26czerwca_2\faktury\sources\fakturyA\obj\Debug\fakturyA.FormLogin.resources
+D:\faktury26czerwca_2\faktury\sources\fakturyA\obj\Debug\fakturyA.FormMain.resources
+D:\faktury26czerwca_2\faktury\sources\fakturyA\obj\Debug\fakturyA.FormArticles.resources
+D:\faktury26czerwca_2\faktury\sources\fakturyA\obj\Debug\fakturyA.FormNewCustomers.resources
+D:\faktury26czerwca_2\faktury\sources\fakturyA\obj\Debug\fakturyA.FormOurCompanyDataEditor.resources
+D:\faktury26czerwca_2\faktury\sources\fakturyA\obj\Debug\fakturyA.FormPermissionEditor.resources
+D:\faktury26czerwca_2\faktury\sources\fakturyA\obj\Debug\fakturyA.FormUserList.resources
+D:\faktury26czerwca_2\faktury\sources\fakturyA\obj\Debug\fakturyA.Properties.Resources.resources
+D:\faktury26czerwca_2\faktury\sources\fakturyA\obj\Debug\fakturyA.UserControl_PermissionView.resources
+D:\faktury26czerwca_2\faktury\sources\fakturyA\obj\Debug\fakturyA.UserControl_PermissionsEditor.resources
+D:\faktury26czerwca_2\faktury\sources\fakturyA\obj\Debug\fakturyA.csproj.GenerateResource.Cache

@@ -63,11 +63,30 @@ namespace fakturyA
 
         private bool IsTheFirstRunning()
         {
-            if (configFile.FindInXML("companyname") == "") // and other
+            if (new EditorXML(MainProgram.NameConfigFile).FindInXML("NazwaFirmy") == "") 
             {
                 return true;
             }
             return false;
+        }
+
+        private void ShowConfigurationWindow()
+        {
+            do
+            {
+                this.Hide();
+                new FormOurCompanyDataEditor().ShowDialog();
+            }
+            while (IsTheFirstRunning());
+
+            ShowMainProgramWindow();
+        }
+
+        private void ShowMainProgramWindow()
+        {
+            FormMain w = new FormMain();
+            w.Show();
+            Hide();
         }
 
         private void buttonLogin_Click(object sender, EventArgs e)
@@ -83,11 +102,11 @@ namespace fakturyA
             }
 
 
+
             if (DatabaseMySQL.TryConnect(textBoxLoginname.Text, textBoxPassword.Text, textBoxDatabaseName.Text, textBoxHostname.Text, numericUpDownPortNumbrt.Value.ToString()))
             {
                 SaveConfiguration();
 
-                //MainProgram.LoggIn(textBoxLoginname.Text);
                 DatabaseMySQL.Uzytkownik = textBoxLoginname.Text;
                 DatabaseMySQL.Haslo = textBoxPassword.Text;
                 DatabaseMySQL.Port = (uint)(numericUpDownPortNumbrt.Value);
@@ -97,9 +116,15 @@ namespace fakturyA
                 Worker worker = new Worker(textBoxLoginname.Text);
                 MainProgram.LoggIn(worker);
 
-                FormMain w = new FormMain();
-                w.Show();
-                Hide();
+                if (IsTheFirstRunning())
+                {
+                    ShowConfigurationWindow();
+                }
+                else
+                {
+                    ShowMainProgramWindow();
+                }
+
             }
             else
             {

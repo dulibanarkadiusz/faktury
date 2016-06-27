@@ -27,14 +27,9 @@ namespace fakturyA
         {
             if (MainProgram.ArticlesWindow == null)
             {
-                MainProgram.ArticlesWindow = new FormArticles();
-                MainProgram.ArticlesWindow.MdiParent = this;
-                MainProgram.ArticlesWindow.Show();
-            }
-            else
-            {
-                MainProgram.ArticlesWindow.Show();
-            }
+                MainProgram.CreateArticleWindow(this);
+            }          
+            MainProgram.ArticlesWindow.Show();
             MainProgram.ArticlesWindow.EditMode = true;
         }
 
@@ -42,14 +37,10 @@ namespace fakturyA
         {
             if (MainProgram.InvoiceWindow == null)
             {
-                MainProgram.InvoiceWindow = new FormInvoicesList();
-                MainProgram.InvoiceWindow.MdiParent = this;
-                MainProgram.InvoiceWindow.Show();
+                MainProgram.CreateInvoiceListWindow(this);
             }
-            else
-            {
-                MainProgram.InvoiceWindow.Show();
-            }
+            
+            MainProgram.InvoiceWindow.Show();
            
         }
 
@@ -75,14 +66,11 @@ namespace fakturyA
         {
             if (MainProgram.CustomerWindow == null)
             {
-                MainProgram.CustomerWindow = new FormCustomers();
-                MainProgram.CustomerWindow.MdiParent = this;
-                MainProgram.CustomerWindow.Show();
+                MainProgram.CreateCustomersListWindow(this);
             }
-            else
-            {
-                MainProgram.CustomerWindow.Show();
-            }
+            
+            MainProgram.CustomerWindow.Show();
+
         }
 
         private void FormMain_FormClosing(object sender, FormClosingEventArgs e)
@@ -118,19 +106,12 @@ namespace fakturyA
 
         private void button5_Click(object sender, EventArgs e)
         {
-            if (MainProgram.OurCompany == null)
+            if (MainProgram.OurCompanyWindow == null)
             {
-                MainProgram.OurCompanyWindow = new FormOurCompanyDataEditor();
-                MainProgram.OurCompanyWindow.MdiParent = this;
-                MainProgram.OurCompanyWindow.Show();
+                MainProgram.CreateOurCompanyDataWindow(this);
             }
-            else
-            {
-                MainProgram.OurCompanyWindow = new FormOurCompanyDataEditor();
-                MainProgram.OurCompanyWindow.MdiParent = this;
-                MainProgram.OurCompanyWindow.Show();
-                //MainProgram.OurCompanyWindow.Show();
-            }
+
+            MainProgram.OurCompanyWindow.Show();
         }
     }
 }

@@ -92,7 +92,8 @@ namespace fakturyA
             table.SpacingBefore = 10f;
 
             // sprzedawca
-            Paragraph paragraph = new Paragraph(String.Format("Sprzedający:\n\n{0}\n{1}\n{2}\nNIP: {3}", MainProgram.OurCompany.CompanyName, MainProgram.OurCompany.PlaceAddres, MainProgram.OurCompany.Code + ' ' +MainProgram.OurCompany.City, MainProgram.OurCompany.NIP), new Font(bf, 10));
+            string regonString = (MainProgram.OurCompany.Regon.Length > 0) ? "\nREGON: " + MainProgram.OurCompany.Regon : "";
+            Paragraph paragraph = new Paragraph(String.Format("Sprzedający:\n\n{0}\n{1}\n{2}\nNIP: {3}{4}", MainProgram.OurCompany.CompanyName, MainProgram.OurCompany.PlaceAddres, MainProgram.OurCompany.Code + ' ' +MainProgram.OurCompany.City, MainProgram.OurCompany.NIP, regonString), new Font(bf, 10));
             table.AddCell(paragraph);
 
             // kupujący
@@ -154,10 +155,10 @@ namespace fakturyA
             table2.AddCell(new Paragraph("" + invoice.PaymentMethod, new Font(bf, SMALL_FONT_SIZE)));
             table2.AddCell("");
             table2.AddCell(new Paragraph("Numer konta: \t", new Font(bf, SMALL_FONT_SIZE)));
-            table2.AddCell(new Paragraph("00 1111 2222 3333 4444 5555", new Font(bf, SMALL_FONT_SIZE)));
+            table2.AddCell(new Paragraph(MainProgram.OurCompany.BankAccount1, new Font(bf, SMALL_FONT_SIZE)));
             table2.AddCell("");
             table2.AddCell(new Paragraph("Termin płatności: \t", new Font(bf, SMALL_FONT_SIZE)));
-            table2.AddCell(new Paragraph("" + invoice.PaymentDate, new Font(bf, SMALL_FONT_SIZE)));
+            table2.AddCell(new Paragraph("" + (invoice.PaymentDate).ToString().Remove(invoice.PaymentDate.ToString().IndexOf(" ")), new Font(bf, SMALL_FONT_SIZE)));
             table2.AddCell("");
             table2.AddCell(new Paragraph("Do zapłaty: \t", new Font(bf, SMALL_FONT_SIZE)));
             table2.AddCell(new Paragraph(invoice.InvoiceValue + " zł", new Font(bf, SMALL_FONT_SIZE)));

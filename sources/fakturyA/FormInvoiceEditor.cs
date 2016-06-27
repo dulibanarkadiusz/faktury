@@ -198,8 +198,12 @@ namespace fakturyA
             {
                 if (isNewInvoice)
                     MainProgram.InvoiceObjectsList.Add(editInvoice);
-                MainProgram.InvoiceWindow.UpdateInvoicesList();
-                MessageBox.Show("Operacja wykonana pomyślnie (" + returnValue + ")");
+
+                if (MainProgram.InvoiceWindow != null)
+                {
+                    MainProgram.InvoiceWindow.UpdateInvoicesList();
+                }
+                MessageBox.Show("Faktura została zapisana pomyślnie.");
                 queryList.Clear();
             }
             else
@@ -218,9 +222,11 @@ namespace fakturyA
                 SelectCustomerID.ukryj(true);
                 editInvoice.Customer = SelectCustomerID.ChooseConsumerWindow();
 
-                MessageBox.Show("Wybrano id: " + editInvoice.Customer.CustomerID);
-                editInvoice.CustomerID = editInvoice.Customer.CustomerID;
-                GetAndLoadCustomerDetails();
+                if (editInvoice.Customer != null)
+                {
+                    editInvoice.CustomerID = editInvoice.Customer.CustomerID;
+                    GetAndLoadCustomerDetails();
+                }
             }
             else
             {
@@ -252,7 +258,13 @@ namespace fakturyA
         {
             if (editInvoice.Customer != null)
             {
-                labelCustomerName.Text = editInvoice.Customer.CompanyName;
+                string nameString = (editInvoice.Customer.CompanyName != null) ? editInvoice.Customer.CompanyName : "";
+                if (editInvoice.Customer.CustomerName != null)
+                {
+                    if (nameString.Length > 0) nameString += "\n";
+                    nameString += editInvoice.Customer.CustomerName;
+                }
+                labelCustomerName.Text = nameString;
                 labelCustomerAdress.Text = String.Format("{0}\n{1} {2}", editInvoice.Customer.Address, editInvoice.Customer.Code, editInvoice.Customer.City);
                 labelCustomerNIP.Text = editInvoice.Customer.CustomerNIP;
             }
@@ -337,8 +349,7 @@ namespace fakturyA
             ArticleOnInvoice editedItem = editInvoice.ArticlesOnInvoiceList[dataGridView1.SelectedRows[0].Index];
             FormArticleAmount w = new FormArticleAmount(ref editedItem);
             editInvoice.ArticlesOnInvoiceList[dataGridView1.SelectedRows[0].Index] = editedItem;
-            w.StartPosition = FormStartPosition.Manual;
-            w.Location = new Point(this.Location.X + 350, this.Location.Y + 150);
+
             w.ShowDialog();
 
             // po uzyskaniu odpowiedzi z okna edycji ilości:

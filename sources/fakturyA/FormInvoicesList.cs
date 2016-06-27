@@ -16,7 +16,6 @@ namespace fakturyA
         public FormInvoicesList()
         {
             InitializeComponent();
-            comboBoxMaximumResults.SelectedIndex = 2;
         }
 
         private void FormInvoice_Load(object sender, EventArgs e)
@@ -47,7 +46,8 @@ namespace fakturyA
                     row.Cells["NrFaktury"].Value = invoice.Number;
                     row.Cells["sprzedawca"].Value = invoice.EmployeeName;
                     row.Cells["KlientNIP"].Value = invoice.CustomerNIP;
-                    row.Cells["KlientName"].Value = invoice.CusotmerName;
+                    row.Cells["KlientName"].Value = invoice.Customer.CompanyName;
+                    row.Cells["CustomerNameSurname"].Value = invoice.Customer.CustomerName;
                     row.Cells["WartoscFaktury"].Value = invoice.InvoiceValue + MainProgram.CurrencySymbol;
                     row.Cells["DoZaplaty"].Value = invoice.InvoiceValue - invoice.AmountPaid + MainProgram.CurrencySymbol;
                     if (invoice.InvoiceValue > invoice.AmountPaid)
@@ -75,8 +75,10 @@ namespace fakturyA
             dataGridView1.Rows.Clear();
             var ResultsInvoices = from Invoice invoice in MainProgram.InvoiceObjectsList
                                   where (invoice.Number.Contains(textBoxFindNumber.Text)
-                                  && invoice.CusotmerName.Contains(textBoxFindCustomerName.Text))
-                                  //&& invoice.CustomerNIP.ToString().Contains(textBoxFindNIP.Text))
+                                  && invoice.CusotmerName.Contains(textBoxFindCustomerName.Text)
+                                  && invoice.CustomerNIP.ToString().Contains(textBoxFindNIP.Text)
+                                  && ((checkboxUnpaid.Checked) ? (invoice.InvoiceValue - invoice.AmountPaid > 0) : true)
+                                  && ((checkBoxDelayed.Checked) ? ((invoice.InvoiceValue - invoice.AmountPaid > 0) && invoice.PaymentDate < DateTime.Now) : true))
                                   select invoice;
 
             WriteAllInvoices(ResultsInvoices.ToList());

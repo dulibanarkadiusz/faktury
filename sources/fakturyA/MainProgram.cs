@@ -22,6 +22,29 @@ namespace fakturyA
             Worker = worker;
         }
 
+        public static void CreateArticleWindow(FormMain parent)
+        {
+            MainProgram.ArticlesWindow = new FormArticles();
+            MainProgram.ArticlesWindow.MdiParent = parent;
+        }
+
+        public static void CreateInvoiceListWindow(FormMain parent)
+        {
+            MainProgram.InvoiceWindow = new FormInvoicesList();
+            MainProgram.InvoiceWindow.MdiParent = parent;
+        }
+
+        public static void CreateCustomersListWindow(FormMain parent)
+        {
+            MainProgram.CustomerWindow = new FormCustomers();
+            MainProgram.CustomerWindow.MdiParent = parent;
+        }
+
+        public static void CreateOurCompanyDataWindow(FormMain parent)
+        {
+            MainProgram.OurCompanyWindow = new FormOurCompanyDataEditor();
+            MainProgram.OurCompanyWindow.MdiParent = parent;
+        }
 
         /* Teksty i stałe */
         public const string CurrencySymbol = " zł";
@@ -36,11 +59,11 @@ namespace fakturyA
         public static string DatabaseName {get; set; }
 
         /* okienka aplikacji */
-        public static FormInvoicesList InvoiceWindow { get; set; } 
-        public static FormArticles ArticlesWindow { get; set; }
+        public static FormInvoicesList InvoiceWindow { get; private set; } 
+        public static FormArticles ArticlesWindow { get; private set; }
         public static FormInvoiceEditor InvoiceEditor { get; set; }
-        public static FormCustomers CustomerWindow { get; set; }
-        public static FormOurCompanyDataEditor OurCompanyWindow { get; set; }
+        public static FormCustomers CustomerWindow { get; private set; }
+        public static FormOurCompanyDataEditor OurCompanyWindow { get; private set; }
 
         /* Listy */
         public static List<Invoice> InvoiceObjectsList { get; set; }
