@@ -54,7 +54,7 @@ namespace fakturyA
             {
                 Amount_TB.Text = Amount_TB.Text.Trim().ToString();
                 Discount_TB.Text = Discount_TB.Text.Trim().ToString();
-                if (Discount_TB.Text != "" && Amount_TB.Text != "")
+                if (Discount_TB.Text != "" && Amount_TB.Text != ""&&Amount_TB.Text!="0")
                 {
                     ArticleOnInvoice pos = new ArticleOnInvoice(FormArticles.articlesList[indeks], Convert.ToDecimal(Discount_TB.Text), Convert.ToDecimal(Amount_TB.Text));
                     MainProgram.InvoiceEditor.AddArticleToInvoice(pos);
@@ -65,7 +65,7 @@ namespace fakturyA
                 {
                     if (Discount_TB.Text == "")
                         errorProvider1.SetError(Discount_TB, "Wpisz rabat");
-                    if (Amount_TB.Text == "")
+                    if (Amount_TB.Text == ""||Amount_TB.Text=="0")
                         errorProvider2.SetError(Amount_TB, "Wpisz Ilość");
 
                 }
@@ -116,6 +116,11 @@ namespace fakturyA
 
             toolTip1.SetToolTip(this.Discount_TB, "Rabat nie może być wiekszy niż 99%");
 
+
+        }
+
+        private void Amount_TB_TextChanged(object sender, EventArgs e)
+        {
 
         }
 

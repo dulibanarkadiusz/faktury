@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.Code_TB = new System.Windows.Forms.TextBox();
             this.Name_TB = new System.Windows.Forms.TextBox();
@@ -41,6 +42,8 @@
             this.PriceNetto_TB = new System.Windows.Forms.TextBox();
             this.PriceBrutto_RB = new System.Windows.Forms.RadioButton();
             this.PriceNetto_RB = new System.Windows.Forms.RadioButton();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -140,6 +143,7 @@
             this.PriceBrutto_TB.Size = new System.Drawing.Size(221, 20);
             this.PriceBrutto_TB.TabIndex = 5;
             this.PriceBrutto_TB.Enter += new System.EventHandler(this.changeDataInTB);
+            this.PriceBrutto_TB.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.PriceBrutto_TB_KeyPress);
             this.PriceBrutto_TB.Leave += new System.EventHandler(this.changeDataInTB);
             // 
             // PriceNetto_TB
@@ -148,6 +152,7 @@
             this.PriceNetto_TB.Name = "PriceNetto_TB";
             this.PriceNetto_TB.Size = new System.Drawing.Size(221, 20);
             this.PriceNetto_TB.TabIndex = 7;
+            this.PriceNetto_TB.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.PriceBrutto_TB_KeyPress);
             this.PriceNetto_TB.Leave += new System.EventHandler(this.changeDataInTB);
             // 
             // PriceBrutto_RB
@@ -174,6 +179,10 @@
             this.PriceNetto_RB.UseVisualStyleBackColor = true;
             this.PriceNetto_RB.CheckedChanged += new System.EventHandler(this.checkedRadioButton);
             // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
             // FormArticlesEditor
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -195,6 +204,7 @@
             this.MaximizeBox = false;
             this.Name = "FormArticlesEditor";
             this.Text = "FormArticlesEditor";
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -215,6 +225,7 @@
         private System.Windows.Forms.TextBox PriceNetto_TB;
         private System.Windows.Forms.RadioButton PriceBrutto_RB;
         private System.Windows.Forms.RadioButton PriceNetto_RB;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
 
     }
 }

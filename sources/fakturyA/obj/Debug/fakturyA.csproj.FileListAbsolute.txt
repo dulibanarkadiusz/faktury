@@ -361,3 +361,27 @@ D:\faktury26czerwca_2\faktury\sources\fakturyA\obj\Debug\fakturyA.Properties.Res
 D:\faktury26czerwca_2\faktury\sources\fakturyA\obj\Debug\fakturyA.UserControl_PermissionView.resources
 D:\faktury26czerwca_2\faktury\sources\fakturyA\obj\Debug\fakturyA.UserControl_PermissionsEditor.resources
 D:\faktury26czerwca_2\faktury\sources\fakturyA\obj\Debug\fakturyA.csproj.GenerateResource.Cache
+C:\Users\Zumirka\Desktop\fsktury 27.06 5\sources\fakturyA\bin\Debug\fakturyA.exe.config
+C:\Users\Zumirka\Desktop\fsktury 27.06 5\sources\fakturyA\obj\Debug\fakturyA.exe
+C:\Users\Zumirka\Desktop\fsktury 27.06 5\sources\fakturyA\obj\Debug\fakturyA.pdb
+C:\Users\Zumirka\Desktop\fsktury 27.06 5\sources\fakturyA\bin\Debug\fakturyA.exe
+C:\Users\Zumirka\Desktop\fsktury 27.06 5\sources\fakturyA\bin\Debug\fakturyA.pdb
+C:\Users\Zumirka\Desktop\fsktury 27.06 5\sources\fakturyA\bin\Debug\itextsharp.xml
+C:\Users\Zumirka\Desktop\fsktury 27.06 5\sources\fakturyA\obj\Debug\fakturyA.csprojResolveAssemblyReference.cache
+C:\Users\Zumirka\Desktop\fsktury 27.06 5\sources\fakturyA\obj\Debug\fakturyA.FormAddNewWorker.resources
+C:\Users\Zumirka\Desktop\fsktury 27.06 5\sources\fakturyA\obj\Debug\fakturyA.FormArticleAmount.resources
+C:\Users\Zumirka\Desktop\fsktury 27.06 5\sources\fakturyA\obj\Debug\fakturyA.FormArticlesEditor.resources
+C:\Users\Zumirka\Desktop\fsktury 27.06 5\sources\fakturyA\obj\Debug\fakturyA.FormInvoiceEditor.resources
+C:\Users\Zumirka\Desktop\fsktury 27.06 5\sources\fakturyA\obj\Debug\fakturyA.FormCustomers.resources
+C:\Users\Zumirka\Desktop\fsktury 27.06 5\sources\fakturyA\obj\Debug\fakturyA.FormInvoicesList.resources
+C:\Users\Zumirka\Desktop\fsktury 27.06 5\sources\fakturyA\obj\Debug\fakturyA.FormLogin.resources
+C:\Users\Zumirka\Desktop\fsktury 27.06 5\sources\fakturyA\obj\Debug\fakturyA.FormMain.resources
+C:\Users\Zumirka\Desktop\fsktury 27.06 5\sources\fakturyA\obj\Debug\fakturyA.FormArticles.resources
+C:\Users\Zumirka\Desktop\fsktury 27.06 5\sources\fakturyA\obj\Debug\fakturyA.FormNewCustomers.resources
+C:\Users\Zumirka\Desktop\fsktury 27.06 5\sources\fakturyA\obj\Debug\fakturyA.FormOurCompanyDataEditor.resources
+C:\Users\Zumirka\Desktop\fsktury 27.06 5\sources\fakturyA\obj\Debug\fakturyA.FormPermissionEditor.resources
+C:\Users\Zumirka\Desktop\fsktury 27.06 5\sources\fakturyA\obj\Debug\fakturyA.FormUserList.resources
+C:\Users\Zumirka\Desktop\fsktury 27.06 5\sources\fakturyA\obj\Debug\fakturyA.Properties.Resources.resources
+C:\Users\Zumirka\Desktop\fsktury 27.06 5\sources\fakturyA\obj\Debug\fakturyA.UserControl_PermissionView.resources
+C:\Users\Zumirka\Desktop\fsktury 27.06 5\sources\fakturyA\obj\Debug\fakturyA.UserControl_PermissionsEditor.resources
+C:\Users\Zumirka\Desktop\fsktury 27.06 5\sources\fakturyA\obj\Debug\fakturyA.csproj.GenerateResource.Cache

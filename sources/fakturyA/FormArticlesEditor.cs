@@ -66,7 +66,7 @@ namespace fakturyA
 
                 if (PriceNetto_RB.Checked)
                 {
-                    decimal brutto = System.Decimal.Round(Convert.ToDecimal(PriceNetto_TB.Text), 2);
+                    decimal brutto = System.Decimal.Round(Convert.ToDecimal(PriceNetto_TB.Text.Replace('.',',')), 2);
                     decimal vat = Convert.ToDecimal(Vat_CB.Text);
                     brutto = System.Decimal.Round(brutto + brutto * (vat / 100), 2);
                     PriceBrutto_TB.Text = Convert.ToString(brutto);
@@ -74,7 +74,7 @@ namespace fakturyA
                 }
                 else if (PriceBrutto_RB.Checked)
                 {
-                    decimal netto = System.Decimal.Round(Convert.ToDecimal(PriceBrutto_TB.Text), 2);
+                    decimal netto = System.Decimal.Round(Convert.ToDecimal(PriceBrutto_TB.Text.Replace('.',',')), 2);
                     decimal vat = Convert.ToDecimal(Vat_CB.Text);
                     netto = System.Decimal.Round(netto - netto * (vat / 100), 2);
                     PriceNetto_TB.Text = Convert.ToString(netto);
@@ -82,21 +82,18 @@ namespace fakturyA
                 }
                 else
                 {
-                    decimal netto = System.Decimal.Round(Convert.ToDecimal(PriceBrutto_TB.Text), 2);
+                    decimal netto = System.Decimal.Round(Convert.ToDecimal(PriceBrutto_TB.Text.Replace('.',',')), 2);
                     decimal vat = Convert.ToDecimal(Vat_CB.Text);
                     netto = System.Decimal.Round(netto - netto * (vat / 100), 2);
                     PriceNetto_TB.Text = Convert.ToString(netto);
-                    decimal brutto = System.Decimal.Round(Convert.ToDecimal(PriceNetto_TB.Text), 2);
+                    decimal brutto = System.Decimal.Round(Convert.ToDecimal(PriceNetto_TB.Text.Replace('.', ',')), 2);
                     brutto = System.Decimal.Round(brutto + brutto * (vat / 100), 2);
                     PriceBrutto_TB.Text = Convert.ToString(brutto);
                     check_filling = false;
                 }
             }
 
-            else
-            {
-                MessageBox.Show(" musisz wszystkie wypisać");
-            }
+           
         }
         private void Check_well_filled()
         {
@@ -116,6 +113,17 @@ namespace fakturyA
             if (CodeTB != "" && NameTB != "" && brutto != "" && netto != "")
             {
                 check_filling = true;
+            }
+            else
+            {
+                if(CodeTB=="")
+                    errorProvider1.SetError(Code_TB, "Wpisz Ilość");
+                if(NameTB=="")
+                    errorProvider1.SetError(Name_TB, "Wpisz Ilość");
+                if(brutto=="")
+                    errorProvider1.SetError(PriceBrutto_TB, "Wpisz Ilość");
+                if(netto=="")
+                    errorProvider1.SetError(PriceNetto_TB, "Wpisz Ilość");
             }
 
         }
@@ -152,12 +160,12 @@ namespace fakturyA
 
                         if (PriceBrutto_RB.Checked)
                         {
-                            editArticle.PriceBrutto = System.Decimal.Round(Convert.ToDecimal(PriceBrutto_TB.Text), 2);
+                            editArticle.PriceBrutto = System.Decimal.Round(Convert.ToDecimal(PriceBrutto_TB.Text.Replace('.',',')), 2);
                             editArticle.PriceNetto = System.Decimal.Round(editArticle.PriceBrutto - editArticle.PriceBrutto * editArticle.VATvalue / 100, 2);
                         }
                         else
                         {
-                            editArticle.PriceNetto = System.Decimal.Round(Convert.ToDecimal(PriceNetto_TB.Text), 2);
+                            editArticle.PriceNetto = System.Decimal.Round(Convert.ToDecimal(PriceNetto_TB.Text.Replace('.',',')), 2);
                             editArticle.PriceBrutto = System.Decimal.Round(editArticle.PriceNetto + editArticle.PriceNetto * editArticle.VATvalue / 100, 2);
                         }
                         FormArticles.articlesList.Add(editArticle);
@@ -169,7 +177,7 @@ namespace fakturyA
                     }
                     else
                     {
-                        MessageBox.Show("kod juz istnieje ");
+                        MessageBox.Show("Artykuł o podanym kodzie już istnieje");
                     }
                 }
                 else
@@ -201,5 +209,28 @@ namespace fakturyA
             }
         }
 
+        private void PriceBrutto_TB_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+            if (char.IsDigit(e.KeyChar) || e.KeyChar == (char)Keys.Back || e.KeyChar == '.' || e.KeyChar == ',')
+            {
+                if (e.KeyChar == ',' || e.KeyChar == '.')
+                {
+
+                    if(PriceBrutto_TB.Text.Contains(',')||PriceNetto_TB.Text.Contains(',')||PriceNetto_TB.Text.Contains('.')||PriceBrutto_TB.Text.Contains('.'))
+                    {
+                        e.Handled = true;
+      
+                    }
+                    else
+                        base.OnKeyPress(e); 
+                }
+               
+            }
+            else
+                e.Handled = true;
+        }
+
+       
     }
 }
