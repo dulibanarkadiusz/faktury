@@ -22,6 +22,7 @@ namespace fakturyA
         private string customerName;
         private string paymentMethod = "przelew";
         private int customerID;
+        private Customers customer;
 
         string[] paymentMethods = { "przelew", "gotówka", "karta płatnicza", "płatność online", "płatność ratalna" };
 
@@ -30,9 +31,17 @@ namespace fakturyA
         public int EmployeeID { get; private set; }
         public string EmployeeName { get; private set; }
         public string CustomerNIP { get; private set; }
-        public Customers Customer { get; set; }
+        public Customers Customer { 
+            get { return customer; } 
+            set { customer = value;
+            if (customer == null) return;
+                CustomerNIP = customer.CustomerNIP; 
+                customerName = customer.CompanyName; 
+            } 
+        }
         public List<ArticleOnInvoice> ArticlesOnInvoiceList { get; private set; }
 
+        #region Właściwości
         public int CustomerID
         {
             get { return customerID; }
@@ -136,6 +145,7 @@ namespace fakturyA
                 invoiceTotalNetto = value;
             }
         }
+        #endregion
 
 
         // --- METODY --- 
@@ -199,7 +209,7 @@ namespace fakturyA
         {
             CustomerID = -1;
             EmployeeID = MainProgram.Worker.ID;
-            EmployeeName = MainProgram.Worker.Name;
+            EmployeeName = MainProgram.Worker.Name + " " + MainProgram.Worker.SurnName;
             InvoiceDate = DateTime.Now;
             PaymentDate = DateTime.Now;
             SellingDate = DateTime.Now;

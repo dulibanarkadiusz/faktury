@@ -34,8 +34,6 @@
             this.textBoxFindNumber = new System.Windows.Forms.TextBox();
             this.textBoxFindCustomerName = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.textBoxFindNIP = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
             this.index = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NrFaktury = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.KlientName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -46,8 +44,10 @@
             this.DoZaplaty = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DataWystawienia = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TerminPlatnosci = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.checkboxUnpaid = new System.Windows.Forms.CheckBox();
+            this.textBoxFindNIP = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.checkBoxDelayed = new System.Windows.Forms.CheckBox();
+            this.checkboxUnpaid = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -159,28 +159,6 @@
             this.dataGridView1.SortCompare += new System.Windows.Forms.DataGridViewSortCompareEventHandler(this.customSortCompare);
             this.dataGridView1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dataGridView1_MouseClick);
             // 
-            // textBoxFindNIP
-            // 
-            this.textBoxFindNIP.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxFindNIP.Location = new System.Drawing.Point(585, 28);
-            this.textBoxFindNIP.Name = "textBoxFindNIP";
-            this.textBoxFindNIP.Size = new System.Drawing.Size(91, 20);
-            this.textBoxFindNIP.TabIndex = 14;
-            this.textBoxFindNIP.TextChanged += new System.EventHandler(this.FindInInvoices);
-            // 
-            // label4
-            // 
-            this.label4.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(551, 31);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(28, 13);
-            this.label4.TabIndex = 15;
-            this.label4.Text = "NIP:";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
             // index
             // 
             this.index.HeaderText = "Column1";
@@ -249,20 +227,27 @@
             this.TerminPlatnosci.ReadOnly = true;
             this.TerminPlatnosci.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             // 
-            // checkboxUnpaid
+            // textBoxFindNIP
             // 
-            this.checkboxUnpaid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.textBoxFindNIP.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.checkboxUnpaid.AutoSize = true;
-            this.tableLayoutPanel1.SetColumnSpan(this.checkboxUnpaid, 2);
-            this.checkboxUnpaid.Location = new System.Drawing.Point(779, 28);
-            this.checkboxUnpaid.Name = "checkboxUnpaid";
-            this.checkboxUnpaid.Size = new System.Drawing.Size(196, 19);
-            this.checkboxUnpaid.TabIndex = 16;
-            this.checkboxUnpaid.Text = "nieopłacone faktury";
-            this.checkboxUnpaid.UseVisualStyleBackColor = true;
-            this.checkboxUnpaid.CheckedChanged += new System.EventHandler(this.FindInInvoices);
+            this.textBoxFindNIP.Location = new System.Drawing.Point(585, 28);
+            this.textBoxFindNIP.Name = "textBoxFindNIP";
+            this.textBoxFindNIP.Size = new System.Drawing.Size(91, 20);
+            this.textBoxFindNIP.TabIndex = 14;
+            this.textBoxFindNIP.TextChanged += new System.EventHandler(this.FindInInvoices);
+            // 
+            // label4
+            // 
+            this.label4.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(551, 31);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(28, 13);
+            this.label4.TabIndex = 15;
+            this.label4.Text = "NIP:";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // checkBoxDelayed
             // 
@@ -278,6 +263,21 @@
             this.checkBoxDelayed.Text = "przekroczony termin spłaty";
             this.checkBoxDelayed.UseVisualStyleBackColor = true;
             this.checkBoxDelayed.CheckedChanged += new System.EventHandler(this.FindInInvoices);
+            // 
+            // checkboxUnpaid
+            // 
+            this.checkboxUnpaid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.checkboxUnpaid.AutoSize = true;
+            this.tableLayoutPanel1.SetColumnSpan(this.checkboxUnpaid, 2);
+            this.checkboxUnpaid.Location = new System.Drawing.Point(779, 28);
+            this.checkboxUnpaid.Name = "checkboxUnpaid";
+            this.checkboxUnpaid.Size = new System.Drawing.Size(196, 19);
+            this.checkboxUnpaid.TabIndex = 16;
+            this.checkboxUnpaid.Text = "nieopłacone faktury";
+            this.checkboxUnpaid.UseVisualStyleBackColor = true;
+            this.checkboxUnpaid.CheckedChanged += new System.EventHandler(this.FindInInvoices);
             // 
             // FormInvoicesList
             // 

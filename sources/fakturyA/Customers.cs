@@ -51,6 +51,8 @@ namespace fakturyA
                 Code = Convert.ToInt32(dane[5]);
                 Email = dane[6];
                 CustomerNIP = dane[7];
+                if (CustomerNIP == null)
+                    CustomerNIP = "0";
             }
             catch (Exception exc)
             {
@@ -71,6 +73,8 @@ namespace fakturyA
                 Email = dataRow[6];
                 if (dataRow.Length == 8)
                     CustomerNIP = dataRow[7];
+                else
+                    CustomerNIP = "0";
 
 
 

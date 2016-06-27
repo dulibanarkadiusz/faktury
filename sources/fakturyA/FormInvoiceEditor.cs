@@ -61,6 +61,8 @@ namespace fakturyA
 
             GetAndWriteArticlesToInvoiceEditor();
             formLoaded = true;
+
+            buttonChooseCustomer.Enabled = false;
                
 
             // odczytaj dane z istniejącej krotki (zapisanej w liście faktur) i wypisz do edytora
@@ -135,6 +137,7 @@ namespace fakturyA
                     // jeśli już jest po załadowaniu istniejącej faktury, a dodawany jest [przez użytkownika] nowy artykuł : 
                     MessageBox.Show("ok");
                     queryList.Add(article.GetInsertQuery());
+                    MessageBox.Show("A");
                 }
             }
             else
@@ -165,51 +168,46 @@ namespace fakturyA
                 isNewInvoice = true;
                 editInvoice.Number = DatabaseMySQL.CreateNumberForNewInvoice();
                 textBoxInvoiceNumber.Text = editInvoice.Number; // wypisz wygenerowany dla faktury numer 
-                query = editInvoice.GenerateInsertQuery();
+                queryList.Add( editInvoice.GenerateInsertQuery() );
                 foreach (ArticleOnInvoice invoiceArticle in EditInvoice.ArticlesOnInvoiceList)
                 {
                     queryList.Add(invoiceArticle.GetInsertQuery());
                 }
+                int n = DatabaseMySQL.ExecuteTransaction(queryList);
+
+                if (n > 0)
+                {
+                    buttonChooseCustomer.Enabled = false;
+                }
+                formLoaded = true;
             }
             else
             {
                 /// AKTUALIZACJA (UPDATE) istniejącej faktury
-                query = editInvoice.GenerateUpdateQuery(); // przygotowuje zapytanie UPDATE do bazy danych
-                
-                foreach (string query_text in queryList)
-                {
-                    DatabaseMySQL.ExecuteQuery(query_text);
-                }
+                queryList.Add( editInvoice.GenerateUpdateQuery() ); // przygotowuje zapytanie UPDATE do bazy danych
+                DatabaseMySQL.ExecuteTransaction(queryList);
                 
                 addedArticlesToInvoice.Clear();
                 
             }
             queryList.Clear(); // czyszczenie historii 
 
-            int? returnValue = null;
-            returnValue = DatabaseMySQL.ExecuteQuery(query);
-            foreach (string mysqlQuery in queryList)
-            {
-                DatabaseMySQL.ExecuteQuery(mysqlQuery);
-            }
 
 
-            if (returnValue > 0)
-            {
-                if (isNewInvoice)
-                    MainProgram.InvoiceObjectsList.Add(editInvoice);
 
-                if (MainProgram.InvoiceWindow != null)
-                {
-                    MainProgram.InvoiceWindow.UpdateInvoicesList();
-                }
-                MessageBox.Show("Faktura została zapisana pomyślnie.");
-                queryList.Clear();
-            }
-            else
+            // PO WYKONANIU TRANSAKCJI:
+            if (isNewInvoice)
             {
-                MessageBox.Show("Wystąpił błąd.");
+                MainProgram.InvoiceObjectsList.Add(editInvoice);
             }
+            
+            if (MainProgram.InvoiceWindow != null)
+            {
+                MainProgram.InvoiceWindow.UpdateInvoicesList();
+            }
+            
+            MessageBox.Show("Faktura została zapisana pomyślnie.");
+            queryList.Clear();
 
         }
 
@@ -221,6 +219,7 @@ namespace fakturyA
                 FormCustomers SelectCustomerID = new FormCustomers();
                 SelectCustomerID.ukryj(true);
                 editInvoice.Customer = SelectCustomerID.ChooseConsumerWindow();
+               
 
                 if (editInvoice.Customer != null)
                 {

@@ -81,6 +81,7 @@ namespace fakturyA
         
         public static void LoadInvoicesList()
         {
+            MainProgram.InvoiceObjectsList.Clear();
             MainProgram.Connection = DatabaseMySQL.Connect(MainProgram.DatabaseName);
             try
             {

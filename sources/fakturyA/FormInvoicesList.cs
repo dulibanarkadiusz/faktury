@@ -45,7 +45,7 @@ namespace fakturyA
                     row.Cells["index"].Value = i;
                     row.Cells["NrFaktury"].Value = invoice.Number;
                     row.Cells["sprzedawca"].Value = invoice.EmployeeName;
-                    row.Cells["KlientNIP"].Value = invoice.CustomerNIP;
+                    row.Cells["KlientNIP"].Value = invoice.Customer.CustomerNIP;
                     row.Cells["KlientName"].Value = invoice.Customer.CompanyName;
                     row.Cells["CustomerNameSurname"].Value = invoice.Customer.CustomerName;
                     row.Cells["WartoscFaktury"].Value = invoice.InvoiceValue + MainProgram.CurrencySymbol;
@@ -227,7 +227,7 @@ namespace fakturyA
             }
             else if (e.Column.Index == 5 || e.Column.Index == 6) // double compare
             {
-                var val1 = double.Parse(e.CellValue1.ToString().Replace(" zł", ""));
+                var val1 = (e.CellValue1.ToString() != "") ? double.Parse(e.CellValue1.ToString().Replace(" zł", "")) : 0d;
                 var val2 = double.Parse(e.CellValue2.ToString().Replace(" zł", ""));
 
                 if (val1 > val2)
