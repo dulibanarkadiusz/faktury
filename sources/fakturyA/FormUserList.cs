@@ -49,5 +49,11 @@ namespace fakturyA
 
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            FormAddNewWorker AddUser = new FormAddNewWorker();
+            AddUser.ShowDialog();
+        }
+
     }
 }

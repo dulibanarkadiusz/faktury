@@ -87,7 +87,7 @@ namespace fakturyA
         }
         private void button1_Click(object sender, EventArgs e)
         {
-            string[] s = { "", BoxCompName.Text, BoxCustName.Text, BoxAddress.Text, BoxCity.Text, BoxCode1.Text + BoxCode2.Text, BoxEmail.Text, BoxNIP.Text };
+            string[] s = { "0", BoxCompName.Text, BoxCustName.Text, BoxAddress.Text, BoxCity.Text, BoxCode1.Text + BoxCode2.Text, BoxEmail.Text, BoxNIP.Text };
 
             if (isSecurity == false)
             {

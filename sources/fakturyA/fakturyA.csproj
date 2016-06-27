@@ -184,6 +184,9 @@
       <DependentUpon>UserControl_PermissionsEditor.cs</DependentUpon>
     </Compile>
     <Compile Include="Worker.cs" />
+    <EmbeddedResource Include="FormAddNewWorker.resx">
+      <DependentUpon>FormAddNewWorker.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormAritcleAmount.resx">
       <DependentUpon>FormAritcleAmount.cs</DependentUpon>
     </EmbeddedResource>

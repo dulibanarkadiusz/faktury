@@ -98,6 +98,7 @@ namespace fakturyA
         private void buttonAdd_Click(object sender, EventArgs e)
         {
             FormNewCustomers AddNew = new FormNewCustomers();
+            AddNew.Text = "Nowy kontrahent";
             AddNew.ShowDialog();
             dataGridView1.Rows.Clear();
             WriteAllCustomer();
@@ -125,7 +126,7 @@ namespace fakturyA
         {
             List<Customers> cust = MainProgram.CustomersList;
             FormNewCustomers edit = new FormNewCustomers(cust[dataGridView1.SelectedRows[0].Index]);
-            edit.Text = "Edytuj";
+            edit.Text = "Edytuj kontrahenta";
             edit.ShowDialog();
         }
         private void FindInCustomer(object sender, EventArgs e)
