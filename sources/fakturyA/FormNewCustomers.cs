@@ -17,8 +17,6 @@ namespace fakturyA
         public FormNewCustomers()
         {
             InitializeComponent();
-            //System.Windows.Forms.Form.
-            //FormNewCustomers.
             button2.Hide();
         }
         private void clearTextBox()

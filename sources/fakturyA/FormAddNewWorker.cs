@@ -61,14 +61,26 @@ namespace fakturyA
             }
                 
         }
-
+        private void clearTextBox()
+        {
+            BoxLogin.Clear();
+            BoxLastName.Clear();
+            Box2Pass.Clear();
+            BoxPassword.Clear();
+            BoxName.Clear();
+        }
         private void button1_Click(object sender, EventArgs e)
         {
+            string[] s = {BoxName.Text,BoxLastName.Text,BoxLogin.Text };
             if (isSecurity == false)
                 Security();
             else
             {
-                
+                Worker newWorker = new Worker(s);
+                string query = newWorker.GenerateInsertQuery();
+                DatabaseMySQL.ExecuteQuery(query);
+                clearTextBox();
+                this.Close();
             }
                 
         }
