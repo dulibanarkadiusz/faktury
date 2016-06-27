@@ -336,3 +336,4 @@ C:\Users\User\Desktop\Nowy folder (3)\faktury\sources\fakturyA\obj\Debug\faktury
 C:\Users\User\Desktop\Nowy folder (3)\faktury\sources\fakturyA\obj\Debug\fakturyA.UserControl_PermissionView.resources
 C:\Users\User\Desktop\Nowy folder (3)\faktury\sources\fakturyA\obj\Debug\fakturyA.UserControl_PermissionsEditor.resources
 C:\Users\User\Desktop\Nowy folder (3)\faktury\sources\fakturyA\obj\Debug\fakturyA.csproj.GenerateResource.Cache
+C:\Users\User\Desktop\Nowy folder (3)\faktury\sources\fakturyA\obj\Debug\fakturyA.FormAddNewWorker.resources

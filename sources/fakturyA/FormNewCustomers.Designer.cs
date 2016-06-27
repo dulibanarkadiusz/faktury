@@ -254,7 +254,6 @@
             this.Controls.Add(this.BoxCustName);
             this.Controls.Add(this.BoxCompName);
             this.Name = "FormNewCustomers";
-            this.Text = "Nowy kontrahent";
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
