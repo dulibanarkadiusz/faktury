@@ -362,3 +362,5 @@ D:\faktury26czerwca_2\faktury\sources\fakturyA\obj\Debug\fakturyA.UserControl_Pe
 D:\faktury26czerwca_2\faktury\sources\fakturyA\obj\Debug\fakturyA.UserControl_PermissionsEditor.resources
 D:\faktury26czerwca_2\faktury\sources\fakturyA\obj\Debug\fakturyA.csproj.GenerateResource.Cache
 D:\000faktury\faktury\sources\fakturyA\obj\Debug\fakturyA.FormAddNewWorker.resources
+D:\Faktury_18czerwca\faktury\sources\fakturyA\obj\Debug\fakturyA.FormAddNewWorker.resources
+D:\Faktury_18czerwca\faktury\sources\fakturyA\obj\Debug\fakturyA.FormOurCompanyDataEditor.resources
