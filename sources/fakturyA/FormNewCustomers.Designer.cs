@@ -60,6 +60,7 @@
             this.BoxCode2.Size = new System.Drawing.Size(100, 20);
             this.BoxCode2.TabIndex = 37;
             this.BoxCode2.TextChanged += new System.EventHandler(this.BoxCode2_TextChanged);
+            this.BoxCode2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Box_KeyPress);
             // 
             // label9
             // 
@@ -135,6 +136,7 @@
             this.BoxNIP.Size = new System.Drawing.Size(257, 20);
             this.BoxNIP.TabIndex = 29;
             this.BoxNIP.TextChanged += new System.EventHandler(this.BoxNIP_TextChanged);
+            this.BoxNIP.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Box_KeyPress);
             // 
             // BoxCode1
             // 
@@ -143,6 +145,7 @@
             this.BoxCode1.Size = new System.Drawing.Size(26, 20);
             this.BoxCode1.TabIndex = 28;
             this.BoxCode1.TextChanged += new System.EventHandler(this.BoxCode1_TextChanged);
+            this.BoxCode1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Box_KeyPress);
             // 
             // BoxEmail
             // 
@@ -223,6 +226,7 @@
             this.button2.TabIndex = 38;
             this.button2.Text = "EDYTUJ";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click_1);
             // 
             // FormNewCustomers
             // 

@@ -128,7 +128,34 @@ namespace fakturyA
             edit.Text = "Edytuj";
             edit.ShowDialog();
         }
+        private void FindInCustomer(object sender, EventArgs e)
+        {
+            Nip_find.MaxLength = 10;
+            List<Customers> custList = MainProgram.CustomersList;
+            dataGridView1.Rows.Clear();
+            var resultsCustomers = from Customers find in custList
+                                   where (find.CustomerNIP.Contains(Nip_find.Text)
+                                   && (find.CompanyName.Contains(company_find.Text))
+                                   && (find.CustomerName.Contains(name_find.Text)))
 
+                                   select find;
+            int i = 0;
+            foreach (Customers find in resultsCustomers)
+            {
+                i = dataGridView1.Rows.Add();
+
+                DataGridViewRow row = (DataGridViewRow)dataGridView1.Rows[i];
+                row.Cells["NazwaFirmy"].Value = find.CompanyName;
+                row.Cells["Klient"].Value = find.CustomerName;
+                row.Cells["ulica"].Value = find.Address;
+                row.Cells["miasto"].Value = find.City;
+                row.Cells["kod_poczt"].Value = find.Code;
+                row.Cells["email"].Value = find.Email;
+                row.Cells["NIP"].Value = find.CustomerNIP;
+                i++;
+
+            }
+        }
         protected override void OnFormClosing(FormClosingEventArgs e)
         {
             base.OnFormClosing(e);

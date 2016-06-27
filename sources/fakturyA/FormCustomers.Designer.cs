@@ -31,9 +31,9 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.name_find = new System.Windows.Forms.TextBox();
+            this.company_find = new System.Windows.Forms.TextBox();
+            this.Nip_find = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -53,33 +53,36 @@
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // textBox3
+            // name_find
             // 
-            this.textBox3.Location = new System.Drawing.Point(591, 28);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(69, 20);
-            this.textBox3.TabIndex = 17;
+            this.name_find.Location = new System.Drawing.Point(591, 28);
+            this.name_find.Name = "name_find";
+            this.name_find.Size = new System.Drawing.Size(69, 20);
+            this.name_find.TabIndex = 17;
+            this.name_find.TextChanged += new System.EventHandler(this.FindInCustomer);
             // 
-            // textBox2
+            // company_find
             // 
-            this.textBox2.Location = new System.Drawing.Point(423, 28);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(69, 20);
-            this.textBox2.TabIndex = 16;
+            this.company_find.Location = new System.Drawing.Point(423, 28);
+            this.company_find.Name = "company_find";
+            this.company_find.Size = new System.Drawing.Size(69, 20);
+            this.company_find.TabIndex = 16;
+            this.company_find.TextChanged += new System.EventHandler(this.FindInCustomer);
             // 
-            // textBox1
+            // Nip_find
             // 
-            this.textBox1.Location = new System.Drawing.Point(255, 28);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(69, 20);
-            this.textBox1.TabIndex = 15;
+            this.Nip_find.Location = new System.Drawing.Point(212, 28);
+            this.Nip_find.Name = "Nip_find";
+            this.Nip_find.Size = new System.Drawing.Size(115, 20);
+            this.Nip_find.TabIndex = 15;
+            this.Nip_find.TextChanged += new System.EventHandler(this.FindInCustomer);
             // 
             // label1
             // 
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label1.Location = new System.Drawing.Point(219, 29);
+            this.label1.Location = new System.Drawing.Point(176, 29);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(30, 16);
             this.label1.TabIndex = 14;
@@ -235,8 +238,8 @@
             this.tableLayoutPanel1.ColumnCount = 10;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 4.852071F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15.02959F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
@@ -244,9 +247,9 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.tableLayoutPanel1.Controls.Add(this.dataGridView1, 0, 2);
-            this.tableLayoutPanel1.Controls.Add(this.textBox3, 7, 1);
-            this.tableLayoutPanel1.Controls.Add(this.textBox2, 5, 1);
-            this.tableLayoutPanel1.Controls.Add(this.textBox1, 3, 1);
+            this.tableLayoutPanel1.Controls.Add(this.name_find, 7, 1);
+            this.tableLayoutPanel1.Controls.Add(this.company_find, 5, 1);
+            this.tableLayoutPanel1.Controls.Add(this.Nip_find, 3, 1);
             this.tableLayoutPanel1.Controls.Add(this.label1, 2, 1);
             this.tableLayoutPanel1.Controls.Add(this.label2, 4, 1);
             this.tableLayoutPanel1.Controls.Add(this.label3, 6, 1);
@@ -280,9 +283,9 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox name_find;
+        private System.Windows.Forms.TextBox company_find;
+        private System.Windows.Forms.TextBox Nip_find;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;

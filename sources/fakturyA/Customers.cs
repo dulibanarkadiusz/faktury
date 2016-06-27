@@ -62,7 +62,7 @@ namespace fakturyA
 
             try
             {
-                CustomerID = Convert.ToInt32(dataRow[0]);
+                //CustomerID = Convert.ToInt32(dataRow[0]);
                 CompanyName = dataRow[1];
                 CustomerName = dataRow[2];
                 Address = dataRow[3];
@@ -90,5 +90,10 @@ namespace fakturyA
         {
             return String.Format("Delete from kontrahent where nazwa='{0}'", CompanyName);
         }
+        public string GenerateQueryUpdateCustomer()
+        {
+            return String.Format("Update kontrahent SET imie_nazwisko='{0}',ulica='{1}',miasto='{2}',kod_pocztowy={3},email='{4}',NIP='{5}' where nazwa='{6}'", CustomerName, Address, City, Code, Email, CustomerNIP, CompanyName);
+        }
+
     }
 }
