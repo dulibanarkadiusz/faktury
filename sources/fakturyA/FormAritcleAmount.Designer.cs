@@ -47,7 +47,8 @@
             this.Amount_TB.Name = "Amount_TB";
             this.Amount_TB.Size = new System.Drawing.Size(100, 20);
             this.Amount_TB.TabIndex = 0;
-            this.Amount_TB.Text = "0";
+            this.Amount_TB.Text = "1";
+            this.Amount_TB.TextChanged += new System.EventHandler(this.Amount_TB_TextChanged);
             this.Amount_TB.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Amount_TB_KeyPress);
             // 
             // Discount_TB
