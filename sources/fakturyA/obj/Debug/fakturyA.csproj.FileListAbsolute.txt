@@ -462,3 +462,6 @@ C:\Users\User\Desktop\Nowy folder (5)\faktury\sources\fakturyA\obj\Debug\faktury
 C:\Users\User\Desktop\Nowy folder (5)\faktury\sources\fakturyA\obj\Debug\fakturyA.UserControl_PermissionView.resources
 C:\Users\User\Desktop\Nowy folder (5)\faktury\sources\fakturyA\obj\Debug\fakturyA.UserControl_PermissionsEditor.resources
 C:\Users\User\Desktop\Nowy folder (5)\faktury\sources\fakturyA\obj\Debug\fakturyA.csproj.GenerateResource.Cache
+C:\Users\Zumirka\Desktop\fsktury 28.06 5\sources\fakturyA\bin\Debug\fakturyA.exe.config
+C:\Users\Zumirka\Desktop\fsktury 28.06 5\sources\fakturyA\obj\Debug\fakturyA.exe
+C:\Users\Zumirka\Desktop\fsktury 28.06 5\sources\fakturyA\obj\Debug\fakturyA.pdb

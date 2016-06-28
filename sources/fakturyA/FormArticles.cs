@@ -14,7 +14,7 @@ namespace fakturyA
     {
 
         private int indeks = 1;
-        private bool czy_zamknac = false;
+        private bool close_it = false;
         private bool EditAddArticle = false;
         public bool EditMode { get; set; } // ustaw true kiedy zezwalasz na edytowanie artykułów
         public static List<Article> articlesList { get; set; } // weź to popraw STATYCZNE bo zabiję.
@@ -152,7 +152,7 @@ namespace fakturyA
             a.Show();
             a.AddArticle.Show();
             a.AddArticle_butt.Hide();
-            if (czy_zamknac)
+            if (close_it)
             {
                 a.Close();
             }
@@ -191,7 +191,7 @@ namespace fakturyA
             addingArticle.Show();
 
 
-            czy_zamknac = true;
+            close_it = true;
         }
         public void ReplaceEditRowArticleInDataGrid(Article editArticle)
         {
