@@ -54,12 +54,8 @@ namespace fakturyA
         }
         private void dataGridView1_MouseClick(object sender, MouseEventArgs e)
         {
-            
-                // context menu 
-                // int mouseOnRow = dataGridView1.HitTest(e.X, e.Y).RowIndex;
-                // if (mouseOnRow >= 0 && EditMode)
-            int currentMouseOverRow = dataGridView1.HitTest(e.X, e.Y).RowIndex;
-            if (currentMouseOverRow >= 0 && e.Button == MouseButtons.Left)
+            int mouseOnRow = dataGridView1.HitTest(e.X, e.Y).RowIndex;
+            if (mouseOnRow >= 0 && EditMode)
                 {
                     ContextMenu m = new ContextMenu();
                     m.MenuItems.Add(new MenuItem(string.Format("Edytuj"), new EventHandler(this.Edit_click)));

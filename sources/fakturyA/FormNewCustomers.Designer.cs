@@ -116,18 +116,18 @@
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(11, 223);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(32, 13);
+            this.label6.Size = new System.Drawing.Size(36, 13);
             this.label6.TabIndex = 31;
-            this.label6.Text = "Email";
+            this.label6.Text = "Email*";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(12, 180);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(74, 13);
+            this.label5.Size = new System.Drawing.Size(78, 13);
             this.label5.TabIndex = 30;
-            this.label5.Text = "Kod pocztowy";
+            this.label5.Text = "Kod pocztowy*";
             // 
             // BoxNIP
             // 
@@ -166,18 +166,18 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(11, 136);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(38, 13);
+            this.label4.Size = new System.Drawing.Size(42, 13);
             this.label4.TabIndex = 25;
-            this.label4.Text = "Miasto";
+            this.label4.Text = "Miasto*";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(12, 93);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(37, 13);
+            this.label3.Size = new System.Drawing.Size(41, 13);
             this.label3.TabIndex = 24;
-            this.label3.Text = "Adres ";
+            this.label3.Text = "Adres *";
             // 
             // label2
             // 
