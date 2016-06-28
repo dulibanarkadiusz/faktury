@@ -352,7 +352,40 @@ namespace fakturyA
                 DatabaseMySQL.CloseConnection(MainProgram.Connection);
             }
         }
+        public static void LoadLogView()
+        {
+            MainProgram.Connection = DatabaseMySQL.Connect(MainProgram.DatabaseName);
+            try
+            {
+                DatabaseMySQL.OpenConnection(MainProgram.Connection);
+                string qText = string.Format("select* from logi;");
+                MySqlCommand q = new MySqlCommand(qText, MainProgram.Connection);
+                MySqlDataReader reader = q.ExecuteReader();
+                while (reader.Read())
+                {
+                    string[] cols = new string[6]; //fieldCount ile mamy kolumn z bazy
+                    cols[0] = reader[0].ToString();
+                    cols[1] = reader[1].ToString();
+                    cols[2] = reader[2].ToString();
+                    cols[3] = reader[3].ToString();
+                    cols[4] = reader[4].ToString();
+                    cols[5] = reader[5].ToString();
+                    FormLogView.changeHistory.Add(cols);
+                }
 
+                reader.Close();
+            }
+
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
+            finally
+            {
+                DatabaseMySQL.CloseConnection(MainProgram.Connection);
+            }
+
+        }
 
         public static int ExecuteQuery(string query)
         {
