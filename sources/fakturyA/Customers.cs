@@ -96,7 +96,7 @@ namespace fakturyA
         }
         public string GenerateQueryUpdateCustomer()
         {
-            return String.Format("Update kontrahent SET imie_nazwisko='{0}',ulica='{1}',miasto='{2}',kod_pocztowy={3},email='{4}',NIP='{5}' where nazwa='{6}'", CustomerName, Address, City, Code, Email, CustomerNIP, CompanyName);
+            return String.Format("Update kontrahent SET nazwa='{0}',imie_nazwisko='{1}',ulica='{2}',miasto='{3}',kod_pocztowy={4},email='{5}',NIP='{6}' where id='{7}'",CompanyName ,CustomerName, Address, City, Code, Email, CustomerNIP, CustomerID);
         }
 
     }

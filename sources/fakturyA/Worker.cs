@@ -18,22 +18,7 @@ namespace fakturyA
         public Permission Article_tablePermission { get; private set; }
         public Permission Invoice_tablePermission { get; private set; }
         public Permission Customer_tablePermission { get; private set; }
-
-        public Worker(string[] dataRow)
-        {
-
-            try
-            {
-                Name = dataRow[0];
-                SurnName = dataRow[1];
-                LoginName = dataRow[2];
-
-            }
-            catch (Exception exc)
-            {
-                throw new Exception("One or more variables cannot be converted to correct format: " + exc.Message);
-            }
-        }
+        
         public Worker(string login)
         {
             LoginName = login;
@@ -72,9 +57,6 @@ namespace fakturyA
                 }
             }
         }
-        public string GenerateInsertQuery()
-        {
-            return String.Format("INSERT INTO pracownik SET imie='{0}', nazwisko='{1}', mysql_login='{2}'",Name,SurnName,LoginName);
-        }
+        
     }
 }

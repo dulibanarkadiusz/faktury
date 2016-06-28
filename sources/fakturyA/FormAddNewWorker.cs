@@ -12,6 +12,7 @@ namespace fakturyA
 {
     public partial class FormAddNewWorker : Form
     {
+        List<string> listaZapytan = new List<string>();
         bool isSecurity = false;
         public FormAddNewWorker()
         {
@@ -44,12 +45,12 @@ namespace fakturyA
                 errorProvider1.Clear();
                 errorProvider1.SetError(label4, "wypełnij wymagane dane");
             }
-            else if(empty_2pass==true)
+            else if (empty_2pass == true)
             {
                 errorProvider1.Clear();
-                errorProvider1.SetError(label5,"wypełnij wymagane dane");
+                errorProvider1.SetError(label5, "wypełnij wymagane dane");
             }
-            else if(Box2Pass.Text != BoxPassword.Text)
+            else if (Box2Pass.Text != BoxPassword.Text)
             {
                 errorProvider1.Clear();
                 errorProvider1.SetError(label5, "Hasła nie sa takie same");
@@ -59,7 +60,7 @@ namespace fakturyA
                 errorProvider1.Clear();
                 isSecurity = true;
             }
-                
+
         }
         private void clearTextBox()
         {
@@ -71,18 +72,24 @@ namespace fakturyA
         }
         private void button1_Click(object sender, EventArgs e)
         {
-            string[] s = {BoxName.Text,BoxLastName.Text,BoxLogin.Text };
+            string[] s = { BoxName.Text, BoxLastName.Text, BoxLogin.Text };
             if (isSecurity == false)
                 Security();
             else
             {
-                Worker newWorker = new Worker(s);
-                string query = newWorker.GenerateInsertQuery();
-                DatabaseMySQL.ExecuteQuery(query);
+                dodaj();
+                DatabaseMySQL.ExecuteTransaction(listaZapytan);
                 clearTextBox();
                 this.Close();
             }
-                
+
+        }
+        private void dodaj()
+        {
+            string query = String.Format("INSERT INTO pracownik SET imie='{0}', nazwisko='{1}', mysql_login='{2}'", BoxName.Text, BoxLastName.Text, BoxLogin.Text);
+            listaZapytan.Add(query);
+            string query2 = String.Format("CREATE USER login='{0}'@'1' IDENTIFIED BY pass='{2}'", BoxLogin.Text, new EditorXML(MainProgram.NameConfigFile).FindInXML("hostname"), BoxPassword.Text);
+            listaZapytan.Add(query2);
         }
     }
 }
