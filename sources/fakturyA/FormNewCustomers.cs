@@ -13,10 +13,12 @@ namespace fakturyA
     //TEST
     public partial class FormNewCustomers : Form
     {
+        private Customers editCustomer;
         bool isSecurity = false;
         public FormNewCustomers()
         {
             InitializeComponent();
+            editCustomer = new Customers();
             button2.Hide();
         }
         private void clearTextBox()
@@ -34,7 +36,7 @@ namespace fakturyA
         {
             InitializeComponent();
             button1.Hide();
-            Customers editCustomer = new Customers();
+            editCustomer = customer;
             BoxCompName.Text = customer.CompanyName;
             BoxCustName.Text = customer.CustomerName;
             BoxAddress.Text = customer.Address;
@@ -104,23 +106,18 @@ namespace fakturyA
             }
 
         }
-
-
         private void BoxCode1_TextChanged(object sender, EventArgs e)
         {
             BoxCode1.MaxLength = 2;
         }
-
         private void BoxCode2_TextChanged(object sender, EventArgs e)
         {
             BoxCode2.MaxLength = 3;
         }
-
         private void BoxNIP_TextChanged(object sender, EventArgs e)
         {
             BoxNIP.MaxLength = 10;
         }
-
         private void Box_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsNumber(e.KeyChar) && e.KeyChar != (char)8)
@@ -134,10 +131,18 @@ namespace fakturyA
                 Security();
             else
             {
-                Customers editCustomer = new Customers();
-                string query = editCustomer.GenerateQueryUpdateCustomer();
-                DatabaseMySQL.ExecuteQuery(query);
-                MessageBox.Show("Udalo się");
+                
+                editCustomer.CompanyName = BoxCompName.Text;
+                editCustomer.CustomerName = BoxCustName.Text;
+                editCustomer.Address=BoxAddress.Text;
+                editCustomer.City = BoxCity.Text;
+                editCustomer.Code = Convert.ToInt32( BoxCode1.Text + BoxCode2.Text);
+                editCustomer.Email = BoxEmail.Text;
+                editCustomer.CustomerNIP = BoxNIP.Text;
+                MessageBox.Show("a");
+                editCustomer.GenerateQueryUpdateCustomer();
+                DatabaseMySQL.ExecuteQuery(editCustomer.GenerateQueryUpdateCustomer());
+                this.Close();
             }
 
         }

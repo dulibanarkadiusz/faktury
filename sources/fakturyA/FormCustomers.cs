@@ -13,7 +13,7 @@ namespace fakturyA
     public partial class FormCustomers : Form
     {
 
-        private int SelectedConsumerID { get; set; }
+        public int SelectedConsumerID { get; set; }
         public bool EditMode { get; set; }
 
         public FormCustomers()
@@ -55,7 +55,7 @@ namespace fakturyA
         private void dataGridView1_MouseClick(object sender, MouseEventArgs e)
         {
             int mouseOnRow = dataGridView1.HitTest(e.X, e.Y).RowIndex;
-            if (mouseOnRow >= 0 && EditMode)
+            if (mouseOnRow >= 0 /*&& EditMode*/)
                 {
                     ContextMenu m = new ContextMenu();
                     m.MenuItems.Add(new MenuItem(string.Format("Edytuj"), new EventHandler(this.Edit_click)));
@@ -114,16 +114,20 @@ namespace fakturyA
 
         private void buttonSel_Click(object sender, EventArgs e)
         {
-
             SelectedConsumerID = this.dataGridView1.SelectedRows[0].Index;
             this.Close();
         }
         private void Edit_click(object sender, EventArgs e)
         {
             List<Customers> cust = MainProgram.CustomersList;
-            FormNewCustomers edit = new FormNewCustomers(cust[dataGridView1.SelectedRows[0].Index]);
+            SelectedConsumerID = this.dataGridView1.SelectedRows[0].Index;
+            FormNewCustomers edit = new FormNewCustomers(cust[SelectedConsumerID]);
+           
+            MessageBox.Show(SelectedConsumerID.ToString());
             edit.Text = "Edytuj kontrahenta";
             edit.ShowDialog();
+            dataGridView1.Rows.Clear();
+            WriteAllCustomer();
         }
         private void FindInCustomer(object sender, EventArgs e)
         {

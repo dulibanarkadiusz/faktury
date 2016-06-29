@@ -3,20 +3,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.Windows.Forms;
 namespace fakturyA
 {
     public class Customers
     {
         private int customerID;
-        public int IdNumber { get; private set; } //0
-        public string CompanyName { get; private set; }//1
-        public string CustomerName { get; private set; }//2
-        public string Address { get; private set; }//3
-        public string City { get; private set; }//4
-        public int Code { get; private set; }//5
-        public string Email { get; private set; }//6
-        public string CustomerNIP { get; private set; }//7
+        public int IdNumber { get; set; } //0
+        public string CompanyName { get; set; }//1
+        public string CustomerName { get;  set; }//2
+        public string Address { get;  set; }//3
+        public string City { get;  set; }//4
+        public int Code { get;  set; }//5
+        public string Email { get;  set; }//6
+        public string CustomerNIP { get;set; }//7
         public int CustomerID
         {
             get { return customerID; }
@@ -28,7 +28,6 @@ namespace fakturyA
         }
         public Customers()
         {
-
             CompanyName = "";
             CustomerName = "";
             Address = "";
@@ -96,6 +95,7 @@ namespace fakturyA
         }
         public string GenerateQueryUpdateCustomer()
         {
+            MessageBox.Show(CustomerID.ToString());
             return String.Format("Update kontrahent SET nazwa='{0}',imie_nazwisko='{1}',ulica='{2}',miasto='{3}',kod_pocztowy={4},email='{5}',NIP='{6}' where id='{7}'",CompanyName ,CustomerName, Address, City, Code, Email, CustomerNIP, CustomerID);
         }
 
