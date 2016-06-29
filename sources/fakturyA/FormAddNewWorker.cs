@@ -79,6 +79,7 @@ namespace fakturyA
             {
                 dodaj();
                 DatabaseMySQL.ExecuteTransaction(listaZapytan);
+                MessageBox.Show("przeszło");
                 clearTextBox();
                 this.Close();
             }
@@ -86,10 +87,15 @@ namespace fakturyA
         }
         private void dodaj()
         {
+            listaZapytan.Clear();
+           // MessageBox.Show(BoxLogin.Text + "*" + new EditorXML(MainProgram.NameConfigFile).FindInXML("hostname") + "*" + BoxPassword.Text);
+            string query2 = String.Format("CREATE USER '{0}'@'{1}' IDENTIFIED BY '{2}'", BoxLogin.Text, new EditorXML(MainProgram.NameConfigFile).FindInXML("hostname"), BoxPassword.Text);
+            listaZapytan.Add(query2);
+          //  MessageBox.Show(listaZapytan[0]);
             string query = String.Format("INSERT INTO pracownik SET imie='{0}', nazwisko='{1}', mysql_login='{2}'", BoxName.Text, BoxLastName.Text, BoxLogin.Text);
             listaZapytan.Add(query);
-            string query2 = String.Format("CREATE USER login='{0}'@'1' IDENTIFIED BY pass='{2}'", BoxLogin.Text, new EditorXML(MainProgram.NameConfigFile).FindInXML("hostname"), BoxPassword.Text);
-            listaZapytan.Add(query2);
+          //  MessageBox.Show(listaZapytan[0] + "****" + listaZapytan[1]);
+            
         }
     }
 }

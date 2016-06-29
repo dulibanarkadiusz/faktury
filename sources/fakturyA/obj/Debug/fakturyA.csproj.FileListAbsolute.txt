@@ -465,3 +465,28 @@ C:\Users\User\Desktop\Nowy folder (5)\faktury\sources\fakturyA\obj\Debug\faktury
 C:\Users\Zumirka\Desktop\fsktury 28.06 5\sources\fakturyA\bin\Debug\fakturyA.exe.config
 C:\Users\Zumirka\Desktop\fsktury 28.06 5\sources\fakturyA\obj\Debug\fakturyA.exe
 C:\Users\Zumirka\Desktop\fsktury 28.06 5\sources\fakturyA\obj\Debug\fakturyA.pdb
+C:\Users\User\Desktop\projekt BD\faktury\sources\fakturyA\bin\Debug\fakturyA.exe.config
+C:\Users\User\Desktop\projekt BD\faktury\sources\fakturyA\obj\Debug\fakturyA.exe
+C:\Users\User\Desktop\projekt BD\faktury\sources\fakturyA\obj\Debug\fakturyA.pdb
+C:\Users\User\Desktop\projekt BD\faktury\sources\fakturyA\bin\Debug\fakturyA.exe
+C:\Users\User\Desktop\projekt BD\faktury\sources\fakturyA\bin\Debug\fakturyA.pdb
+C:\Users\User\Desktop\projekt BD\faktury\sources\fakturyA\bin\Debug\itextsharp.xml
+C:\Users\User\Desktop\projekt BD\faktury\sources\fakturyA\obj\Debug\fakturyA.csprojResolveAssemblyReference.cache
+C:\Users\User\Desktop\projekt BD\faktury\sources\fakturyA\obj\Debug\fakturyA.FormAddNewWorker.resources
+C:\Users\User\Desktop\projekt BD\faktury\sources\fakturyA\obj\Debug\fakturyA.FormArticleAmount.resources
+C:\Users\User\Desktop\projekt BD\faktury\sources\fakturyA\obj\Debug\fakturyA.FormArticlesEditor.resources
+C:\Users\User\Desktop\projekt BD\faktury\sources\fakturyA\obj\Debug\fakturyA.FormInvoiceEditor.resources
+C:\Users\User\Desktop\projekt BD\faktury\sources\fakturyA\obj\Debug\fakturyA.FormCustomers.resources
+C:\Users\User\Desktop\projekt BD\faktury\sources\fakturyA\obj\Debug\fakturyA.FormInvoicesList.resources
+C:\Users\User\Desktop\projekt BD\faktury\sources\fakturyA\obj\Debug\fakturyA.FormLogin.resources
+C:\Users\User\Desktop\projekt BD\faktury\sources\fakturyA\obj\Debug\fakturyA.FormLogView.resources
+C:\Users\User\Desktop\projekt BD\faktury\sources\fakturyA\obj\Debug\fakturyA.FormMain.resources
+C:\Users\User\Desktop\projekt BD\faktury\sources\fakturyA\obj\Debug\fakturyA.FormArticles.resources
+C:\Users\User\Desktop\projekt BD\faktury\sources\fakturyA\obj\Debug\fakturyA.FormNewCustomers.resources
+C:\Users\User\Desktop\projekt BD\faktury\sources\fakturyA\obj\Debug\fakturyA.FormOurCompanyDataEditor.resources
+C:\Users\User\Desktop\projekt BD\faktury\sources\fakturyA\obj\Debug\fakturyA.FormPermissionEditor.resources
+C:\Users\User\Desktop\projekt BD\faktury\sources\fakturyA\obj\Debug\fakturyA.FormUserList.resources
+C:\Users\User\Desktop\projekt BD\faktury\sources\fakturyA\obj\Debug\fakturyA.Properties.Resources.resources
+C:\Users\User\Desktop\projekt BD\faktury\sources\fakturyA\obj\Debug\fakturyA.UserControl_PermissionView.resources
+C:\Users\User\Desktop\projekt BD\faktury\sources\fakturyA\obj\Debug\fakturyA.UserControl_PermissionsEditor.resources
+C:\Users\User\Desktop\projekt BD\faktury\sources\fakturyA\obj\Debug\fakturyA.csproj.GenerateResource.Cache
